@@ -1,16 +1,8 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
-
-typedef struct	s_lemin
-{
-	s_map			m;
-	s_paths		*p;
-	s_ants		a;
-	s_record	r;
-}								t_lemin;
 
 typedef struct	s_ants
 {
@@ -26,19 +18,29 @@ typedef struct	s_record
 	int		nbturns;
 }								t_record;
 
-typedef struct	s_path
+typedef struct	s_paths
 {
 		int		**cases;
 		int		length;
-}								t_op;
+}								t_paths;
 
 typedef struct	s_map
 {
-	char		*cases;
+	char		**cases;
 	int			end_tunnels;
 	int			start_tunnels;
 	int			**graph;
+	int 		nbcases;
 }								t_map;
+
+typedef struct	s_lemin
+{
+	t_map			m;
+	t_paths		*p;
+	t_ants		a;
+	t_record	r;
+}								t_lemin;
+
 
 /* forme du graph :
    0 1 2 3
@@ -58,7 +60,7 @@ l'index de la case va definir le numero de la case dans int **case;
 
 /* forme int **rep :
 [[1,2,3,4], [5,6,7,8]]
-/* forme **ops :
+ forme **ops :
 ["L1-2", "L1-3 L2-2", "L1-1 L2-3 L3-2"]
 */
 

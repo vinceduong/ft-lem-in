@@ -1,31 +1,52 @@
-$(CC) = gcc
+NAME = lem-in
 
-$(FLAGS) = -Wall -Wextra -Werror
+SRC = 	srcs/main.c \
+		srcs/parser.c
 
-NAME = lem_in
+OBJ = $(SRC:.c=.o)
 
-SRCS = srcs/*.c
+LIB = libft/libft.a \
+			printf/libftprintf.a
 
-OBJ = srcs/*.o
+FLAGS = -Wall -Wextra -Werror
+LIBFT = libft
+PRINTF = printf
+HEADER = -I includes
+CC = gcc
+RM = rm -rf
+OK = $(C_OK)OK$(C_NO)
 
-INCLUDE = -I includes -I libft
+C_NO = "\033[00m"
+C_OK = "\033[35m"
+C_GOOD = "\033[32m"
+C_ERROR = "\033[31m"
+C_WARN = "\033[33m"
 
-LIBFT = libft.a
+.PHONY: all clean fclean re
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(LIBFT) $(SRCS)
-	$(CC) $(FLAGS) $(INCLUDE) $(LIBFT) $(SRCS) -o $(NAME)
+ $(NAME): $(LIB) $(OBJ)
+	@$(CC) $(OBJ) $(FLAGS) -o $(NAME) $(LIB)
 
-$(LIBFT) :
-	make -C libft
+$(LIB):
+	@make -C libft
+	@make -C printf
 
-clean :
-	make clean -C libft
-	rm $(OBJ)
+clean:
+	@make clean -s -C $(LIBFT)
+	@make clean -s -C $(PRINTF)
+	@$(RM) $(OBJ)
+	@$(RM) $(OBJ)
+	@echo "\033[32m[ Delete ]\033[0m [ objs /$(NAME_P) /$(NAME_C) ]" $(OK)
 
-fclean : clean
-	make fclean -C libft
-	rm $(NAME)
+fclean:
+	@make fclean -s -C $(LIBFT)
+	@make fclean -s -C $(PRINTF)
+	@$(RM) $(OBJ)
+	@$(RM) $(OBJ)
+	@$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "\033[32m[ Delete ]\033[0m [ objs & $(NAME_P) $(NAME_C) ]" $(OK)
 
-re : fclean all
+re:fclean all

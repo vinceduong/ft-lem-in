@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:12:05 by apoque            #+#    #+#             */
-/*   Updated: 2017/11/08 19:12:06 by apoque           ###   ########.fr       */
+/*   Created: 2017/11/15 18:13:00 by cammapou          #+#    #+#             */
+/*   Updated: 2017/11/16 17:08:25 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 void	ft_putstr(char const *s)
 {
-	ft_putstr_fd(s, 1);
+	int i;
+
+	i = 0;
+	if (s == NULL)
+		return ;
+	write(1, s, ft_strlen(s));
 }

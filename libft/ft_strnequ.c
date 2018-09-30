@@ -3,31 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:16:13 by apoque            #+#    #+#             */
-/*   Updated: 2017/11/18 13:45:00 by apoque           ###   ########.fr       */
+/*   Created: 2017/11/10 16:48:43 by cammapou          #+#    #+#             */
+/*   Updated: 2017/11/13 19:34:13 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t	index;
+	size_t	i;
+	int		j;
 
-	index = 0;
-	if (!s1 || !s2)
-		return (0);
-	while (index < n && s1[index] != '\0' && s2[index] != '\0')
-	{
-		if (s1[index] != s2[index])
-			return (0);
-		index++;
-	}
-	if ((s1[index] == '\0' && s2[index] == '\0') || index == n)
+	j = 0;
+	i = 0;
+	if (n == 0)
 		return (1);
-	else
+	if (s1 == NULL && s2 != NULL)
 		return (0);
+	if (s1 != NULL && s2 == NULL)
+		return (0);
+	if (s1 == NULL && s2 == NULL)
+		return (1);
+	while (s1[i] && s2[i] && n > 0)
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		if (n == 1)
+			return (1);
+		i++;
+		n--;
+	}
+	if (s1[i] == s2[i])
+		return (1);
+	return (0);
 }

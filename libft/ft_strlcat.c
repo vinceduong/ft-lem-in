@@ -3,41 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:14:45 by apoque            #+#    #+#             */
-/*   Updated: 2017/11/13 11:43:45 by apoque           ###   ########.fr       */
+/*   Created: 2017/11/13 15:21:19 by cammapou          #+#    #+#             */
+/*   Updated: 2017/11/13 19:29:26 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t len)
+size_t		ft_strlcat(char *dest, const char *src, size_t nb)
 {
-	char	*d;
-	char	*s;
-	size_t	size;
-	size_t	dlen;
+	size_t	dst_len;
+	size_t	src_len;
 
-	d = (char *)dst;
-	s = (char *)src;
-	size = (size_t)len;
-	while (size-- != 0 && *d != '\0')
-		d++;
-	dlen = d - dst;
-	size = len - dlen;
-	if (size == 0)
-		return (dlen + ft_strlen(s));
-	while (*s != '\0')
-	{
-		if (size != 1)
-		{
-			*d++ = *s;
-			size--;
-		}
-		s++;
-	}
-	*d = '\0';
-	return (dlen + s - src);
+	dst_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	if (nb <= dst_len)
+		return (nb + src_len);
+	else
+		ft_strncat(dest, src, nb - dst_len - 1);
+	return (dst_len + src_len);
 }
