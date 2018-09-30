@@ -40,6 +40,26 @@ typedef struct	s_map
 	int			**graph;
 }								t_map;
 
+/* forme du graph :
+   0 1 2 3
+0[[0,0,0,0],
+1 [0,0,0,0],
+2 [0,0,0,0],
+3 [0,0,0,0]]*/
+
+/* forme char *case:
+["1", "2", "3", "4"]
+l'index de la case va definir le numero de la case dans int **case;
+*/
+
+/* forme int **case :
+[[0,0], [1,0], [2,0], [3,0]], [numero la case, fourmi l'occupant]
+*/
+
+/* forme **ops :
+["L1-2", "L1-3 L2-2", "L1-1 L2-3 L3-2"]
+*/
+
 //On initialise map ants, si la map est invalide => return 0
 int	parse(t_lemin lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
