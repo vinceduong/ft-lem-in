@@ -6,11 +6,11 @@
 /*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 15:47:15 by carmenia          #+#    #+#             */
-/*   Updated: 2018/09/30 15:48:06 by carmenia         ###   ########.fr       */
+/*   Updated: 2018/09/30 16:06:33 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-clude "libft.h"
+#include "libft.h"
 #include <string.h>
 
 char	*ft_strstr(const char *src, const char *find)
