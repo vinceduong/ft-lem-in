@@ -8,6 +8,7 @@ typedef struct	s_lemin
 {
 	s_map			m;
 	s_paths		*p;
+	int			*nbpaths;
 	s_ants		a;
 	s_record	r;
 }								t_lemin;
@@ -63,15 +64,15 @@ l'index de la case va definir le numero de la case dans int **case;
 */
 
 //On initialise map ants, si la map est invalide => return 0
-int	parse(t_lemin lemin);
+int	parse(t_lemin *lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
-int	path(t_lemin lemin);
+int	path(t_lemin *lemin);
 //On reparti les chemins pour les fourmis, on rempli ants->rep;
-int	split_ants(t_lemin lemin);
+int	split_ants(t_lemin *lemin);
 //On record les tours en faisant avancer les fourmis sur chaque path;
-int	record(t_lemin lemin);
+int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
-int	display(t_lemin lemin);
+int	display(t_lemin *lemin);
 
 
 #endif
