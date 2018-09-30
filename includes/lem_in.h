@@ -35,10 +35,11 @@ typedef struct	s_path
 
 typedef struct	s_map
 {
-	char		*cases;
+	char		**cases;
 	int			end_tunnels;
 	int			start_tunnels;
 	int			**graph;
+	int			nbcases;
 }								t_map;
 
 /* forme du graph :
@@ -73,6 +74,9 @@ int	split_ants(t_lemin *lemin);
 int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
 int	display(t_lemin *lemin);
-
+int	*initcheck(nb);
+int *cpycheck(int *check, int nb);
+int add_case(t_path *path, int case);
+void free_cases(int **cases, int nb);
 
 #endif

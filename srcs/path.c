@@ -5,9 +5,10 @@
 #define NBCASES l->map.nbcases
 
 
-int findpath(t_path path, t_map map, int curr, int *check)
+t_path findpath(t_path path, t_map map, int curr, int *check)
 {
 	int i;
+	int *newcheck;
 
 	if (curr = map.nbcases)
 		return (path);
@@ -15,29 +16,16 @@ int findpath(t_path path, t_map map, int curr, int *check)
 
 	while (i < map.nbcases)
 	{
-		if (map.graph[curr][i])
+		if (map.graph[curr][i] && i != curr)
 		{
-			check[]
+			if (!(newcheck = cpycheck(check)))
+				return (0);
+			newcheck[i] = 1;
+			if (!add_case(path, i))
+				return (0);
+			return (findpath(path,))
 		}
-
 	}
-
-}
-
-int *init_check(nb)
-{
-	int *check;
-	int i;
-
-	if (!(check = (int *)malloc(nb * sizeof(int))))
-		return (NULL);
-	i = 0;
-	while (i < nb)
-	{
-		check[i] = 0;
-		i++;
-	}
-	return (check);
 }
 
 int	findallpath(t_lemin *l)
