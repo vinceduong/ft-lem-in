@@ -1,5 +1,22 @@
 #include "../includes/lem_in.h"
 
+int	save_instrus(char *line, t_lemin *lemin)
+{
+	t_list *new;
+
+	new = NULL;
+	if (lemin->instru)
+	{
+		if (!(lemin->instru = ft_lstnew(line, ft_strlen(line) * sizeof(char) + 1)))
+			return (0);
+		else
+			if (!(new = ft_lstnew(line, ft_strlen(line) * sizeof(char) + 1)))
+				return (0);
+			ft_lstaddend(&(lemin->instru), new);
+	}
+	return (1);
+}
+
 static int init_ants(t_ants *a)
 {
 	if (!(a = (t_ants*)malloc(sizeof(t_ants))))
@@ -35,6 +52,8 @@ static	int readata(t_lemin *lemin, char *line)
 {
 	if (!(read1(lemin, line)))
 		return (0);
+	if (!(save_instrus(line, lemin)))
+		return (0);
 	return (1);
 }
 
@@ -49,5 +68,6 @@ int	parse(t_lemin *lemin)
 		if (!ft_strcmp(*line, "") || !readata(lemin, *line))
 			printf("Error\n");
 	}
+	print_instru(lemin);
 	return (1);
 }

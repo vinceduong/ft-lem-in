@@ -39,8 +39,10 @@ typedef struct	s_lemin
 	t_paths		*p;
 	t_ants		a;
 	t_record	r;
+	t_list		*instru;
 }								t_lemin;
 
+void	print_instru(t_lemin *lemin);
 int readrooms(t_lemin *lemin, char *line);
 /* forme du graph :
    0 1 2 3
@@ -49,7 +51,7 @@ int readrooms(t_lemin *lemin, char *line);
 2 [0,0,0,0],
 3 [0,0,0,0]]*/
 
-/* forme char *case:
+/* forme char **case:
 ["1", "2", "3", "4"]
 l'index de la case va definir le numero de la case dans int **case;
 */
