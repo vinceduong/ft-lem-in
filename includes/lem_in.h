@@ -56,6 +56,8 @@ l'index de la case va definir le numero de la case dans int **case;
 [[0,0], [1,0], [2,0], [3,0]], [numero la case, fourmi l'occupant]
 */
 
+/* forme int **rep :
+[[1,2,3,4], [5,6,7,8]]
 /* forme **ops :
 ["L1-2", "L1-3 L2-2", "L1-1 L2-3 L3-2"]
 */
