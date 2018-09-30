@@ -8,7 +8,7 @@ typedef struct	s_lemin
 {
 	s_map			m;
 	s_paths		*p;
-	int			*nbpaths;
+	int				nbpaths;
 	s_ants		a;
 	s_record	r;
 }								t_lemin;
