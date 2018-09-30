@@ -24,6 +24,8 @@
 
 4. Work to the branch ----> git checkout experimental
 
+5. Merge commit master and experimental ---> git merge master
+
 5. Send new data ---> git push
 
 6. Merge Master and Experimental branch ----> git pull origin master
