@@ -7,8 +7,21 @@
 
 int findpath(t_path path, t_map map, int curr, int *check)
 {
+	int i;
+
 	if (curr = map.nbcases)
-		return (path;
+		return (path);
+	i = 0;
+
+	while (i < map.nbcases)
+	{
+		if (map.graph[curr][i])
+		{
+			check[]
+		}
+
+	}
+
 }
 
 int *init_check(nb)
