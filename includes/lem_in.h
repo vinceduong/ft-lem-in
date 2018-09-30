@@ -41,7 +41,7 @@ typedef struct	s_lemin
 	t_record	r;
 }								t_lemin;
 
-
+int readrooms(t_lemin *lemin, char *line);
 /* forme du graph :
    0 1 2 3
 0[[0,0,0,0],
@@ -65,7 +65,7 @@ l'index de la case va definir le numero de la case dans int **case;
 */
 
 //On initialise map ants, si la map est invalide => return 0
-int	parse(t_lemin lemin);
+int	parse(t_lemin *lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
 int	path(t_lemin lemin);
 //On reparti les chemins pour les fourmis, on rempli ants->rep;

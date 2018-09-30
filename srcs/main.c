@@ -5,7 +5,7 @@ int	main(void)
 	t_lemin lemin;
 
 	ft_bzero(&lemin, 0);
-	if (!parse(lemin))
+	if (!parse(&lemin))
 	{
 		printf("Parsing failed");
 		printf("ERROR");

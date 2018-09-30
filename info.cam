@@ -28,6 +28,8 @@
 
 5. Send new data ---> git push
 
+7.  push in experimental git push -u origin experimental_parse
+
 6. Merge Master and Experimental branch ----> git pull origin master
 
 
