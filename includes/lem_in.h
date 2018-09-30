@@ -7,7 +7,7 @@
 typedef struct	s_lemin
 {
 	s_map			m;
-	s_paths		p;
+	s_paths		*p;
 	s_ants		a;
 	s_record	r;
 }								t_lemin;
@@ -28,7 +28,7 @@ typedef struct	s_record
 
 typedef struct	s_path
 {
-		int		*cases;
+		int		**cases;
 		int		length;
 }								t_op;
 
