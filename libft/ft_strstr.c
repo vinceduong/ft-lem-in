@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:17:24 by apoque            #+#    #+#             */
-/*   Updated: 2017/11/13 12:10:24 by apoque           ###   ########.fr       */
+/*   Created: 2018/09/30 15:47:15 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:06 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+clude "libft.h"
 #include <string.h>
 
 char	*ft_strstr(const char *src, const char *find)
