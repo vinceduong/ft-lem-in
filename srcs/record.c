@@ -1,5 +1,17 @@
 #include "lem_in.h"
 
+/*il te manque peut etre un voup, si ca marche pas hesite pas a incrementer ton
+ return de 1 */
+size_t		ops_size(t_lemin *lemin)
+{
+	size_t i;
+
+	i = 0;
+	while (lemin->a.rep[0][i])
+		i++;
+	return (i + lemin->p[0].length)
+}
+
 char	*step_writer(t_lemin *lemin, int antnum, t_node *room);
 {
 	char *tmp;
@@ -16,7 +28,8 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	int wave;
 	t_node *room;
 
-	antpos = 1;
+	antpos = 1
+	lemin->r.ops = (char **)ft_memalloc(ops_size(lemin) * sizeof(char *));
 	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
 		wave = antpos - 1;
@@ -28,6 +41,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 			room = room->next;
 			wave++;
 		}
+		ops[wave] = NULL;
 		antpos++;
 	}
 }
@@ -37,6 +51,7 @@ int	record(t_lemin *lemin)
 	int	pathnumber;
 
 	pathnumber = 0;
+	if(!(ops = (char **)malloc
 	while (pathnumber < lemin->nbpath)
 	{
 		launch_path(lemin, pathnumber);
