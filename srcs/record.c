@@ -1,32 +1,34 @@
 #include "lem_in.h"
 
-char	*step_writer(t_lemin *lemin, int ant, int room);
+char	*step_writer(t_lemin *lemin, int antnum, t_node *room);
 {
 	char *tmp;
 
-	tmp = ft_strjoin("L", ft_itoa(ant));
+	tmp = ft_strjoin("L", ft_itoa(antnum));
 	tmp = ft_strjoin(tmp, "-");
-	tmp = ft_strjoin(tmp, lemin->m->case[room]);
+	tmp = ft_strjoin(tmp, lemin->m.case[room->nb]);
 	return (tmp);
 }
 
 int	launch_path(t_lemin *lemin, int pathnumber)
 {
-	int ant;
+	int antpos;
 	int wave;
-	int	room;
+	t_node *room;
 
-	ant = 1;
-	wave = 0;
-	while (lemin->a->rep[pathnumber][ant])
+	antpos = 1;
+	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
-		while (wave - ant + 1 < lemin->p[pathnumber]->length)
+		wave = antpos - 1;
+		room = lemin->p[pathnumber].nodes.start;
+		while (room->next)
 		{
-			room = lemin->p->paths[pathnumber][wave - ant + 1];
-			ops[wave] = ft_strjoin(ops[wave], step_writer(lemin, ant, room));
+			ops[wave] = ft_strjoin(ops[wave],
+				step_writer(lemin, lemin->a.rep[pathnumber][antpos], room));
+			room = room->next;
 			wave++;
 		}
-		a++;
+		antpos++;
 	}
 }
 
@@ -40,16 +42,4 @@ int	record(t_lemin *lemin)
 		launch_path(lemin, pathnumber);
 		pathnumber++;
 	}
-}
-
-
-
-
-
-	{
-		lemin->r->ops[wave] = tmp;
-	}
-
-
-
 }
