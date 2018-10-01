@@ -20,7 +20,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	wave = 0;
 	while (lemin->a->rep[pathnumber][ant])
 	{
-		while (wave - ant + 1 < lemin->p->paths[pathnumber]->length)
+		while (wave - ant + 1 < lemin->p[pathnumber]->length)
 		{
 			room = lemin->p->paths[pathnumber][wave - ant + 1];
 			ops[wave] = ft_strjoin(ops[wave], step_writer(lemin, ant, room));
@@ -35,7 +35,7 @@ int	record(t_lemin *lemin)
 	int	pathnumber;
 
 	pathnumber = 0;
-	while (pathnumber < lemin->p->nbpath)
+	while (pathnumber < lemin->nbpath)
 	{
 		launch_path(lemin, pathnumber);
 		pathnumber++;
