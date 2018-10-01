@@ -59,12 +59,16 @@ typedef struct	s_lemin
 	t_ants		a;
 	t_record	r;
 	t_list		*instru;
+	char 			*start;
+	char 			*end;
 	int			nbpaths;
 }								t_lemin;
 
+//PARSER_FONCTION
+int 		read2(t_lemin *lemin, char *line);
 t_lemin *init_lem(t_lemin *lemin);
-void	print_instru(t_lemin *lemin);
-int readrooms(t_lemin *lemin, char *line);
+void		print_instru(t_lemin *lemin);
+int 		readrooms(t_lemin *lemin, char *line);
 /* forme du graph :
    0 1 2 3
 0[[0,0,0,0],

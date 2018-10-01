@@ -47,21 +47,30 @@ static int read1(t_lemin *lemin, char *line)
 		if (!(readrooms(lemin, line)))
 			return(0);
 	}
+	/*else if (!ft_strcmp("##start", line) && !ft_strcmp("##end", line))
+		return (0);*/
 	return (1);
 }
 
 static	int readata(t_lemin *lemin, char *line)
 {
+	if (line[0] == 'L')
+		return (0);
 	if (!(read1(lemin, line)))
 		return (0);
 	if (!(save_instrus(line, lemin)))
+		return (0);
+	if (!(read2(lemin, line)))
 		return (0);
 	return (1);
 }
 
 int check_error(t_lemin *lemin)
 {
-	
+	if (lemin->a.nbants < 0 || lemin->a.nbstart != lemin->a.nbants || \
+			lemin->a.nbend != 0 || !lemin->instru || !lemin->m.cases || \
+			lemin->start == NULL || lemin->end == NULL)
+		return (0);
 	printf("nb_start = %d\n", lemin->a.nbstart);
 	printf("nb_end = %d\n", lemin->a.nbend);
 	printf("lemin = %s\n", *lemin->m.cases);
@@ -85,12 +94,7 @@ int	parse(t_lemin *lemin)
 	}
 	if(!(check_error(lemin)))
 		return (0);
-	/*free(line);
-	free(lemin);
-	printf("nb_start = %d\n", lemin->a.nbstart);
-	printf("nb_end = %d\n", lemin->a.nbend);
-	printf("lemin = %s\n", *lemin->m.cases);
-	printf("ants = %d\n", lemin->a.nbants);
-	print_instru(lemin);*/
+	free(line);
+	print_instru(lemin);
 	return (1);
 }
