@@ -41,15 +41,3 @@ int	record(t_lemin *lemin)
 		pathnumber++;
 	}
 }
-
-
-
-
-
-	{
-		lemin->r->ops[wave] = tmp;
-	}
-
-
-
-}
