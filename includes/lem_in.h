@@ -46,7 +46,6 @@ typedef struct		s_path
 {
 	int					curr;
 	t_nodelist	nodes;
-	int			length;
 	t_path		*next;
 }					t_path;
 
