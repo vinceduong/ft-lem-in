@@ -38,20 +38,23 @@ int	main(void)
 	}
 	/*if (!path(lemin))
 	{
-		printf("Pathing failed");
-		printf("ERROR");
+		ft_printf("Pathing failed");
+		ft_printf("ERROR");
+		return (0);
 	}
-	if (!split_ants(lemin))
+	if (!split_ants(&lemin))
 	{
-		printf("Splitting failed");
-		printf("ERROR");
+		ft_printf("Splitting failed");
+		ft_printf("ERROR");
+		return (0);
 	}
-	if (!record(lemin))
+	if (!record(&lemin))
 	{
-		printf("Recording failed");
-		printf("ERROR");
+		ft_printf("Recording failed");
+		ft_printf("ERROR");
+		return (0);
 	}
-	if (!display(lemin))
+	if (!display(&lemin))
 	{
 		printf("Display failed");
 		printf("ERROR");
