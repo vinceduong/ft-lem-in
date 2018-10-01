@@ -28,7 +28,7 @@ C_WARN = "\033[33m"
 all: $(NAME)
 
  $(NAME): $(LIB) $(OBJ)
-	@$(CC) $(OBJ) $(FLAGS) -o $(NAME) $(LIB)
+	@$(CC) $(HEADER) $(FLAGS) $(OBJ) $(FLAGS) -o $(NAME) $(LIB)
 
 $(LIB):
 	@make -C libft

@@ -8,20 +8,20 @@ typedef struct		s_node
 {
 	int		nb;
 	int		index;
-	t_node	*next;
+	struct s_node	*next;
 }					t_node;
 
 typedef struct		s_nodelist
 {
 	int		length;
-	t_node	*start;
+	struct s_node	*start;
 }					t_nodelist;
 
 typedef struct		s_path
 {
 	t_nodelist	nodes;
-	t_path		*next;
-}					t_path;
+	struct s_path		*next;
+}									t_path;
 
 typedef struct		s_pathlist
 {
@@ -52,22 +52,14 @@ typedef struct		s_record
 	int		nbturns;
 }					t_record;
 
-typedef struct		s_lemin
-{
-	t_map		m;
-	t_ants		a;
-	t_record	r;
-	t_pathlist	*p;
-	int			nbpaths;
-}					t_lemin;
-
 typedef struct	s_lemin
 {
 	t_map			m;
-	t_paths		*p;
+	t_path		*p;
 	t_ants		a;
 	t_record	r;
 	t_list		*instru;
+	int			nbpaths;
 }								t_lemin;
 
 t_lemin *init_lem(t_lemin *lemin);
