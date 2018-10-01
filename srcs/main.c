@@ -19,11 +19,18 @@ void	print_instru(t_lemin *lemin)
       ft_putchar('\n');
 }
 
+t_lemin *init_lem(t_lemin *lemin)
+{
+  if (!(lemin = (t_lemin*)malloc(sizeof(t_lemin))))
+    return (0);
+  lemin->instru = NULL;
+  return (lemin);
+}
+
 int	main(void)
 {
 	t_lemin lemin;
 
-	ft_bzero(&lemin, 0);
 	if (!parse(&lemin))
 	{
 		printf("Parsing failed");

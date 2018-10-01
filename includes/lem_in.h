@@ -42,6 +42,7 @@ typedef struct	s_lemin
 	t_list		*instru;
 }								t_lemin;
 
+t_lemin *init_lem(t_lemin *lemin);
 void	print_instru(t_lemin *lemin);
 int readrooms(t_lemin *lemin, char *line);
 /* forme du graph :
