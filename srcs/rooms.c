@@ -13,7 +13,7 @@ static char **creat_tab(char *line, char **tab)
     while (*line)
     {
         while (line[len] && line[len] != ' ')
-            len++;            
+            len++;
         if (!(tab[i] = (char*)malloc(len * sizeof(char))))
             return (0);
         while (line[i] && line[i] != ' ')
@@ -24,20 +24,6 @@ static char **creat_tab(char *line, char **tab)
         i++;
         line++;
     }
-	/*while (*line)
-    {
-        while (line[len] && line[len] != ' ')
-            len++;
-        if (!(tab[i] = (char*)malloc(len * sizeof(char) + 1)))
-            return (NULL);
-        while (*line && *line != ' ')
-            tab[i][j++] = *(line++);
-        tab[i][j] = '\0';
-        j = 0;
-        len = 0;
-        i++;
-        line++;
-    }*/
 	return (tab);
 }
 
@@ -62,7 +48,6 @@ int readrooms(t_lemin *lemin, char *line)
 		return (0);
 		if (!(tb = parsetab(lemin, line)))
 			return (0);
-        lemin->m.cases = tb;
-		printf("lem = %s\n", *lemin->m.cases);
+    lemin->m.cases = tb;
 		return (1);
 }

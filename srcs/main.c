@@ -33,7 +33,7 @@ int	main(void)
 
 	if (!parse(&lemin))
 	{
-		printf("Parsing failed");
+		printf("Parsing failed\n");
 		printf("ERROR");
 	}
 	/*if (!path(lemin))
