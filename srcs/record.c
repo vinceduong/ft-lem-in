@@ -30,6 +30,8 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	}
 }
 
+tintin
+
 int	record(t_lemin *lemin)
 {
 	int	pathnumber;
