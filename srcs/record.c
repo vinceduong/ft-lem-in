@@ -17,17 +17,17 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	int	room;
 
 	antpos = 1;
-	while (lemin->a->rep[pathnumber][ant])
+	while (lemin->a->rep[pathnumber][antpos])
 	{
 		wave = antpos - 1;
 		while (wave - antpos + 1 < lemin->p[pathnumber]->length)
 		{
-			room = lemin->p->paths[pathnumber][wave - ant + 1];
+			room = lemin->p[pathnumber][wave - antpos + 1];
 			ops[wave] = ft_strjoin(ops[wave],
 				step_writer(lemin, lemin->a->rep[pathnumber][antpos], room));
 			wave++;
 		}
-		a++;
+		antpos++;
 	}
 }
 
