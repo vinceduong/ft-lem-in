@@ -81,7 +81,10 @@ SRC =	ft_atoi.c \
 		ft_lstcount.c \
 		get_next_line.c \
 		ft_lstaddend.c \
-		ft_is_int.c
+		ft_is_int.c \
+		ft_lstmax.c \
+		ft_lstmin.c \
+		ft_tabnew.c \
 
 RM = rm -f
 OBJ = $(SRC:.c=.o)
