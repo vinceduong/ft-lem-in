@@ -4,15 +4,6 @@
 # include "libft.h"
 # include <stdio.h>
 
-typedef struct	s_lemin
-{
-	s_map			m;
-	s_paths		*p;
-	int				nbpaths;
-	s_ants		a;
-	s_record	r;
-}								t_lemin;
-
 typedef struct	s_ants
 {
 	int nbants;
@@ -27,19 +18,51 @@ typedef struct	s_record
 	int		nbturns;
 }								t_record;
 
+typedef struct	s_node
+{
+	int			nb;
+	int			index;
+	s_case 	*next;
+}								t_case;
+
+typedef struct	s_nodelist
+{
+	int			length;
+	s_case	**start;
+}								s_caselist;
+
+
 typedef struct	s_path
 {
-		int		**cases;
-		int		length;
+		s_nodelist		nodes;
+		int						length;
+		s_path				*next;
 }								t_op;
 
+typedef struct s_pathlist
+{
+	s_path 		**start;
+	int				nbpath;
+}
 typedef struct	s_map
 {
-	char		*cases;
+	char		**cases;
 	int			end_tunnels;
 	int			start_tunnels;
 	int			**graph;
+	int			nbcases;
 }								t_map;
+
+typedef struct	s_lemin
+{
+	s_map					m;
+	s_pathlist		p;
+	int						nbpaths;
+	s_ants				a;
+	s_record			r;
+}								t_lemin;
+
+
 
 /* forme du graph :
    0 1 2 3
@@ -74,5 +97,9 @@ int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
 int	display(t_lemin *lemin);
 
+//NODELIST FUNCTIONS
+t_node			*new_node(int nb);
+t_nodelist	*add_node(t_nodelist *nodelist, t_node *node);
+int					check_nodelist(t_nodelist *nodelist, int nodenb);
 
 #endif
