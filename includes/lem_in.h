@@ -18,30 +18,6 @@ typedef struct	s_record
 	int		nbturns;
 }								t_record;
 
-typedef struct	s_path
-{
-		int		**cases;
-		int		length;
-}								t_op;
-
-typedef struct	s_map
-{
-	char		**cases;
-	int			end_tunnels;
-	int			start_tunnels;
-	int			**graph;
-	int			nbcases;
-}								t_map;
-
-typedef struct	s_lemin
-{
-	s_map			m;
-	s_paths		*p;
-	int				nbpaths;
-	s_ants		a;
-	s_record	r;
-}								t_lemin;
-
 typedef struct	s_node
 {
 	int			nb;
@@ -54,6 +30,39 @@ typedef struct	s_nodelist
 	int			length;
 	s_case	**start;
 }								s_caselist;
+
+
+typedef struct	s_path
+{
+		s_nodelist		nodes;
+		int						length;
+		s_path				*next;
+}								t_op;
+
+typedef struct s_pathlist
+{
+	s_path 		**start;
+	int				nbpath;
+}
+typedef struct	s_map
+{
+	char		**cases;
+	int			end_tunnels;
+	int			start_tunnels;
+	int			**graph;
+	int			nbcases;
+}								t_map;
+
+typedef struct	s_lemin
+{
+	s_map					m;
+	s_pathlist		p;
+	int						nbpaths;
+	s_ants				a;
+	s_record			r;
+}								t_lemin;
+
+
 
 /* forme du graph :
    0 1 2 3
