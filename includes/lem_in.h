@@ -19,14 +19,17 @@ typedef struct		s_nodelist
 
 typedef struct		s_path
 {
+	int 				curr;
 	t_nodelist	nodes;
-	t_path		*next;
+	int					ended;
+	t_path			*next;
 }					t_path;
 
 typedef struct		s_pathlist
 {
 	t_path 	*start;
 	int		nbpath;
+	int 	new_nodes;
 }					t_pathlist;
 
 typedef struct		s_map
@@ -83,5 +86,7 @@ int	display(t_lemin *lemin);
 t_node			*new_node(int nb);
 t_nodelist	*add_node(t_nodelist *nodelist, t_node *node);
 int					check_nodelist(t_nodelist *nodelist, int nodenb);
+t_node			*new_path(t_path *path, int nodenb);
+t_nodelist	*add_path(t_pathlist *pathlist, t_path *path);
 
 #endif

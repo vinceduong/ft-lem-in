@@ -2,10 +2,9 @@
 
 t_node		*new_node(int nb)
 {
-	t_node node;
 	t_node *new;
 
-	new = &node;
+	new = (t_node)malloc(sizeof(t_node));
 	new->nb = nb;
 	new->next = NULL;
 	return (new);
@@ -18,7 +17,7 @@ t_nodelist	*add_node(t_nodelist *nodelist, t_node *node)
 
 	tmp = *(nodelist->start);
 	i = 0;
-	while (tmp != NULL)
+	while (tmp->next)
 	{
 		tmp = tmp->next;
 		i++;
