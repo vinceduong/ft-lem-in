@@ -9,7 +9,7 @@ size_t		ops_size(t_lemin *lemin)
 	i = 0;
 	while (lemin->a.rep[0][i])
 		i++;
-	return (i + lemin->p[0].length)
+	return (i + (size_t)lemin->p[0].length)
 }
 
 char	*step_writer(t_lemin *lemin, int antnum, t_node *room);
@@ -29,7 +29,6 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	t_node *room;
 
 	antpos = 1
-	lemin->r.ops = (char **)ft_memalloc(ops_size(lemin) * sizeof(char *));
 	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
 		wave = antpos - 1;
@@ -44,6 +43,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 		ops[wave] = NULL;
 		antpos++;
 	}
+	return (1);
 }
 
 int	record(t_lemin *lemin)
@@ -51,10 +51,12 @@ int	record(t_lemin *lemin)
 	int	pathnumber;
 
 	pathnumber = 0;
-	if(!(ops = (char **)malloc
+	if (!(lemin->r.ops = (char **)ft_memalloc(ops_size(lemin) * sizeof(char *)));
+		return (0);
 	while (pathnumber < lemin->nbpath)
 	{
 		launch_path(lemin, pathnumber);
 		pathnumber++;
 	}
+	return (1);
 }
