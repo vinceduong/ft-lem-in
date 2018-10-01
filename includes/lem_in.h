@@ -4,14 +4,30 @@
 # include "libft.h"
 # include <stdio.h>
 
-typedef struct		s_lemin
+typedef struct		s_node
 {
-	t_map		m;
-	t_ants		a;
-	t_record	r;
-	t_pathlist	p;
-	int			nbpaths;
-}					t_lemin;
+	int		nb;
+	int		index;
+	t_node	*next;
+}					t_node;
+
+typedef struct		s_nodelist
+{
+	int		length;
+	t_node	*start;
+}					t_nodelist;
+
+typedef struct		s_path
+{
+	t_nodelist	nodes;
+	t_path		*next;
+}					t_path;
+
+typedef struct		s_pathlist
+{
+	t_path 	*start;
+	int		nbpath;
+}					t_pathlist;
 
 typedef struct		s_map
 {
@@ -36,32 +52,14 @@ typedef struct		s_record
 	int		nbturns;
 }					t_record;
 
-typedef struct		s_pathlist
+typedef struct		s_lemin
 {
-	t_path 	*start;
-	int		nbpath;
-}					t_pathlist;
-
-typedef struct		s_path
-{
-	int					curr;
-	t_nodelist	nodes;
-	int			length;
-	t_path		*next;
-}					t_path;
-
-typedef struct		s_nodelist
-{
-	int		length;
-	t_node	*start;
-}					t_nodelist;
-
-typedef struct		s_node
-{
-	int		nb;
-	int		index;
-	t_node	*next;
-}					t_node;
+	t_map		m;
+	t_ants		a;
+	t_record	r;
+	t_pathlist	*p;
+	int			nbpaths;
+}					t_lemin;
 
 /* forme du graph :
    0 1 2 3
@@ -69,17 +67,6 @@ typedef struct		s_node
 1 [0,0,0,0],
 2 [0,0,0,0],
 3 [0,0,0,0]]*/
-
-/* forme char *case:
-["1", "2", "3", "4"]
-l'index de la case va definir le numero de la case dans int **case;
-*/
-
-/* forme int **rep :
-[[1,2,3,4], [5,6,7,8]]
-/* forme **ops :
-["L1-2", "L1-3 L2-2", "L1-1 L2-3 L3-2"]
-*/
 
 //On initialise map ants, si la map est invalide => return 0
 int	parse(t_lemin *lemin);
