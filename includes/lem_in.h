@@ -38,12 +38,13 @@ typedef struct		s_record
 
 typedef struct		s_pathlist
 {
-	t_path 	**start;
+	t_path 	*start;
 	int		nbpath;
 }					t_pathlist;
 
 typedef struct		s_path
 {
+	int					curr;
 	t_nodelist	nodes;
 	int			length;
 	t_path		*next;
@@ -52,7 +53,7 @@ typedef struct		s_path
 typedef struct		s_nodelist
 {
 	int		length;
-	t_node	**start;
+	t_node	*start;
 }					t_nodelist;
 
 typedef struct		s_node
