@@ -6,7 +6,7 @@ char	*step_writer(t_lemin *lemin, int antnum, t_node *room);
 
 	tmp = ft_strjoin("L", ft_itoa(antnum));
 	tmp = ft_strjoin(tmp, "-");
-	tmp = ft_strjoin(tmp, lemin->m.case[room]);
+	tmp = ft_strjoin(tmp, lemin->m.case[room->nb]);
 	return (tmp);
 }
 
@@ -17,7 +17,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	t_node *room;
 
 	antpos = 1;
-	while (lemin->a.rep[pathnumber][antpos])
+	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
 		wave = antpos - 1;
 		room = lemin->p[pathnumber].nodes.start;
