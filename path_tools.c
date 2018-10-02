@@ -1,9 +1,9 @@
 #include "lem_in.h"
 
-int *cpyup_path(t_path *src, t_path *dest, int curr, t_node node)
+int *cpyup_path(t_path *src, t_path *dest, t_node node)
 {
 	dest->nodes = cpy_nodelist(src->nodes);
-	dest->curr = curr;
+	dest->curr = src->curr;
 	dest->ended = src->ended;
 	add_node(dest->nodes, node);
 }
@@ -12,20 +12,20 @@ t_node		*new_path(t_path *path, int nodenb)
 {
 	t_path			*new;
 	t_node			*node;
-	t_nodelist 	nl;
+	t_nodelist 	*nl;
 
 	new = (t_path *)malloc(sizeof(t_path));
 	node = new_node(nodenb);
 	if (!path)
 	{
+			nl = (t_nodelist*)malloc(sizeof(t_nodelist));
 			new->curr = nodenb;
+			add_node(nl, node);
 			new->nodes = nl;
-			new->nodes.length = 1;
-			new->nodes.start = node;
 			new->ended = 0;
 	}
 	else
-		cpyup_path(t_path *src, t_path *dest);
+		cpyup_path(t_path *src, t_path *dest, node));
 	new->next = NULL;
 	new->previous = NULL;
 	return (new);
@@ -36,13 +36,9 @@ void		*add_path(t_path *pathlist, t_path *path)
 	t_node	*tmp;
 	int			i;
 
-	tmp = *(pathlist->start);
-	i = 0;
+	tmp = pathlist->start;
 	while (tmp->next)
-	{
 		tmp = tmp->next;
-		i++;
-	}
 	tmp->next = path;
 	path->previous = tmp;
 	return (pathlist);
@@ -55,13 +51,13 @@ t_path *merge_paths(t_pathlist *paths, t_path *news, t_path *old)
 
 	tmp_list = paths->start;
 	tmp_new = news;
-	while (tmp_list && tmp_list != old)
+	while (tmp_list->next && tmp_list->next != old)
 		tmp_list = tmp_list->next;
-	tmp_list->previous->next = tmp_new;
+	tmp_list->next = tmp_new;
 	while (tmp_new->next)
 		tmp_new = tmp_new->next;
-	tmp_new->next = tmp_list->next;
-	tmp_new->previous = tmp_list->previous;
+	tmp_new->next = old->next;
+	tmp_new->previous = tmp_list;
 	return (tmp_new->next);
 }
 

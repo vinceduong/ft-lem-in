@@ -16,34 +16,30 @@ int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 			count++;
 		i++;
 	}
-	p->new_nodes = count;
+	p->childs = count;
 	return (1);
 }
 
-
 void sort_paths(t_lemin *l, t_nodelist *nl, t_pathlist *paths)
 {
-	t_path *tmp1;
-	t_nodelist *tmpnl;
-	int					tmpcurr;
-	int					tmpnew_nodes;
+	t_path 			*tmp;
+	t_path			*tmpsort;
 
-	tmp1 = paths->start;
-	while (tmp1->next)
+	tmp = pathlist->start;
+	while (tmp->next->next)
 	{
-		if (tmp1->new_nodes > tmp1->next->new_nodes))
+		if (tmp->childs > tmp->next->childs)
 		{
-			tmpcurr = tmp1->curr;
-			tmpnew_nodes = tmp1->new_nodes;
-			tmpnl = tmp1->nodes;
-			tmp1->nodes = tmp1->next->nodes;
-			tmp1->next->nodes = tmpnl;
-			tmp1->next->curr = tmpcurr;
-			tmp1->next->new_nodes = tmpnew_nodes;
-			tmp1 = paths->start;
+			tmpsort = tmp->next->next;
+			tmp->next->next = tmp->next;
+			tmp->next = tmpsort;
+			tmposort = tmp->next->previous;
+			tmp->next->previous = tmp->previous;
+			tmp->previous = tmpsort;
+			tmp = pathlist->start;
 		}
 		else
-			tmp1 = tmp1->next;
+			tmp = tmp->next;
 	}
 }
 
@@ -59,7 +55,7 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *pa
 	{
 		if (i && l->map.graph[p->curr][i] && !check_nodelist(bl, i))
 		{
-			if (i = l->m.nbcases - 1)
+			if (i == l->m.nbcases - 1)
 				path.ended = 1;
 			else
 			{
@@ -70,9 +66,7 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *pa
 		}
 		i++;
 	}
-	if (!new_childs)
-		return (NULL);
-	return (path.ended ? path : new_paths);
+	return (path.ended ? path : (new_childs > 0 ? new_paths : NULL));
 }
 
 void new_path_list(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
@@ -129,6 +123,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 		}
 		tmp = tmp->next;
 	}
+	return (1);
 }
 
 void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
@@ -137,12 +132,12 @@ void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 
 	if (!paths->start)
 	{
-		path = new_path(NULL);
-		add_path(paths->start, path);
+		path = new_path(NULL, 0);
+		add_path(paths, path);
 	}
 	else
 	{
-		if (update_paths(l, nl, paths->start))
+		if (update_paths(l, nl, paths))
 			return ;
 	}
 	findpathlist(l, nl, paths);
@@ -150,9 +145,13 @@ void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 
 int	path(t_lemin *l)
 {
-		t_nodelist	nl;
-		t_nodelist	bl;
-		t_pathlist	paths;
+		t_nodelist	*nl;
+		t_nodelist	*bl;
+		t_pathlist	*paths;
 
-		findpathlist(l, &nl, &paths);
+		paths = (t_pathlist*)malloc(sizeof(t_pathlist));
+		nl = (t_nodelist*)malloc(sizeof(t_nodelist));
+		bl = (t_nodelist*)malloc(sizeof(t_nodelist));
+		findpathlist(l, nl, bl, paths);
+
 }

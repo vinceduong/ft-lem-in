@@ -20,6 +20,7 @@ typedef struct		s_nodelist
 typedef struct		s_path
 {
 	int 				curr;
+	int					childs;
 	t_nodelist	nodes;
 	int					ended;
 	t_path			*next;
