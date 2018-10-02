@@ -12,6 +12,32 @@
 
 #include "../includes/lem_in.h"
 
+int   create_map(t_lemin *lemin)
+{
+  int i;
+  int j;
+  int len;
+
+  i = 0;
+
+  len =  lemin->links;
+  printf("len = %d\n", len);
+  if (!(lemin->m.graph = (int**)malloc(sizeof(int*) * len)))
+    return (0);
+  while(i < len)
+  {
+    if (!(lemin->m.graph[i] = (int*)malloc(sizeof(int) * len)))
+      return (0);
+    j = 0;
+    while (j < len)
+      lemin->m.graph[i][j++] = 0;
+    lemin->m.graph[i++][j] = '\0';
+  }
+  //lemin->m.graph[i] = '\0';
+  //printf("links = %d\n", lemin->links);
+  return (1);
+}
+
 int		comment(t_lemin *lemin, char *line)
 {
 	while (line[0] == '#')

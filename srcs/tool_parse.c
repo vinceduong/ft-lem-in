@@ -25,7 +25,7 @@ t_lemin *init_lem(t_lemin *lemin)
   lemin->instru = NULL;
   lemin->start = NULL;
   lemin->end = NULL;
-  lemin->links = NULL;
+  lemin->links = 0;
   return (lemin);
 }
 

@@ -50,7 +50,7 @@ static int read1(t_lemin *lemin, char *line)
 		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
 				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
 		{
-			return (1);
+			lemin->links++;
 			//printf("tubes\n");
 		}
 	return (1);
@@ -102,6 +102,8 @@ int	parse(t_lemin *lemin)
 	}
 	print_instru(lemin);
 	if(!(check_error(lemin)))
+		return (0);
+	if (!(create_map(lemin)))
 		return (0);
 	free(lemin->start);
 	free(lemin->end);

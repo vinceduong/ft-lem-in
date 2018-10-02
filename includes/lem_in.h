@@ -61,11 +61,12 @@ typedef struct	s_lemin
 	t_list		*instru;
 	char 			*start;
 	char 			*end;
-	char 			*links;
+	int 			 links;
 	int			nbpaths;
 }								t_lemin;
 
 //PARSER_FONCTION
+int   create_map(t_lemin *lemin);
 int 	checkrooms(char **tab, char *line);
 int 		readdata2(t_lemin *lemin, char *line);
 t_lemin *init_lem(t_lemin *lemin);
