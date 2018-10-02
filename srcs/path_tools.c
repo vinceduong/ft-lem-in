@@ -1,56 +1,76 @@
 #include "lem_in.h"
 
-t_node		*new_path(t_path *path)
+int cpy_path(t_path *src, t_path *dest, t_node *node)
+{
+	dest->nodes = cpy_nodelist(src->nodes);
+	dest->curr = src->curr;
+	dest->ended = src->ended;
+	add_node(dest->nodes, node);
+	return (1);
+}
+
+t_path		*new_path(t_path *path, int nodenb)
 {
 	t_path			*new;
+	t_node			*node;
+	t_nodelist 	*nl;
 
-	new = (t_path*)malloc(sizeof(t_path));
+	new = (t_path *)malloc(sizeof(t_path));
+	node = new_node(nodenb);
 	if (!path)
 	{
-			new->nodes = (t_nodelist*)malloc(sizeof(t_path));
+			nl = (t_nodelist*)malloc(sizeof(t_nodelist));
+			new->curr = nodenb;
+			add_node(nl, node);
+			new->nodes = nl;
 			new->ended = 0;
-			new->curr = 0;
 	}
 	else
-	{
-		new->ended = path->ended;
-		new->nodes = path->nodes;
-		new->curr = path->curr;
-
-	}
+		cpy_path(path, new, node);
 	new->next = NULL;
+	new->previous = NULL;
 	return (new);
 }
 
-t_nodelist	*add_path(t_path *path, t_path *newpath, t_node *node)
+void		*add_path(t_pathlist *pathlist, t_path *path)
 {
 	t_path	*tmp;
-	int			i;
 
-	tmp = path;
-	i = 0;
+	tmp = pathlist->start;
 	while (tmp->next)
-	{
 		tmp = tmp->next;
-		i++;
-	}
-	tmp->next = newpath;
-	newpath->curr = node->nb;
-	return (nodelist);
+	tmp->next = path;
+	path->previous = tmp;
+	return (pathlist);
 }
 
-int					check_nodelist(t_nodelist *nodelist, int nodenb)
+t_path *merge_paths(t_pathlist *paths, t_pathlist *news, t_path *old)
 {
-	t_node *tmp;
+	t_path *tmp_list;
+	t_path *tmp_new;
 
-	tmp = *(nodelist->start);
-	while (tmp != NULL)
-	{
-		if (tmp->nb == nodenb)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
+	tmp_list = paths->start;
+	tmp_new = news->start;
+	while (tmp_list->next && tmp_list->next != old)
+		tmp_list = tmp_list->next;
+	tmp_list->next = tmp_new;
+	while (tmp_new->next)
+		tmp_new = tmp_new->next;
+	tmp_new->next = old->next;
+	tmp_new->previous = tmp_list;
+	return (tmp_new->next);
 }
 
-void inject_paths(t_path *srcs, t_path *dest)
+t_path *delete_path(t_pathlist *paths, t_path *del)
+{
+	t_path *tmp;
+
+	tmp = paths->start;
+	while (tmp && tmp != del)
+		tmp = tmp->next;
+	if (tmp->previous)
+		tmp->previous->next = tmp->next;
+	if (tmp->next)
+		tmp->next->previous = tmp->previous;
+	return (tmp->next);
+}

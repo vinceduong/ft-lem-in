@@ -19,7 +19,7 @@ t_node		*new_node(int nb)
 {
 	t_node *new;
 
-	new = (t_node)malloc(sizeof(t_node));
+	new = (t_node*)malloc(sizeof(t_node));
 	new->nb = nb;
 	new->next = NULL;
 	return (new);
@@ -59,14 +59,13 @@ int					check_nodelist(t_nodelist *nodelist, int nodenb)
 
 void					update_bl(t_nodelist *bl, t_path *path)
 {
-	t_node *tmp_n;
-	t_path *tmp_p;
+	t_node *tmp;
 
-	tmp_p = path->nodes.start;
-	while (tmp_p)
+	tmp = path->nodes->start;
+	while (tmp)
 	{
-		if (!check_nodelist(bl, tmp_p.nb))
-			add_node(bl, new_node(tmp_p.nb));
-		tmp_p = tmp_p->next;
+		if (!check_nodelist(bl, tmp->nb))
+			add_node(bl, new_node(tmp->nb));
+		tmp = tmp->next;
 	}
 }

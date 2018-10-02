@@ -10,9 +10,10 @@ int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 	int i;
 
 	i = 0;
-	while (i < l->map.nbcases)
+	count = 0;
+	while (i < l->m.nbcases)
 	{
-		if (i && l->map.graph[p->curr][i] != 0 && check_nodelist(bl, i))
+		if (i && l->m.graph[p->curr][i] != 0 && check_nodelist(nl, i))
 			count++;
 		i++;
 	}
@@ -20,12 +21,12 @@ int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 	return (1);
 }
 
-void sort_paths(t_lemin *l, t_nodelist *nl, t_pathlist *paths)
+void sort_paths(t_pathlist *paths)
 {
 	t_path 			*tmp;
 	t_path			*tmpsort;
 
-	tmp = pathlist->start;
+	tmp = paths->start;
 	while (tmp->next->next)
 	{
 		if (tmp->childs > tmp->next->childs)
@@ -33,56 +34,57 @@ void sort_paths(t_lemin *l, t_nodelist *nl, t_pathlist *paths)
 			tmpsort = tmp->next->next;
 			tmp->next->next = tmp->next;
 			tmp->next = tmpsort;
-			tmposort = tmp->next->previous;
+			tmpsort = tmp->next->previous;
 			tmp->next->previous = tmp->previous;
 			tmp->previous = tmpsort;
-			tmp = pathlist->start;
+			tmp = paths->start;
 		}
 		else
 			tmp = tmp->next;
 	}
 }
 
-t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *path)
+t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p)
 {
 	int					i;
 	int					new_childs;
-	t_path			*new_paths;
+	t_pathlist	*new_paths;
 
 	i = 0;
 	new_childs = 0;
-	while (i < l->m.nbcases && !path.ended)
+	new_paths = (t_pathlist*)malloc(sizeof(t_pathlist));
+	while (i < l->m.nbcases && ! p->ended)
 	{
-		if (i && l->map.graph[p->curr][i] && !check_nodelist(bl, i))
+		if (i && l->m.graph[p->curr][i] && !check_nodelist(bl, i))
 		{
 			if (i == l->m.nbcases - 1)
-				path.ended = 1;
+				p->ended = 1;
 			else
 			{
-				add_path(new_path, new_path(path, i));
+				add_path(new_paths, new_path(p, i));
 				add_node(nl, new_node(i));
 				new_childs++;
 			}
 		}
 		i++;
 	}
-	return (path.ended ? path : (new_childs > 0 ? new_paths : NULL));
+	return (p->ended ? NULL : (new_childs > 0 ? new_paths : NULL));
 }
 
 void new_path_list(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 {
 	t_path *tmp;
-	t_path *new_paths;
+	t_pathlist *new_paths;
 	tmp = paths->start;
 
 	while (tmp)
 	{
 		if (!tmp->ended)
 		{
-			new_paths = add_new_paths(l, nl, tmp)))
-			if (new_paths == tmp && tmp->ended)
+			new_paths = add_new_paths(l, nl, bl, tmp);
+			if (new_paths->start == tmp && tmp->ended)
 			{
-				update_bl(bl, path);
+				update_bl(bl, tmp);
 				tmp = tmp->next;
 			}
 			else if (new_paths)
@@ -107,7 +109,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 		count_new_childs(l, nl, tmp);
 		tmp = tmp->next;
 	}
-	sort_paths(l, nl, paths);
+	sort_paths(paths);
 	new_path_list(l, nl, bl, paths);
 	tmp = paths->start;
 	while (tmp)
@@ -117,7 +119,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 		{
 			if (check_nodelist(bl, check->nb))
 			{
-				tmp = delete_path(tmp);
+				tmp = delete_path(paths, tmp);
 				continue ;
 			}
 		}
@@ -137,10 +139,10 @@ void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 	}
 	else
 	{
-		if (update_paths(l, nl, paths))
+		if (update_paths(l, nl, bl, paths))
 			return ;
 	}
-	findpathlist(l, nl, paths);
+	findpathlist(l, nl, bl, paths);
 }
 
 int	path(t_lemin *l)
@@ -153,5 +155,5 @@ int	path(t_lemin *l)
 		nl = (t_nodelist*)malloc(sizeof(t_nodelist));
 		bl = (t_nodelist*)malloc(sizeof(t_nodelist));
 		findpathlist(l, nl, bl, paths);
-
+		return (1);
 }
