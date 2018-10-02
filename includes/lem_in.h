@@ -30,8 +30,6 @@ typedef struct		s_path
 typedef struct		s_pathlist
 {
 	t_path 	*start;
-	int		nbpath;
-	int 	new_nodes;
 }					t_pathlist;
 
 typedef struct		s_map
@@ -94,5 +92,8 @@ t_path *merge_paths(t_pathlist *paths, t_pathlist *news, t_path *old);
 t_path *delete_path(t_pathlist *paths, t_path *del);
 void					update_bl(t_nodelist *bl, t_path *path);
 t_nodelist *cpy_nodelist(t_nodelist *src);
+t_path *init_path(void);
+t_pathlist *init_pathlist(void);
+t_nodelist *init_nodelist(void);
 
 #endif

@@ -1,5 +1,30 @@
 #include "lem_in.h"
 
+t_path *init_path(void)
+{
+	t_path *p;
+
+	if (!(p = (t_path*)malloc(sizeof(t_path))))
+		return (NULL);
+	p->curr = 0;
+	p->childs = 0;
+	if (!(p->nodes = init_nodelist()))
+		return (NULL);
+	p->ended = 0;
+	p->next = NULL;
+	p->previous = NULL;
+	return (p);
+}
+
+t_pathlist *init_pathlist()
+{
+	t_pathlist *pl;
+
+	if (!(pl = (t_pathlist *)malloc(sizeof(t_pathlist))))
+		return (NULL);
+	return (pl);
+}
+
 int cpy_path(t_path *src, t_path *dest, t_node *node)
 {
 	dest->nodes = cpy_nodelist(src->nodes);
@@ -15,11 +40,13 @@ t_path		*new_path(t_path *path, int nodenb)
 	t_node			*node;
 	t_nodelist 	*nl;
 
-	new = (t_path *)malloc(sizeof(t_path));
 	node = new_node(nodenb);
+	if (!(new = init_path()))
+		return (NULL);
+	if (!(nl = init_nodelist()))
+		return (NULL);
 	if (!path)
 	{
-			nl = (t_nodelist*)malloc(sizeof(t_nodelist));
 			new->curr = nodenb;
 			add_node(nl, node);
 			new->nodes = nl;

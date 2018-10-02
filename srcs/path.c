@@ -52,7 +52,8 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p)
 
 	i = 0;
 	new_childs = 0;
-	new_paths = (t_pathlist*)malloc(sizeof(t_pathlist));
+	if (!(new_paths = init_pathlist()))
+		return (NULL);
 	while (i < l->m.nbcases && ! p->ended)
 	{
 		if (i && l->m.graph[p->curr][i] && !check_nodelist(bl, i))
@@ -71,12 +72,14 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p)
 	return (p->ended ? NULL : (new_childs > 0 ? new_paths : NULL));
 }
 
-void new_path_list(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
+int new_path_list(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 {
-	t_path *tmp;
-	t_pathlist *new_paths;
-	tmp = paths->start;
+	t_path			*tmp;
+	t_pathlist	*new_paths;
 
+	tmp = paths->start;
+	if (!(new_paths = init_pathlist()))
+		return (0);
 	while (tmp)
 	{
 		if (!tmp->ended)
@@ -95,6 +98,7 @@ void new_path_list(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths
 		else
 			tmp = tmp->next;
 	}
+	return (1);
 }
 
 int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
@@ -128,7 +132,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 	return (1);
 }
 
-void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
+int findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 {
 	t_path *path;
 
@@ -139,21 +143,25 @@ void findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 	}
 	else
 	{
-		if (update_paths(l, nl, bl, paths))
-			return ;
+		if (!update_paths(l, nl, bl, paths))
+			return (0);
 	}
-	findpathlist(l, nl, bl, paths);
+	return (findpathlist(l, nl, bl, paths));
 }
 
-int	path(t_lemin *l)
+t_path	*pathlist(t_lemin *l)
 {
 		t_nodelist	*nl;
 		t_nodelist	*bl;
 		t_pathlist	*paths;
 
-		paths = (t_pathlist*)malloc(sizeof(t_pathlist));
-		nl = (t_nodelist*)malloc(sizeof(t_nodelist));
-		bl = (t_nodelist*)malloc(sizeof(t_nodelist));
-		findpathlist(l, nl, bl, paths);
-		return (1);
+		if (!(paths = init_pathlist()))
+			return (NULL);
+		if (!(nl = init_nodelist()))
+			return (NULL);
+		if (!(bl = init_nodelist()))
+			return (NULL);
+		if (!findpathlist(l, nl, bl, paths))
+			return (NULL);
+		return (NULL);
 }
