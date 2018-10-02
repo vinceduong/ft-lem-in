@@ -1,37 +1,41 @@
 #include "lem_in.h"
 
-t_node		*new_path(t_path *path, int nodenb)
+t_node		*new_path(t_path *path)
 {
-	t_path			p;
 	t_path			*new;
-	t_node			*node;
-	t_nodelist 	nl;
-	new = &node;
+
+	new = (t_path*)malloc(sizeof(t_path));
 	if (!path)
 	{
-			new->nodes = nl;
-			new->nodes.length = 0;
-			new->nodes.start = ;
+			new->nodes = (t_nodelist*)malloc(sizeof(t_path));
+			new->ended = 0;
+			new->curr = 0;
 	}
-	new->nb = nb;
+	else
+	{
+		new->ended = path->ended;
+		new->nodes = path->nodes;
+		new->curr = path->curr;
+
+	}
 	new->next = NULL;
 	return (new);
 }
 
-t_nodelist	*add_path(t_nodelist *nodelist, t_node *node)
+t_nodelist	*add_path(t_path *path, t_path *newpath, t_node *node)
 {
-	t_node	*tmp;
+	t_path	*tmp;
 	int			i;
 
-	tmp = *(nodelist->start);
+	tmp = path;
 	i = 0;
-	while (tmp != NULL)
+	while (tmp->next)
 	{
 		tmp = tmp->next;
 		i++;
 	}
-	node->index = i;
-	tmp->next = node;
+	tmp->next = newpath;
+	newpath->curr = node->nb;
 	return (nodelist);
 }
 
@@ -48,3 +52,5 @@ int					check_nodelist(t_nodelist *nodelist, int nodenb)
 	}
 	return (0);
 }
+
+void inject_paths(t_path *srcs, t_path *dest)
