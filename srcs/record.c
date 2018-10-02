@@ -34,7 +34,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	{
 		wave = antpos - 1;
 		room = lemin->p[pathnumber].nodes.start;
-		while (room->next)
+		while (room)
 		{
 			ops[wave] = ft_strjoin(ops[wave],
 				step_writer(lemin, lemin->a.rep[pathnumber][antpos], room));
