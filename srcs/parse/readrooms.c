@@ -43,15 +43,12 @@ static char **create_tab(char *line, char **tab, int len)
 		len++;
 	if (!(tmp = (char*)malloc(len * sizeof(char) + 1)))
 			return (NULL);
-	len = 0;
-	while (tmp[len])
-		len++;
 	if (!(tab[i] = (char*)malloc(len * sizeof(char) + 1)))
-			return (NULL);
+		return (NULL);
 	tmp = *ft_strsplit(line, ' ');
 	while (tmp[i])
 			tab[c][j++] = tmp[i++];
-	//free(tmp);
+	free(tmp);
 	return (tab);
 }
 
@@ -63,8 +60,7 @@ static char **parsetab(t_lemin *lemin, char *line)
 	len = 0;
 	if (!(tab = (char**)malloc(sizeof(char*))))
 		return (NULL);
-	if (line[0] != 'L' && line[0] != '#' && ft_strchr(line, ' ') && \
-		ft_strchr(line, ' ') != ft_strrchr(line, ' ') && !ft_strchr(line, '-'))
+	if (line)
 		return (create_tab(line, tab, len));
 	else
 		return (NULL);

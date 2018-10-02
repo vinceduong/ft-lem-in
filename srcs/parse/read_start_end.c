@@ -11,6 +11,25 @@
 /* ************************************************************************** */
 
 #include "../../includes/lem_in.h"
+/*
+int   init_map(t_lemin *lemin)
+{
+  int i;
+  int j;
+
+  i = 0;
+  while (i <)
+  {
+    j =0;
+    while(i <)
+    {
+      if()
+        lemin->m.graph[i][j] = 1;
+      j++;
+    }
+    i++;
+  }
+}*/
 
 int   create_map(t_lemin *lemin)
 {
@@ -33,12 +52,12 @@ int   create_map(t_lemin *lemin)
       lemin->m.graph[i][j++] = 0;
     lemin->m.graph[i++][j] = '\0';
   }
-  lemin->m.graph[i] = 0;
+  lemin->m.graph[i] = NULL;
   printf("graph = %d\n", *lemin->m.graph[0]);
   return (1);
 }
 
-int		comment(t_lemin *lemin, char *line)
+/*int		comment(t_lemin *lemin, char *line)
 {
 	while (line[0] == '#')
 	{
@@ -50,7 +69,7 @@ int		comment(t_lemin *lemin, char *line)
 		get_next_line(0, &line);
 	}
 	return (1);
-}
+}*/
 
 int 		check_star_end(t_lemin *lemin, char *line)
 {

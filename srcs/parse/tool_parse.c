@@ -26,6 +26,7 @@ t_lemin *init_lem(t_lemin *lemin)
   lemin->start = NULL;
   lemin->end = NULL;
   lemin->nb_rooms = 0;
+  lemin->nb_link = 0;
   return (lemin);
 }
 

@@ -43,12 +43,13 @@ static int parse_instru(t_lemin *lemin, char *line)
 		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
 				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
 		{
+			lemin->nb_link++;
 			//printf("tubes\n");
 		}
 	return (1);
 }
 
-int readdata(t_lemin *lemin, char *line)
+static int readdata(t_lemin *lemin, char *line)
 {
 	if (line[0] == 'L')
 		return (0);
@@ -65,7 +66,7 @@ static int check_error(t_lemin *lemin)
 {
 
 	if (lemin->a.nbants <= 0 || !lemin->instru || !lemin->start || !lemin->end \
-				|| !lemin->m.cases)
+				|| !lemin->m.cases || lemin->nb_link == 0 || lemin->nb_rooms == 0)
 		return (0);
 	printf("ants = %d\n", lemin->a.nbants);
 	printf("lemin = %s\n", *lemin->m.cases);
@@ -73,6 +74,7 @@ static int check_error(t_lemin *lemin)
 	printf("nb_end = %d\n", lemin->a.nbend);
 	printf("start = %s\n", lemin->start);
 	printf("end = %s\n", lemin->end);
+	printf("nb_link = %d\n", lemin->nb_link);
 	return (1);
 }
 
