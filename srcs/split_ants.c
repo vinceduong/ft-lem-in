@@ -1,17 +1,40 @@
 #include "lem_in.h"
 
+int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
+{
+	int value;
+
+	value = 0;
+	while (ant)
+	{
+		if (i == lemin->nbpaths)
+		{
+			value = ant / lemin->nbpaths;
+			ft_add_value(lemin, value, lpath, i);
+		}
+
+	}
+}
+
 int **ft_length_of_each_path(int **lpath, t_lemin *lemin)
 {
 	int i;
+	int ant;
 
 	i = 0;
-	lpath = (int**)malloc(sizeof(int*) * lemin->nbpaths);
+	ant = lemin.a->nbants;
+	lpath = (int**)malloc(sizeof(int*) * lemin->nbpaths + 1);
+	lemin.a->rep = (int**)malloc(sizeof(int*) * lemin->nbpaths + 1);
 	while (lemin.p[0].start->next != NULL)
 	{
 		lpath = (int*)malloc(sizeof(int) * 1);
+		lpath[1] = 0;
 		lpath[i][0] = lemin.p[0].start.node->length;
-		lemin
+		i++;
 	}
+	lpath[i] = 0;
+	lemin.a->rep[i] = 0;
+	return (ft_assign_ant(lapth, lemin, 0, ant));
 }
 
 int split_ants(t_lemin *lemin)
