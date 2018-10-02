@@ -5,7 +5,6 @@ void	print_instru(t_lemin *lemin)
   t_list 	*tmp_instrus;
 
   tmp_instrus = lemin->instru;
-  printf("\nINSTRU -><- -><- \n");
   while (tmp_instrus)
   {
 
@@ -24,5 +23,15 @@ t_lemin *init_lem(t_lemin *lemin)
   if (!(lemin = (t_lemin*)malloc(sizeof(t_lemin))))
     return (0);
   lemin->instru = NULL;
+  lemin->start = NULL;
+  lemin->end = NULL;
+  lemin->links = NULL;
   return (lemin);
+}
+
+void del1(void *content, size_t content_size)
+{
+  (void)content_size;
+  if (content)
+    free(content);
 }

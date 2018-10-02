@@ -19,40 +19,44 @@ int	save_instrus(char *line, t_lemin *lemin)
 	return (1);
 }
 
-static int init_ants(t_ants *a)
+static void init_ants(t_ants *a)
 {
-	if (!(a = (t_ants*)malloc(sizeof(t_ants))))
-		return (0);
 	a->nbants = 0;
 	a->nbstart = 0;
 	a->nbend = 0;
-	return (1);
 }
 
 static int read1(t_lemin *lemin, char *line)
 {
+	char **tab;
 
-	if (!(init_ants(&lemin->a)))
+	tab = NULL;
+	if (!(tab = (char**)malloc(sizeof(char*))))
 		return (0);
-	if (ft_isdigit(line[0]) && !ft_strchr(line, ' ') && line[0] != 'L' &&
-			line[0] != '\t')
-	{
-		(ft_atoi(line)) ? lemin->a.nbants = ft_atoi(line) : 0;
-		lemin->a.nbstart = ft_atoi(line);
-		lemin->a.nbend = 0;
-	}
-	else if (line[0] != '#' && ft_strchr(line, ' ') && line[0] != 'L' && \
-			line[0] != '\t')
-	{
-		if (!(readrooms(lemin, line)))
-			return(0);
-	}
-	/*else if (!ft_strcmp("##start", line) && !ft_strcmp("##end", line))
-		return (0);*/
+		if (line[0] != '#' && line[0] != 'L' && ft_isdigit(line[0]) && \
+				!ft_strchr(line, ' ') && !ft_strchr(line, '-') && ft_is_int(line))
+		{
+			(ft_atoi(line) > 0) ? lemin->a.nbants = ft_atoi(line) : 0;
+			lemin->a.nbstart = ft_atoi(line);
+		}
+		else if (!ft_strchr(line, '-') && line[0] != '#' && line[0] != 'L' && \
+        ft_strchr(line, ' ') && line[0] != ' ' && line[0] != '\t')
+		{
+			if (!(readrooms(lemin, line)))
+				return (0);
+			if (!(checkrooms(tab, line)))
+				return (0);
+		}
+		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
+				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
+		{
+			return (1);
+			//printf("tubes\n");
+		}
 	return (1);
 }
 
-static	int readata(t_lemin *lemin, char *line)
+int readdata(t_lemin *lemin, char *line)
 {
 	if (line[0] == 'L')
 		return (0);
@@ -60,21 +64,23 @@ static	int readata(t_lemin *lemin, char *line)
 		return (0);
 	if (!(save_instrus(line, lemin)))
 		return (0);
-	if (!(read2(lemin, line)))
+	if (!(readdata2(lemin, line)))
 		return (0);
 	return (1);
 }
 
-int check_error(t_lemin *lemin)
+static int check_error(t_lemin *lemin)
 {
-	if (lemin->a.nbants < 0 || lemin->a.nbstart != lemin->a.nbants || \
-			lemin->a.nbend != 0 || !lemin->instru || !lemin->m.cases || \
-			lemin->start == NULL || lemin->end == NULL)
+
+	if (lemin->a.nbants <= 0 || !lemin->instru || !lemin->start || !lemin->end \
+				|| !lemin->m.cases)
 		return (0);
+	printf("ants = %d\n", lemin->a.nbants);
+	printf("lemin = %s\n", *lemin->m.cases);
 	printf("nb_start = %d\n", lemin->a.nbstart);
 	printf("nb_end = %d\n", lemin->a.nbend);
-	printf("lemin = %s\n", *lemin->m.cases);
-	printf("ants = %d\n", lemin->a.nbants);
+	printf("start = %s\n", lemin->start);
+	printf("end = %s\n", lemin->end);
 	return (1);
 }
 
@@ -82,19 +88,24 @@ int	parse(t_lemin *lemin)
 {
 	char **line;
 
+	lemin = NULL;
 	if (!(lemin = init_lem(lemin)))
     return (0);
+	init_ants(&lemin->a);
 	if (!(line = (char**)malloc(sizeof(char*))))
 		return (0);
 	while (get_next_line(0, line) > 0)
 	{
-		if (!ft_strcmp(*line, "") || !readata(lemin, *line))
+		if (!ft_strcmp(*line, "") || !readdata(lemin, *line))
 			return (0);
 		free(*line);
 	}
+	print_instru(lemin);
 	if(!(check_error(lemin)))
 		return (0);
+	free(lemin->start);
+	free(lemin->end);
+	free(lemin);
 	free(line);
-	print_instru(lemin);
 	return (1);
 }
