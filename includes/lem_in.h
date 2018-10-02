@@ -23,6 +23,7 @@ typedef struct		s_path
 	t_nodelist	nodes;
 	int					ended;
 	t_path			*next;
+	t_path			*previous;
 }					t_path;
 
 typedef struct		s_pathlist
