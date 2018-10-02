@@ -61,18 +61,19 @@ typedef struct	s_lemin
 	t_list		*instru;
 	char 			*start;
 	char 			*end;
-	int 			 links;
+	int 			nb_rooms;
 	int			nbpaths;
 }								t_lemin;
 
 //PARSER_FONCTION
+void init_ants(t_ants *a);
 int   create_map(t_lemin *lemin);
 int 	checkrooms(char **tab, char *line);
-int 		readdata2(t_lemin *lemin, char *line);
+int 		read_start_end(t_lemin *lemin, char *line);
 t_lemin *init_lem(t_lemin *lemin);
 void		print_instru(t_lemin *lemin);
 int 		readrooms(t_lemin *lemin, char *line);
-int			save_instrus(char *line, t_lemin *lemin);
+int			save_instrus(char *intru, t_lemin *lemin);
 int 		readdata(t_lemin *lemin, char *line);
 void 		del1(void *content, size_t content_size);
 /* forme du graph :

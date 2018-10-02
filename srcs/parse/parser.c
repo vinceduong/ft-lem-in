@@ -1,46 +1,39 @@
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
-int	save_instrus(char *line, t_lemin *lemin)
+int			save_instrus(char *instru, t_lemin *lemin)
 {
 	t_list		*new;
 
 	new = NULL;
 	if (!(lemin->instru))
 	{
-		if (!(lemin->instru = ft_lstnew(line, ft_strlen(line) + 1)))
+		if (!(lemin->instru = ft_lstnew(instru, ft_strlen(instru) + 1)))
 			return (0);
 	}
 	else
 	{
-		if (!(new = ft_lstnew(line, ft_strlen(line) + 1)))
+		if (!(new = ft_lstnew(instru, ft_strlen(instru) + 1)))
 			return (0);
 		ft_lstaddend(&(lemin->instru), new);
 	}
 	return (1);
 }
 
-static void init_ants(t_ants *a)
-{
-	a->nbants = 0;
-	a->nbstart = 0;
-	a->nbend = 0;
-}
-
-static int read1(t_lemin *lemin, char *line)
+static int parse_instru(t_lemin *lemin, char *line)
 {
 	char **tab;
 
 	tab = NULL;
 	if (!(tab = (char**)malloc(sizeof(char*))))
 		return (0);
-		if (line[0] != '#' && line[0] != 'L' && ft_isdigit(line[0]) && \
-				!ft_strchr(line, ' ') && !ft_strchr(line, '-') && ft_is_int(line))
+		if (line[0] != '#' && ft_isdigit(line[0]) && !ft_strchr(line, ' ') \
+				&& !ft_strchr(line, '-') && ft_is_int(line) && line[0] != '\t')
 		{
 			(ft_atoi(line) > 0) ? lemin->a.nbants = ft_atoi(line) : 0;
 			lemin->a.nbstart = ft_atoi(line);
 		}
-		else if (!ft_strchr(line, '-') && line[0] != '#' && line[0] != 'L' && \
-        ft_strchr(line, ' ') && line[0] != ' ' && line[0] != '\t')
+		else if (!ft_strchr(line, '-') && line[0] != '#' && ft_strchr(line, ' ') \
+				&& line[0] != ' ' && line[0] != '\t')
 		{
 			if (!(readrooms(lemin, line)))
 				return (0);
@@ -50,7 +43,6 @@ static int read1(t_lemin *lemin, char *line)
 		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
 				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
 		{
-			lemin->links++;
 			//printf("tubes\n");
 		}
 	return (1);
@@ -60,11 +52,11 @@ int readdata(t_lemin *lemin, char *line)
 {
 	if (line[0] == 'L')
 		return (0);
-	if (!(read1(lemin, line)))
-		return (0);
 	if (!(save_instrus(line, lemin)))
 		return (0);
-	if (!(readdata2(lemin, line)))
+	if (!(parse_instru(lemin, line)))
+		return (0);
+	if (!(read_start_end(lemin, line)))
 		return (0);
 	return (1);
 }
@@ -105,9 +97,5 @@ int	parse(t_lemin *lemin)
 		return (0);
 	if (!(create_map(lemin)))
 		return (0);
-	free(lemin->start);
-	free(lemin->end);
-	free(lemin);
-	free(line);
 	return (1);
 }

@@ -1,10 +1,10 @@
 NAME = lem-in
 
 SRC = 	srcs/main.c \
-		srcs/parser.c\
-		srcs/rooms.c\
-		srcs/tool_parse.c\
-		srcs/parse2.c
+		srcs/parse/parser.c \
+		srcs/parse/rooms.c \
+		srcs/parse/tool_parse.c \
+		srcs/parse/parse2.c
 
 OBJ = $(SRC:.c=.o)
 

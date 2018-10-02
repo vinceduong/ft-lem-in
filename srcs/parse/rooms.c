@@ -1,4 +1,4 @@
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
 int 	checkrooms(char **tab, char *line)
 {
@@ -51,7 +51,7 @@ static char **create_tab(char *line, char **tab, int len)
 	tmp = *ft_strsplit(line, ' ');
 	while (tmp[i])
 			tab[c][j++] = tmp[i++];
-	free(tmp);
+	//free(tmp);
 	return (tab);
 }
 
@@ -61,7 +61,7 @@ static char **parsetab(t_lemin *lemin, char *line)
 	int len;
 
 	len = 0;
-	if (!(tab = (char**)malloc(10 * sizeof(char*))))
+	if (!(tab = (char**)malloc(sizeof(char*))))
 		return (NULL);
 	if (line[0] != 'L' && line[0] != '#' && ft_strchr(line, ' ') && \
 		ft_strchr(line, ' ') != ft_strrchr(line, ' ') && !ft_strchr(line, '-'))
@@ -74,9 +74,10 @@ int readrooms(t_lemin *lemin, char *line)
 {
 		char **tb;
 
-		if (!(lemin->m.cases = (char**)malloc(3 * sizeof(char*))))
+		lemin->nb_rooms++;
+		if (!(lemin->m.cases = (char**)malloc(sizeof(char*))))
 			return (0);
-		if (!(tb = (char**)malloc(3 * sizeof(char*))))
+		if (!(tb = (char**)malloc(sizeof(char*))))
 			return (0);
 		if (!(tb = parsetab(lemin, line)))
 			return (0);
