@@ -21,7 +21,17 @@ int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 	return (1);
 }
 
-void sort_paths(t_pathlist *paths)
+int compare_childs(t_path *p1, t_path *p2)
+{
+	return (p1->childs > p2->childs);
+}
+
+int compare_length(t_path *p1, t_path *p2)
+{
+	return (p1->nodes->length > p2->nodes->length);
+}
+
+void sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2))
 {
 	t_path 			*tmp;
 	t_path			*tmpsort;
@@ -29,7 +39,7 @@ void sort_paths(t_pathlist *paths)
 	tmp = paths->start;
 	while (tmp->next->next)
 	{
-		if (tmp->childs > tmp->next->childs)
+		if (comp(tmp, tmp->next))
 		{
 			tmpsort = tmp->next->next;
 			tmp->next->next = tmp->next;
@@ -113,7 +123,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 		count_new_childs(l, nl, tmp);
 		tmp = tmp->next;
 	}
-	sort_paths(paths);
+	sort_paths(paths, &compare_childs);
 	new_path_list(l, nl, bl, paths);
 	tmp = paths->start;
 	while (tmp)
@@ -149,11 +159,40 @@ int findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 	return (findpathlist(l, nl, bl, paths));
 }
 
+t_path *list_to_sorted_array(t_pathlist *paths)
+{
+	t_path	*tmp;
+	t_path	*array;
+	int			size;
+	int			i;
+
+	size = 0;
+	tmp = paths->start;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	if (!(array = (t_path *)malloc(sizeof(t_path) * size)))
+		return (NULL);
+	sort_paths(paths, &compare_length);
+	tmp = paths->start;
+	i = 0;
+	while (tmp)
+	{
+		array[i] = *tmp;
+		i++;
+		tmp = tmp->next;
+	}
+	return (array);
+}
+
 t_path	*pathlist(t_lemin *l)
 {
 		t_nodelist	*nl;
 		t_nodelist	*bl;
 		t_pathlist	*paths;
+		t_path			*array;
 
 		if (!(paths = init_pathlist()))
 			return (NULL);
@@ -163,5 +202,7 @@ t_path	*pathlist(t_lemin *l)
 			return (NULL);
 		if (!findpathlist(l, nl, bl, paths))
 			return (NULL);
-		return (NULL);
+		if (!(array = list_to_sorted_array(paths)))
+			return (NULL);
+		return (array);
 }
