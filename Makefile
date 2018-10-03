@@ -19,9 +19,9 @@ LIB = libft/libft.a \
 			printf/libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
-LIBFT = libft
+LIBFT = libft/libft.a
 PRINTF = printf
-HEADER = -I includes
+HEADER = -I includes -I libft
 CC = gcc
 RM = rm -rf
 OK = $(C_OK)OK$(C_NO)
