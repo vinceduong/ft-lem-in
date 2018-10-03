@@ -11,10 +11,9 @@ LIBFT = libft/libft.a
 INCLUDES = -I./libft/ -I./includes/
 
 SRC = 	srcs/main.c \
-			srcs/parse/parser.c \
+			srcs/parse/parse.c \
 			srcs/parse/readrooms.c \
-			srcs/parse/tool_parse.c \
-			srcs/parse/read_start_end.c \
+			srcs/parse/matrice.c \
 			srcs/path/add_new_paths.c \
 			srcs/path/add_node.c \
 			srcs/path/add_path.c \

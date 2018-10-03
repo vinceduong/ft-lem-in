@@ -87,11 +87,5 @@ int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
 int	display(t_lemin *lemin);
 
-//fonctions de Cam
-int 		read_start_end(t_lemin *lemin, char *line);
-int			save_instrus(char *instru, t_lemin *lemin);
-int 		readrooms(char *line);
-t_lemin *init_lem(t_lemin *lemin);
-void init_ants(t_ants *a);
-
+//foncitons de Cam
 #endif
