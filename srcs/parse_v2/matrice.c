@@ -1,4 +1,17 @@
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
+
+int		ft_chrstr(char *find, int c)
+{
+	int i;
+
+	i = -1;
+	while (find[++i])
+	{
+		if (find[i] == c)
+			return (1);
+	}
+	return (find[i] == c ? 1 : 0);
+}
 
 int ft_check_value(int **error)
 {
@@ -13,8 +26,6 @@ int ft_check_value(int **error)
 	}
 	return (1);
 }
-
-ft_lol(tab, lemin, error)
 
 char *ft_strdup_matrice(char *tab)
 {
@@ -43,9 +54,9 @@ void ft_create_matrice(char **tab, t_lemin *lemin, int **error)
 
 	i = 0;
 	n = 0;
-	lemin->m.cases = (char**)malloc(sizeof(char*) * error[4][0])
+	lemin->m.cases = (char**)malloc(sizeof(char*) * error[4][0]);
 	lemin->m.cases[0] = ft_strdup(tab[error[0][0]]);
-	lemin->m.cases[nbcases] = ft_strdup(tab[error[1][0]]);
+	lemin->m.cases[lemin->m.nbcases] = ft_strdup(tab[error[1][0]]);
 	while (n < error[4][0])
 	{
 		if (tab[i + n][0] == '#')
@@ -56,5 +67,5 @@ void ft_create_matrice(char **tab, t_lemin *lemin, int **error)
 			lemin->m.cases[n + i] = ft_strdup_matrice(tab[i + n]);
 		n++;
 	}
-	ft_patatruc(lemin, tab, error);
+	ft_patatruc(tab, lemin);
 }

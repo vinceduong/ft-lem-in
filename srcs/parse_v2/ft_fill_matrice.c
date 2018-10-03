@@ -1,4 +1,4 @@
-#include "../lem_in.h"
+#include "../../includes/lem_in.h"
 
 int **ft_fill_zero(t_lemin *lemin)
 {
@@ -67,7 +67,7 @@ int ft_find_minus(char *tab)
 	return (i);
 }
 
-void ft_patatruc(char **tab, t_lemin *lemin, int **error)
+void ft_patatruc(char **tab, t_lemin *lemin)
 {
 	int n;
 	int i;
@@ -78,6 +78,7 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error)
 	n = 0;
 	i = 0;
 	index = 0;
+	index2 = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
 	while (ft_chrstr(tab[index2], '-') == 0)
 		index2++;
@@ -85,7 +86,7 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error)
 	{
 		str = ft_strdup_c(tab[index2 + index]);
 		n = find_wich_char(lemin, str);
-		str = ft_strdup(tab[index + index2][ft_find_minus(tab)]);
+		str = ft_strdup(tab[index + index2] + ft_find_minus(tab[index + index2]));
 		i = find_wich_char(lemin, str);
 		lemin->m.graph[n][i] = 1;
 		lemin->m.graph[i][n] = 1;
