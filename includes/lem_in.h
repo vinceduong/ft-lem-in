@@ -84,6 +84,4 @@ int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
 int	display(t_lemin *lemin);
 
-//NODELIST FUNCTIONS
-
 #endif

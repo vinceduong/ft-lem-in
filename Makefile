@@ -19,7 +19,7 @@ LIB = libft/libft.a \
 			printf/libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
-LIBFT = libft
+LIBFT = libft/libft.a
 PRINTF = printf
 HEADER = -I includes -I libft -I srcs/path
 CC = gcc
