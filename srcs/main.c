@@ -4,7 +4,7 @@ int	main(void)
 {
 	t_lemin lemin;
 
-	ft_bzero(lemin, sizeof(t_lemin));
+	ft_bzero(&lemin, sizeof(t_lemin));
 	if (!parse(&lemin))
 	{
 		ft_printf("Parsing failed");

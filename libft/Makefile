@@ -95,7 +95,7 @@ OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(LIBPRINTF)
+$(NAME) : $(OBJ)
 	@make -C ft_printf
 	@cp ft_printf/libftprintf.a ./$(NAME)
 	@ar -rc $(NAME) $(OBJ)
