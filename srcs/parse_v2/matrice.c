@@ -1,4 +1,4 @@
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 int		ft_chrstr(char *find, int c)
 {
@@ -27,7 +27,7 @@ int ft_check_value(int **error)
 	return (1);
 }
 
-char *ft_strdup_matrice(char *tab)
+static char *ft_strdup_matrice(char *tab)
 {
 	int i;
 	char *str;

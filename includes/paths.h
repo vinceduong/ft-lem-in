@@ -25,8 +25,4 @@ void sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2));
 int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths);
 int 	paths(t_lemin *l);
 
-void ft_patatruc(char **tab, t_lemin *lemin);
-void ft_create_matrice(char **tab, t_lemin *lemin, int **error);
-int		ft_chrstr(char *find, int c);
-
 #endif

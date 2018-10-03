@@ -1,11 +1,11 @@
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 int	main(void)
 {
 	t_lemin lemin;
 
 	ft_bzero(&lemin, sizeof(t_lemin));
-	if (!parse(&lemin))
+	if (!parser(&lemin))
 	{
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");

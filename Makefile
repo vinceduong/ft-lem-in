@@ -11,9 +11,9 @@ LIBFT = libft/libft.a
 INCLUDES = -I./libft/ -I./includes/
 
 SRC = 	srcs/main.c \
-			srcs/parse/parse.c \
-			srcs/parse/ft_fill_matrice.c \
-			srcs/parse/matrice.c \
+			srcs/parse_v2/ft_fill_matrice.c\
+			srcs/parse_v2/matrice.c\
+			srcs/parse_v2/parse.c\
 			srcs/path/add_new_paths.c \
 			srcs/path/add_node.c \
 			srcs/path/add_path.c \
@@ -34,7 +34,7 @@ SRC = 	srcs/main.c \
 			srcs/display.c\
 			srcs/error.c\
 			srcs/record.c\
-			srcs/split_ants.c
+			srcs/split_ants.c\
 
 OBJ = $(SRCS:.c=.o)
 

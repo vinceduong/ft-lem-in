@@ -77,7 +77,7 @@ typedef struct		s_lemin
 3 [0,0,0,0]]*/
 
 //On initialise map ants, si la map est invalide => return 0
-int	parse(t_lemin *lemin);
+int	parser(t_lemin *lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
 int	paths(t_lemin *lemin);
 //On reparti les chemins pour les fourmis, on rempli ants->rep;
@@ -88,5 +88,9 @@ int	record(t_lemin *lemin);
 int	display(t_lemin *lemin);
 
 //foncitons de Cam
+void ft_patatruc(char **tab, t_lemin *lemin);
+void ft_create_matrice(char **tab, t_lemin *lemin, int **error);
+int		ft_chrstr(char *find, int c);
+int ft_check_value(int **error);
 
 #endif

@@ -1,6 +1,6 @@
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
-int **ft_fill_zero(t_lemin *lemin)
+static int **ft_fill_zero(t_lemin *lemin)
 {
 	int **tab;
 	int i;
@@ -26,7 +26,7 @@ int **ft_fill_zero(t_lemin *lemin)
 	return (tab);
 }
 
-char *ft_strdup_c(char *tab)
+static char *ft_strdup_c(char *tab)
 {
 	int i;
 	int n;
@@ -47,7 +47,7 @@ char *ft_strdup_c(char *tab)
 
 }
 
-int find_wich_char(t_lemin *lemin, char *str)
+static int find_wich_char(t_lemin *lemin, char *str)
 {
 	int i;
 
@@ -57,7 +57,7 @@ int find_wich_char(t_lemin *lemin, char *str)
 	return (i);
 }
 
-int ft_find_minus(char *tab)
+static int ft_find_minus(char *tab)
 {
 	int i;
 

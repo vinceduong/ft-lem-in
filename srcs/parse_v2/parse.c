@@ -1,4 +1,4 @@
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 /*
 start = [0];
@@ -45,11 +45,11 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error)
 			/*ft_error()*/;
 	}
 	lemin->m.nbcases = error[4][0];
-	//ft_check_value(error) == 0 ? exit(0) : 0;
+	ft_check_value(error) == 0 ? exit(0) : 0;
 	ft_create_matrice(tab, lemin, error);
 }
 
-char **ft_read(char *str, char *line)
+static char **ft_read(char *str, char *line)
 {
 	while (get_next_line(0, &line) > 0)
 	{
@@ -60,7 +60,7 @@ char **ft_read(char *str, char *line)
 	return (ft_strsplit(str, '\n'));
 }
 
-int **ft_create_error_tab()
+static int **ft_create_error_tab()
 {
 	int i;
 	int **tab;
