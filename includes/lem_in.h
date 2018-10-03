@@ -88,4 +88,5 @@ int	record(t_lemin *lemin);
 int	display(t_lemin *lemin);
 
 //foncitons de Cam
+
 #endif
