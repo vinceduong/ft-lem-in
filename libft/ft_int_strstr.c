@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlower.c                                      :+:      :+:    :+:   */
+/*   ft_int_strstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/10 11:29:26 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/10 11:29:28 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:42:43 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:03 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_strlower(char *s)
+int	ft_int_strstr(const char *src, const char *find)
 {
-	int i;
+	size_t	len;
 
-	i = -1;
-	while (s[++i])
+	len = ft_strlen(find);
+	if (*find == '\0' || !find)
+		return (0);
+	while (*src)
 	{
-		if (s[i] >= 'A' && s[i] <= 'Z')
-			s[i] += 32;
+		if (ft_strncmp(src, find, len) == 0)
+			return (1);
+		src++;
 	}
+	return (0);
 }

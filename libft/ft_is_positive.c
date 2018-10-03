@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_is_positive.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 10:53:20 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/23 10:54:12 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:42:53 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:03 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_swap(int *a, int *b)
+int	ft_is_positive(int nb)
 {
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	if (nb >= 0)
+		return (1);
+	else
+		return (0);
 }

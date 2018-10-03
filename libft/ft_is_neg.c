@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstrev.c                                        :+:      :+:    :+:   */
+/*   ft_is_neg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 12:03:00 by cammapou          #+#    #+#             */
-/*   Updated: 2018/06/14 12:03:05 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:42:50 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:03 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstrev(t_list **lst_a)
+int		ft_is_neg(int i)
 {
-	t_list	*old_list;
-	t_list	*new_list;
-	t_list	*tmp;
-
-	old_list = *lst_a;
-	new_list = NULL;
-	while (old_list)
-	{
-		tmp = old_list->next;
-		old_list->next = NULL;
-		ft_lstadd(&new_list, old_list);
-		old_list = tmp;
-	}
-	*lst_a = new_list;
+	if (i < 0)
+		return (1);
+	else
+		return (0);
 }

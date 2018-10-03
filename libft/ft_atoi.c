@@ -3,34 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:03:39 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/24 10:58:47 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:42:20 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:42:22 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+static int	limits_check(unsigned long long result, int sign, int count)
 {
-	unsigned int	i;
-	int				neg;
-	int				res;
+	if ((result >= 9223372036854775807 || count > 19) && sign == 1)
+		return (-1);
+	else if ((result > 9223372036854775807 || count > 19) && sign == -1)
+		return (0);
+	else
+		return (1);
+}
 
-	res = 0;
+int			ft_atoi(const char *str)
+{
+	int					i;
+	int					start;
+	unsigned long long	result;
+	int					sign;
+
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	result = 0;
+	sign = 1;
+	while (str[i] == 32 || (str[i] >= 8 && str[i] <= 13))
 		i++;
-	neg = i;
 	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + (str[i] - 48);
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	if (str[neg] == '-')
-		return (-res);
-	return (res);
+	start = i;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - 48;
+		i++;
+		if (limits_check(result, sign, i - start) != 1)
+			return (limits_check(result, sign, i - start));
+	}
+	return (sign * result);
 }

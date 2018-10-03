@@ -1,15 +1,17 @@
-#include "../includes/lem_in.h"
+#include "lem_in.h"
 
 int	main(void)
 {
 	t_lemin lemin;
 
+	ft_bzero(lemin, sizeof(t_lemin));
 	if (!parse(&lemin))
 	{
-		printf("Parsing failed\n");
-		printf("ERROR");
+		ft_printf("Parsing failed");
+		ft_printf("ERROR");
+		return (0);
 	}
-	/*if (!path(lemin))
+	if (!path(&lemin))
 	{
 		ft_printf("Pathing failed");
 		ft_printf("ERROR");
@@ -29,8 +31,9 @@ int	main(void)
 	}
 	if (!display(&lemin))
 	{
-		printf("Display failed");
-		printf("ERROR");
-	}*/
+		ft_printf("Display failed");
+		ft_printf("ERROR");
+		return (0);
+	}
 	return (0);
 }

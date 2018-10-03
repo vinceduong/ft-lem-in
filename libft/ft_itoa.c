@@ -3,59 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 15:22:21 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/17 16:37:24 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:43:22 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:03 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
-static size_t	ft_size(int n, int *neg)
+static int	ft_string_size(long long n, int signe, char **str)
 {
-	int		i;
+	int	size;
 
-	i = 1;
-	*neg = 0;
-	if (n < 0)
-	{
-		*neg = 1;
-		n = -n;
-	}
-	while (n >= 10)
+	size = 1 + signe;
+	while (n / 10 > 0)
 	{
 		n = n / 10;
-		i++;
+		size++;
 	}
-	if (*neg == 1)
-		i = i + 1;
-	return (i);
+	*str = ft_strnew(size);
+	return (size);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(intmax_t n)
 {
-	int		size;
-	int		i;
-	char	*str;
-	int		neg;
+	intmax_t	result;
+	char		*str;
+	int			signe;
+	int			size;
+	int			i;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	size = ft_size(n, &neg);
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	i = size;
-	if (neg == 1)
-		n = -n;
-	while (i >= 0)
-	{
-		str[i - 1] = (n % 10) + 48;
-		n = n / 10;
-		i--;
-	}
-	if (neg == 1)
+	signe = 0;
+	i = 0;
+	if (n == LLONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
+	result = (intmax_t)n;
+	if (result < 0)
+		signe = 1;
+	if (result < 0)
+		result = -result;
+	size = ft_string_size(result, signe, &str);
+	if (signe == 1)
 		str[0] = '-';
-	str[size] = '\0';
+	while (i < size - signe)
+	{
+		str[size - 1 - i] = result % 10 + 48;
+		result = result / 10;
+		i++;
+	}
 	return (str);
 }

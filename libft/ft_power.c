@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdeljoin.c                                    :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 15:23:40 by cammapou          #+#    #+#             */
-/*   Updated: 2018/06/14 12:03:45 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:45:00 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:04 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strdeljoin(char *s1, char *s2)
+int	ft_power(int nb, int power)
 {
-	char	*str;
+	int	res;
 
-	str = ft_strjoin(s1, s2);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (str);
+	res = 1;
+	if (nb && power && power > 0)
+	{
+		while (power > 0)
+		{
+			res = res * nb;
+			power--;
+		}
+		return (res);
+	}
+	if (power == 0)
+		return (1);
+	else
+		return (0);
 }

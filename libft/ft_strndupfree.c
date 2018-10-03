@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strndupfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 15:44:28 by carmenia          #+#    #+#             */
-/*   Updated: 2018/09/30 15:48:04 by carmenia         ###   ########.fr       */
+/*   Created: 2018/09/30 15:46:53 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:06 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-void	*ft_memalloc(size_t size)
+char	*ft_strndupfree(char *to_free, int n)
 {
-	void	*mem;
+	char		*tmp;
+	int			i;
+	int			len;
 
-	mem = (void *)malloc(size * sizeof(size_t));
-	if (!mem)
+	tmp = ft_strdup(to_free);
+	free(to_free);
+	len = ft_strlen(tmp);
+	len = (len > n) ? n : len;
+	to_free = (char *)malloc(sizeof(char) * (len + 1));
+	i = 0;
+	if (!to_free)
 		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	while (i < len && tmp[i] != '\0')
+	{
+		to_free[i] = tmp[i];
+		i++;
+	}
+	to_free[i] = '\0';
+	return (to_free);
 }

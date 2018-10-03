@@ -4,7 +4,14 @@ SRC = 	srcs/main.c \
 		srcs/parse/parser.c \
 		srcs/parse/readrooms.c \
 		srcs/parse/tool_parse.c \
-		srcs/parse/read_start_end.c
+		srcs/parse/read_start_end.c \
+		srcs/display.c\
+		srcs/error.c\
+		srcs/node_tools.c\
+		srcs/path_tools.c\
+		srcs/path.c\
+		srcs/record.c\
+		srcs/split_ants.c\
 
 OBJ = $(SRC:.c=.o)
 

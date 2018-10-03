@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_factoriel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/10 11:29:13 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/10 11:29:16 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:42:35 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:03 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-size_t		ft_strlen(const char *s)
+int	ft_factoriel(int nb)
 {
-	unsigned int i;
+	int	res;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	res = 1;
+	if (nb == 0)
+		return (1);
+	if (nb < 0 || nb > 12)
+		return (0);
+	else
+	{
+		while (nb > 0)
+		{
+			res = res * nb;
+			nb--;
+		}
+		return (res);
+	}
 }

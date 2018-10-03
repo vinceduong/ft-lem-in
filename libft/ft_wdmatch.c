@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_wdmatch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 15:44:28 by carmenia          #+#    #+#             */
-/*   Updated: 2018/09/30 15:48:04 by carmenia         ###   ########.fr       */
+/*   Created: 2018/09/30 16:06:51 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 16:07:00 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdlib.h>
 
-void	*ft_memalloc(size_t size)
+void	ft_wdmatch(char *to_find, char *str)
 {
-	void	*mem;
+	int	i;
+	int	j;
+	int	stack;
 
-	mem = (void *)malloc(size * sizeof(size_t));
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	i = 0;
+	j = 0;
+	stack = 0;
+	while (to_find[i] != '\0' && str[j] != '\0')
+	{
+		if (to_find[i] == str[j])
+		{
+			stack++;
+			i++;
+			j++;
+		}
+		else
+			j++;
+	}
+	if (stack == ft_strlen(to_find))
+		ft_putstr(to_find);
+	else
+		ft_putchar('\n');
 }

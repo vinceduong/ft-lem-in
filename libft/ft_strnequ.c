@@ -3,40 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 16:48:43 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/13 19:34:13 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:46:56 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:06 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t	i;
-	int		j;
+	size_t	index;
 
-	j = 0;
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (s1 == NULL && s2 != NULL)
+	index = 0;
+	if (!s1 || !s2)
 		return (0);
-	if (s1 != NULL && s2 == NULL)
-		return (0);
-	if (s1 == NULL && s2 == NULL)
-		return (1);
-	while (s1[i] && s2[i] && n > 0)
+	while (index < n && s1[index] != '\0' && s2[index] != '\0')
 	{
-		if (s1[i] != s2[i])
+		if (s1[index] != s2[index])
 			return (0);
-		if (n == 1)
-			return (1);
-		i++;
-		n--;
+		index++;
 	}
-	if (s1[i] == s2[i])
+	if ((s1[index] == '\0' && s2[index] == '\0') || index == n)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

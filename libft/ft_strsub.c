@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_strsub.c                                     :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 14:56:00 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/16 14:22:08 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:47:23 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:07 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*tr;
+	char	*str;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	if (!(tr = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	i = 0;
-	while (i < len)
+	if (!str || !s)
+		return (NULL);
+	str[len] = '\0';
+	while (len--)
 	{
-		tr[i] = s[start + i];
+		str[i] = s[start + i];
 		i++;
 	}
-	tr[i] = '\0';
-	return (tr);
+	return (&str[0]);
 }

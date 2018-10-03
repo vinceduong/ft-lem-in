@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmin.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <cammapou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/24 12:42:55 by cammapou          #+#    #+#             */
-/*   Updated: 2018/07/18 18:55:09 by cammapou         ###   ########.fr       */
+/*   Created: 2018/09/30 15:45:44 by carmenia          #+#    #+#             */
+/*   Updated: 2018/09/30 15:48:05 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <limits.h>
-
-int		ft_lstmin(t_list *lst)
+int	ft_sqrt(int nb)
 {
-	int	min;
+	int	i;
+	int	j;
 
-	min = INT_MAX;
-	while (lst && lst->content)
+	i = 1;
+	j = 1;
+	if (nb <= 0)
+		return (0);
+	else
 	{
-		if (((*(int*)lst->content) < min))
-			min = (*(int*)lst->content);
-		lst = lst->next;
+		while (i <= nb)
+		{
+			if (i == nb)
+				return (j);
+			else
+			{
+				i = i + (2 * j + 1);
+				j++;
+			}
+		}
+		return (0);
 	}
-	return (min);
 }
