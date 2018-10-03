@@ -31,7 +31,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error)
 		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
 		ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
 			error[2][0]++;
-		else if (ft_chrstr(tab[i], '-') == 1 && ft_chrstr(tab[i], ' ') == 0)
+		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
 			error[3][0]++;
 		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
 			error[4][0]++;
@@ -40,6 +40,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error)
 		else
 			ft_error();
 	}
+	lemin->m.nbcases = error[4][0];
 	ft_check_value(error) == 0 ? exit(0) : 0;
 	ft_create_matrice(tab, lemin, error);
 }
