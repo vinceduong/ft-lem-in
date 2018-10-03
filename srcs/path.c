@@ -1,9 +1,5 @@
 #include "lem_in.h"
 
-#define STARTS l->m.starts_tunnels
-#define END l->m.end_tunnels
-#define NBCASES l->map.nbcases
-
 int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 {
 	int count;
@@ -37,7 +33,7 @@ void sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2))
 	t_path			*tmpsort;
 
 	tmp = paths->start;
-	while (tmp->next->next)
+	while (tmp->next)
 	{
 		if (comp(tmp, tmp->next))
 		{
@@ -69,13 +65,16 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p)
 	{
 		if (i && l->m.graph[p->curr][i] && !check_nodelist(bl, i))
 		{
+			if (!(new_node = new_node(i)))
+				return (NULL);
 			if (i == l->m.nbcases - 1)
+			{
 				p->ended = 1;
+				add_node(p->nodes, new_node);
+			}
 			else
 			{
 				add_path(new_paths, new_path(p, i));
-				if (!(new_node = new_node(i))
-					return (NULL);
 				add_node(nl, new_node);
 				new_childs++;
 			}
@@ -190,7 +189,7 @@ t_path *list_to_sorted_array(t_pathlist *paths)
 	return (array);
 }
 
-t_path	*pathlist(t_lemin *l)
+int 	paths(t_lemin *l)
 {
 		t_nodelist	*nl;
 		t_nodelist	*bl;
@@ -198,14 +197,15 @@ t_path	*pathlist(t_lemin *l)
 		t_path			*array;
 
 		if (!(paths = init_pathlist()))
-			return (NULL);
+			return (0 );
 		if (!(nl = init_nodelist()))
-			return (NULL);
+			return (0);
 		if (!(bl = init_nodelist()))
-			return (NULL);
+			return (0);
 		if (!findpathlist(l, nl, bl, paths))
-			return (NULL);
+			return (0);
 		if (!(array = list_to_sorted_array(paths)))
-			return (NULL);
-		return (array);
+			return (0);
+		l->p = array;
+		return (1);
 }

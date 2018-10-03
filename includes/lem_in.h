@@ -61,7 +61,7 @@ typedef struct		s_lemin
 	t_map		m;
 	t_ants		a;
 	t_record	r;
-	t_pathlist	*p;
+	t_path	*p;
 	int			nbpaths;
 }					t_lemin;
 
@@ -75,7 +75,7 @@ typedef struct		s_lemin
 //On initialise map ants, si la map est invalide => return 0
 int	parse(t_lemin *lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
-int	path(t_lemin *lemin);
+int	paths(t_lemin *lemin);
 //On reparti les chemins pour les fourmis, on rempli ants->rep;
 int	split_ants(t_lemin *lemin);
 //On record les tours en faisant avancer les fourmis sur chaque path;
