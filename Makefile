@@ -27,16 +27,6 @@ OBJ = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-<<<<<<< HEAD
-=======
-FLAGS = -Wall -Wextra -Werror
-LIBFT = libft/libft.a
-PRINTF = printf
-HEADER = -I includes -I libft
-CC = gcc
-RM = rm -rf
-OK = $(C_OK)OK$(C_NO)
->>>>>>> master
 
 $(NAME) : $(SRC) $(LIBFT)
 	@$(CC) $(FLAGS) $(INCLUDES) $(SRC) $(LIBFT) -o $(NAME)
