@@ -6,7 +6,7 @@
 #    By: carmenia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/30 16:06:12 by carmenia          #+#    #+#              #
-#    Updated: 2018/09/30 16:07:03 by carmenia         ###   ########.fr        #
+#    Updated: 2018/10/03 11:12:01 by carmenia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ SRC =	ft_memset.c \
 		ft_power.c\
 		ft_int_strstr.c\
 		ft_int_strchar.c\
-		ft_get_next_line.c
+		get_next_line.c
 
 OBJ = $(SRC:.c=.o)
 

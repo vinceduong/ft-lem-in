@@ -6,7 +6,7 @@
 /*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:33:09 by carmenia          #+#    #+#             */
-/*   Updated: 2018/09/26 15:36:09 by carmenia         ###   ########.fr       */
+/*   Updated: 2018/10/03 11:11:10 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,14 @@ char				*ft_strrev(char *str);
 char				*ft_itoabase_u(uintmax_t value, char *base);
 char				*ft_strjoinfree(char *to_free, char const *s2);
 char				*ft_strndupfree(char *to_free, int n);
-int					ft_get_next_line(const int fd, char **line);
 int					ft_printf(const char *format, ...);
+int    get_next_line(const int fd, char **line);
 
-typedef struct		s_gnl
+typedef struct		s_file
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	int				fd;
+	struct s_file	*next;
+	char			*read;
+}					t_file;
+
 #endif

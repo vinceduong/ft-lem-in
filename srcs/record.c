@@ -2,6 +2,7 @@
 
 /*il te manque peut etre un voup, si ca marche pas hesite pas a incrementer ton
  return de 1 */
+
 size_t		ops_size(t_lemin *lemin)
 {
 	size_t i;
@@ -16,7 +17,7 @@ char	*step_writer(t_lemin *lemin, int antnum, t_node *room);
 {
 	char *tmp;
 
-	tmp = ft_strjoin("L", ft_itoa(antnum));
+	tmp = ft_strjoin(" L", ft_itoa(antnum));
 	tmp = ft_strjoin(tmp, "-");
 	tmp = ft_strjoin(tmp, lemin->m.case[room->nb]);
 	return (tmp);
@@ -33,7 +34,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	{
 		wave = antpos - 1;
 		room = lemin->p[pathnumber].nodes.start;
-		while (room->next)
+		while (room)
 		{
 			ops[wave] = ft_strjoin(ops[wave],
 				step_writer(lemin, lemin->a.rep[pathnumber][antpos], room));
