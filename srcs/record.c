@@ -30,6 +30,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	t_node *room;
 
 	antpos = 1;
+	room = room->next;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
 		wave = antpos - 1;
