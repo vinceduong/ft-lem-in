@@ -11,36 +11,50 @@ LIBFT = libft/libft.a
 INCLUDES = -I./libft/ -I./includes/
 
 SRC = 	srcs/main.c \
-		srcs/parse/parser.c \
-		srcs/parse/readrooms.c \
-		srcs/parse/tool_parse.c \
-		srcs/parse/read_start_end.c \
-		srcs/display.c\
-		srcs/error.c\
-		srcs/node_tools.c\
-		srcs/path_tools.c\
-		srcs/path.c\
-		srcs/record.c\
-		srcs/split_ants.c\
+			srcs/parse/parser.c \
+			srcs/parse/readrooms.c \
+			srcs/parse/tool_parse.c \
+			srcs/parse/read_start_end.c \
+			srcs/path/add_new_paths.c \
+			srcs/path/add_node.c \
+			srcs/path/add_path.c \
+			srcs/path/check_nodelist.c \
+			srcs/path/compare.c \
+			srcs/path/count_new_childs.c \
+			srcs/path/cpy_nodelist.c \
+			srcs/path/cpy_path.c \
+			srcs/path/delete_path.c \
+			srcs/path/init_node.c \
+			srcs/path/init_path.c \
+			srcs/path/list_to_sorted_array.c \
+			srcs/path/merge_paths.c \
+			srcs/path/new_path_list.c \
+			srcs/path/paths.c \
+			srcs/path/sort_paths.c \
+			srcs/path/update_bl.c \
+			srcs/path/update_paths.c \
+			srcs/display.c\
+			srcs/error.c\
+			srcs/record.c\
+			srcs/split_ants.c
 
 OBJ = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-
 $(NAME) : $(SRC) $(LIBFT)
-	@$(CC) $(FLAGS) $(INCLUDES) $(SRC) $(LIBFT) -o $(NAME)
-	@printf "\n\033[032mFiller Compilation Successful\033[0m\n"
+		@$(CC) $(FLAGS) $(INCLUDES) $(SRC) -o $(NAME) $(LIBFT)
+			@printf "\n\033[032mFiller Compilation Successful\033[0m\n"
 
 $(LIBFT) :
-	@make -C libft
+		@make -C libft
 
 clean :
-	@make clean -C libft
-	@rm -f $(OBJ)
+		@make clean -C libft
+			@rm -f $(OBJ)
 
 fclean : clean
-	@make clean -C libft
-	@rm -f $(NAME)
+		@make clean -C libft
+		@rm -f $(NAME)
 
 re : fclean all
