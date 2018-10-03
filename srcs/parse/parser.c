@@ -82,6 +82,7 @@ int	parse(t_lemin *lemin)
 	char **line;
 
 	lemin = NULL;
+	line = NULL;
 	if (!(lemin = init_lem(lemin)))
     return (0);
 	init_ants(&lemin->a);
@@ -91,9 +92,6 @@ int	parse(t_lemin *lemin)
 			return (0);
 		free(*line);
 	}
-	tab = malloc
-
-
 	//print_instru(lemin);
 	if(!(check_error(lemin)))
 		return (0);

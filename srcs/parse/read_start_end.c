@@ -77,7 +77,7 @@ int 		check_start_end(t_lemin *lemin, char *line)
     	{
     		get_next_line(0, &line);
         if (!ft_strchr(line, '-')
-				&& (ft_strchr(line, ' ') != ft_strrchr(line, ' '))
+				&& (ft_strchr(line, ' ') != ft_strrchr(line, ' ')))
           lemin->start = 1;
         if (!(readrooms()))
     		if (!(save_instrus(line, lemin)))
@@ -87,7 +87,7 @@ int 		check_start_end(t_lemin *lemin, char *line)
     	{
     		get_next_line(0, &line);
         if (!ft_strchr(line, '-')
-				&& (ft_strchr(line, ' ') != ft_strrchr(line, ' '))
+				 && (ft_strchr(line, ' ') != ft_strrchr(line, ' ') ? 1 : 0))
           lemin->end = 1;
     		if(!(save_instrus(line, lemin)))
           return (0);

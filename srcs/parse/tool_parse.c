@@ -32,9 +32,7 @@ t_lemin *init_lem(t_lemin *lemin)
 
 void init_ants(t_ants *a)
 {
-	a->nbants = 0;
-	a->nbstart = 0;
-	a->nbend = 0;
+	ft_bzero(a, sizeof(t_ants));
 }
 
 void del1(void *content, size_t content_size)

@@ -1,6 +1,6 @@
 #include "../../includes/lem_in.h"
 
-int 	checkrooms(char **tab, char *line, t_lemin *lemin)
+int 	checkrooms(char **tab, char *line)
 {
 	int n;
 	int i;
@@ -50,18 +50,19 @@ int init_graph(t_lemin *lemin)
 {
 	int i;
 	int j;
+	t_map m;
 
-	t_map *m;
 	i = -1;
-	m->graph = (int **)malloc(sizeof(int *) * lemin->nb_rooms);
+	m = lemin->m;
+	m.graph = (int **)malloc(sizeof(int *) * lemin->nb_rooms);
 	while (++i < lemin->nb_rooms)
 	{
-		if(!(m->graph[i] = (int*)malloc(sizeof(int) * lemin->nb_rooms)))
+		if(!(m.graph[i] = (int*)malloc(sizeof(int) * lemin->nb_rooms)))
 			return (0);
 		j = 0;
-		while (m->graph[i][j])
+		while (m.graph[i][j])
 		{
-			m->graph[i][j] = 0;
+			m.graph[i][j] = 0;
 			j++;
 		}
 	}
@@ -75,6 +76,7 @@ int create_rooms(t_lemin *lemin, char *line)
 	char *tmp;
 
 	i = -1;
+	j = 0;
 	tmp = line;
 	tmp = *ft_strsplit(line, ' ');
 	if (!(lemin->m.cases = (char**)malloc(sizeof(char*))))
@@ -94,7 +96,7 @@ int create_rooms(t_lemin *lemin, char *line)
 	return (1);
 }
 
-int readrooms(t_lemin *lemin, char *line)
+int readrooms(char *line)
 {
 	char **tab;
 
@@ -102,7 +104,7 @@ int readrooms(t_lemin *lemin, char *line)
 	tab = NULL;
 	if (!(tab = (char**)malloc(sizeof(char*))))
 		return (0);
-	if (!(checkrooms(tab, line, lemin)))
+	if (!(checkrooms(tab, line)))
 		return (0);
 	return (1);
 }
