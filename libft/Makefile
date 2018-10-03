@@ -6,7 +6,7 @@
 #    By: carmenia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/30 16:06:12 by carmenia          #+#    #+#              #
-#    Updated: 2018/10/03 11:12:01 by carmenia         ###   ########.fr        #
+#    Updated: 2018/10/03 14:59:57 by carmenia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -Iincludes/libft.h
+
+LIBPRINTF = ft_printf/libftprintf.a
 
 CC = gcc
 
@@ -93,7 +95,7 @@ OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) ft_printf/*.c ft_printf/Makefile
+$(NAME) : $(OBJ) $(LIBPRINTF)
 	@make -C ft_printf
 	@cp ft_printf/libftprintf.a ./$(NAME)
 	@ar -rc $(NAME) $(OBJ)
@@ -102,7 +104,7 @@ $(NAME) : $(OBJ) ft_printf/*.c ft_printf/Makefile
 
 %.o: %.c
 		@printf "\r\033[31mgcc -c -Wall -Wextra -Werror -o $@ $^                    \033[0m"
-			@gcc -c -Wall -Wextra -Werror -o $@ $^
+		@gcc -c -Wall -Wextra -Werror -o $@ $^
 
 clean :
 	@cd ft_printf ; make fclean ; cd ..

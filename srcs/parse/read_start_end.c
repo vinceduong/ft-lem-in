@@ -71,12 +71,13 @@ int   create_map(t_lemin *lemin)
 	return (1);
 }*/
 
-int 		check_star_end(t_lemin *lemin, char *line)
+int 		check_start_end(t_lemin *lemin, char *line)
 {
     if (!ft_strcmp(line, "##start"))
     	{
     		get_next_line(0, &line);
-        if (!ft_strchr(line, '-') && ft_strchr(line, ' '))
+        if (!ft_strchr(line, '-')
+				&& (ft_strchr(line, ' ') != ft_strrchr(line, ' '))
           lemin->start = 1;
         if (!(readrooms()))
     		if (!(save_instrus(line, lemin)))
@@ -85,13 +86,14 @@ int 		check_star_end(t_lemin *lemin, char *line)
     	else if (!ft_strcmp(line, "##end"))
     	{
     		get_next_line(0, &line);
-        if (!ft_strchr(line, '-') && ft_strchr(line, ' '))
+        if (!ft_strchr(line, '-')
+				&& (ft_strchr(line, ' ') != ft_strrchr(line, ' '))
           lemin->end = 1;
     		if(!(save_instrus(line, lemin)))
           return (0);
     	}
     	return (1);
-    }
+}
 
 int 		read_start_end(t_lemin *lemin, char *line)
 {
@@ -99,7 +101,7 @@ int 		read_start_end(t_lemin *lemin, char *line)
 	{
     if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
       {
-        if(!(check_star_end(lemin, line)))
+        if(!(check_start_end(lemin, line)))
           return (0);
       }
 	}
