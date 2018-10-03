@@ -36,10 +36,10 @@ static int parse_instru(t_lemin *lemin, char *line)
 				&& line[0] != ' ' && line[0] != '\t')
 		{
 			//lemin->nb_rooms++;
-			if(!(create_rooms(lemin, line)))
-				return (0);
-			if (!(checkrooms(tab, line, lemin)))
-				return (0);
+			//if (!(readrooms(lemin, line)))
+			//	return (0);
+		//	if(!(create_rooms(lemin, line)))
+		//		return (0);
 		}
 		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
 				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
@@ -69,7 +69,7 @@ static int check_error(t_lemin *lemin)
 			lemin->nb_link == 0)
 		return (0);
 	printf("ants = %d\n", lemin->a.nbants);
-	printf("lemin = %s\n", lemin->m.cases[0]);
+	//printf("lemin = %s\n", lemin->m.cases[0]);
 	printf("nb_start = %d\n", lemin->a.nbstart);
 	printf("nb_end = %d\n", lemin->a.nbend);
 	printf("start = %d\n", lemin->start);
@@ -96,8 +96,7 @@ int	parse(t_lemin *lemin)
 			return (0);
 		free(*line);
 	}
-
-	print_instru(lemin);
+	//print_instru(lemin);
 	if(!(check_error(lemin)))
 		return (0);
 	//init_graph(lemin);

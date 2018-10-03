@@ -93,3 +93,16 @@ int create_rooms(t_lemin *lemin, char *line)
 	}
 	return (1);
 }
+
+int readrooms(t_lemin *lemin, char *line)
+{
+	char **tab;
+
+//	lemin->nb_rooms++;
+	tab = NULL;
+	if (!(tab = (char**)malloc(sizeof(char*))))
+		return (0);
+	if (!(checkrooms(tab, line, lemin)))
+		return (0);
+	return (1);
+}
