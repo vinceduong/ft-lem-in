@@ -14,7 +14,7 @@ int			save_instrus(char *instru, t_lemin *lemin)
 	{
 		if (!(new = ft_lstnew(instru, ft_strlen(instru) + 1)))
 			return (0);
-		ft_lstaddendH(&(lemin->instru), new);
+		ft_lstadd(&(lemin->instru), new);
 	}
 	return (1);
 }
@@ -25,7 +25,7 @@ static int parse_instru(t_lemin *lemin, char *line)
 				&& !ft_strchr(line, '-') && ft_is_int(line) && line[0] != '\t')
 		{
 			(ft_atoi(line) > 0) ? lemin->a.nbants = ft_atoi(line) : 0;
-			lemin->a.nbstart = ft_atoi(line);
+			lemin->a.nbants = ft_atoi(line);
 		}
 		else if (!ft_strchr(line, '-') && line[0] != '#' && ft_strchr(line, ' ') \
 				&& line[0] != ' ' && line[0] != '\t')
@@ -67,8 +67,8 @@ static int check_error(t_lemin *lemin)
 		return (0);
 	printf("ants = %d\n", lemin->a.nbants);
 	//printf("lemin = %s\n", lemin->m.cases[0]);
-	printf("nb_start = %d\n", lemin->a.nbstart);
-	printf("nb_end = %d\n", lemin->a.nbend);
+	printf("nb_start = %d\n", lemin->a.nbants);
+	printf("nb_end = %d\n", lemin->a.nbants);
 	printf("start = %d\n", lemin->start);
 	printf("end = %d\n", lemin->end);
 	printf("nb_link = %d\n", lemin->nb_link);

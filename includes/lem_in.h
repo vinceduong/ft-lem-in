@@ -45,8 +45,6 @@ typedef struct		s_map
 typedef struct		s_ants
 {
 	int nbants;
-//	int	nbstart;
-//	int nbend;
 	int **rep;
 }					t_ants;
 
@@ -88,5 +86,8 @@ int	split_ants(t_lemin *lemin);
 int	record(t_lemin *lemin);
 //On affiche les tours sur l'entrée standard
 int	display(t_lemin *lemin);
+
+//fonctions de Cam
+int 		read_start_end(t_lemin *lemin, char *line);
 
 #endif

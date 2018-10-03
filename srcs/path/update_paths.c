@@ -1,5 +1,10 @@
 #include "lem_in.h"
 
+int compare_childs(t_path *p1, t_path *p2)
+{
+	return (p1->childs > p2->childs);
+}
+
 int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 {
 	t_path *tmp;
@@ -12,7 +17,7 @@ int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 		count_new_childs(l, nl, tmp);
 		tmp = tmp->next;
 	}
-	sort_paths(paths, &compare_childs);
+	sort_paths(paths, compare_childs);
 	new_path_list(l, nl, bl, paths);
 	tmp = paths->start;
 	while (tmp)

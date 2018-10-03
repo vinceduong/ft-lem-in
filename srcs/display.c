@@ -11,4 +11,5 @@ int	display(t_lemin *lemin)
 		ft_printf("%d\n", lemin->r.ops[i]);
 		i++;
 	}
+	return (1);
 }

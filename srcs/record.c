@@ -30,11 +30,10 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	t_node *room;
 
 	antpos = 1;
-	room = room->next;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
 	{
 		wave = antpos - 1;
-		room = lemin->p[pathnumber].nodes->start;
+		room = lemin->p[pathnumber].nodes->start->next;
 		while (room)
 		{
 			lemin->r.ops[wave] = ft_strjoin(lemin->r.ops[wave],

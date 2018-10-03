@@ -19,7 +19,6 @@ SRC = 	srcs/main.c \
 			srcs/path/add_node.c \
 			srcs/path/add_path.c \
 			srcs/path/check_nodelist.c \
-			srcs/path/compare.c \
 			srcs/path/count_new_childs.c \
 			srcs/path/cpy_nodelist.c \
 			srcs/path/cpy_path.c \

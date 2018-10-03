@@ -1,5 +1,10 @@
 #include "lem_in.h"
 
+int compare_length(t_path *p1, t_path *p2)
+{
+	return (p1->nodes->length > p2->nodes->length);
+}
+
 t_path *list_to_sorted_array(t_pathlist *paths)
 {
 	t_path	*tmp;
