@@ -63,6 +63,11 @@ typedef struct		s_lemin
 	t_record	r;
 	t_path	*p;
 	int			nbpaths;
+	t_list		*instru;
+	int 			start;
+	int 			end;
+	int 			nb_rooms;
+	int 			nb_link;
 }					t_lemin;
 
 /* forme du graph :
