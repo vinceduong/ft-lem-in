@@ -4,6 +4,7 @@
 # include "libft.h"
 # include "error.h"
 # include <stdio.h>
+# include "paths.h"
 
 typedef struct		s_node
 {
@@ -84,17 +85,5 @@ int	record(t_lemin *lemin);
 int	display(t_lemin *lemin);
 
 //NODELIST FUNCTIONS
-t_node			*new_node(int nb);
-t_nodelist	*add_node(t_nodelist *nodelist, t_node *node);
-int					check_nodelist(t_nodelist *nodelist, int nodenb);
-t_path		*new_path(t_path *path, int nodenb);
-void		*add_path(t_pathlist *pathlist, t_path *path);
-t_path *merge_paths(t_pathlist *paths, t_pathlist *news, t_path *old);
-t_path *delete_path(t_pathlist *paths, t_path *del);
-void					update_bl(t_nodelist *bl, t_path *path);
-t_nodelist *cpy_nodelist(t_nodelist *src);
-t_path *init_path(void);
-t_pathlist *init_pathlist(void);
-t_nodelist *init_nodelist(void);
 
 #endif
