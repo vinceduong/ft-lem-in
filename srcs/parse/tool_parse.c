@@ -23,8 +23,8 @@ t_lemin *init_lem(t_lemin *lemin)
   if (!(lemin = (t_lemin*)malloc(sizeof(t_lemin))))
     return (0);
   lemin->instru = NULL;
-  lemin->start = NULL;
-  lemin->end = NULL;
+  lemin->start = 0;
+  lemin->end = 0;
   lemin->nb_rooms = 0;
   lemin->nb_link = 0;
   return (lemin);

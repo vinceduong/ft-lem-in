@@ -59,8 +59,8 @@ typedef struct	s_lemin
 	t_ants		a;
 	t_record	r;
 	t_list		*instru;
-	char 			*start;
-	char 			*end;
+	int 			start;
+	int 			end;
 	int 			nb_rooms;
 	int 			nb_link;
 	int				nbpaths;
@@ -69,13 +69,16 @@ typedef struct	s_lemin
 //PARSER_FONCTION
 void 		init_ants(t_ants *a);
 int   	create_map(t_lemin *lemin);
-int 		checkrooms(char **tab, char *line);
+int 		checkrooms(char **tab, char *line, t_lemin *lemin);
 int 		read_start_end(t_lemin *lemin, char *line);
 t_lemin *init_lem(t_lemin *lemin);
 void		print_instru(t_lemin *lemin);
 int 		readrooms(t_lemin *lemin, char *line);
 int			save_instrus(char *intru, t_lemin *lemin);
 void 		del1(void *content, size_t content_size);
+void		print_matrix(t_map *m, t_lemin *lemin);
+int init_graph(t_lemin *lemin);
+int create_rooms(t_lemin *lemin, char *line);
 /* forme du graph :
    0 1 2 3
 0[[0,0,0,0],

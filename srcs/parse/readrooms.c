@@ -1,6 +1,6 @@
 #include "../../includes/lem_in.h"
 
-int 	checkrooms(char **tab, char *line)
+int 	checkrooms(char **tab, char *line, t_lemin *lemin)
 {
 	int n;
 	int i;
@@ -29,54 +29,67 @@ int 	checkrooms(char **tab, char *line)
 	return (1);
 }
 
-static char **create_tab(char *line, char **tab, int len)
+void		print_matrix(t_map *m, t_lemin *lemin)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < lemin->nb_rooms)
+	{
+		j = -1;
+		while (++j < lemin->nb_rooms)
+		{
+			printf("%d\n", m->graph[i][j]);
+			ft_putchar(' ');
+		}
+	}
+}
+
+int init_graph(t_lemin *lemin)
+{
+	int i;
+	int j;
+
+	t_map *m;
+	i = -1;
+	m->graph = (int **)malloc(sizeof(int *) * lemin->nb_rooms);
+	while (++i < lemin->nb_rooms)
+	{
+		if(!(m->graph[i] = (int*)malloc(sizeof(int) * lemin->nb_rooms)))
+			return (0);
+		j = 0;
+		while (m->graph[i][j])
+		{
+			m->graph[i][j] = 0;
+			j++;
+		}
+	}
+	return(1);
+}
+
+int create_rooms(t_lemin *lemin, char *line)
+{
+	int i;
+	int j;
 	char *tmp;
-	int c;
 
-	c = 0;
-	i = 0;
-	j = 0;
-	while (*(line + len) && *(line + len) != ' ')
-		len++;
-	if (!(tmp = (char*)malloc(len * sizeof(char) + 1)))
-			return (NULL);
-	if (!(tab[i] = (char*)malloc(len * sizeof(char) + 1)))
-		return (NULL);
+	i = -1;
+	tmp = line;
 	tmp = *ft_strsplit(line, ' ');
-	while (tmp[i])
-			tab[c][j++] = tmp[i++];
-	free(tmp);
-	return (tab);
-}
-
-static char **parsetab(t_lemin *lemin, char *line)
-{
-	char **tab;
-	int len;
-
-	len = 0;
-	if (!(tab = (char**)malloc(sizeof(char*))))
-		return (NULL);
-	if (line)
-		return (create_tab(line, tab, len));
-	else
-		return (NULL);
-}
-
-int readrooms(t_lemin *lemin, char *line)
-{
-		char **tb;
-
-		lemin->nb_rooms++;
-		if (!(lemin->m.cases = (char**)malloc(sizeof(char*))))
+	if (!(lemin->m.cases = (char**)malloc(sizeof(char*))))
+		return (0);
+	while (++i < lemin->nb_rooms)
+	{
+		if (!(lemin->m.cases[i] = (char*)malloc(ft_strlen(line) * sizeof(char) + 1)))
 			return (0);
-		if (!(tb = (char**)malloc(sizeof(char*))))
-			return (0);
-		if (!(tb = parsetab(lemin, line)))
-			return (0);
-    lemin->m.cases = tb;
-		return (1);
+
+		while (lemin->m.cases[i][j])
+		{
+				lemin->m.cases[i][j] = *tmp;
+				j++;
+		}
+		line++;
+	}
+	return (1);
 }

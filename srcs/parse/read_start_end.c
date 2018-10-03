@@ -76,20 +76,16 @@ int 		check_star_end(t_lemin *lemin, char *line)
     if (!ft_strcmp(line, "##start"))
     	{
     		get_next_line(0, &line);
-    		if (!readrooms(lemin, line))
-    			return (0);
         if (!ft_strchr(line, '-') && ft_strchr(line, ' '))
-          lemin->start = line;
+          lemin->start = 1;
     		if (!(save_instrus(line, lemin)))
           return (0);
     	}
     	else if (!ft_strcmp(line, "##end"))
     	{
     		get_next_line(0, &line);
-    		if (!readrooms(lemin, line))
-    			return (0);
         if (!ft_strchr(line, '-') && ft_strchr(line, ' '))
-          lemin->end = line;
+          lemin->end = 1;
     		if(!(save_instrus(line, lemin)))
           return (0);
     	}

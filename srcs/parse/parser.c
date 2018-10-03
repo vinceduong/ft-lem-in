@@ -35,16 +35,16 @@ static int parse_instru(t_lemin *lemin, char *line)
 		else if (!ft_strchr(line, '-') && line[0] != '#' && ft_strchr(line, ' ') \
 				&& line[0] != ' ' && line[0] != '\t')
 		{
-			if (!(readrooms(lemin, line)))
+			//lemin->nb_rooms++;
+			if(!(create_rooms(lemin, line)))
 				return (0);
-			if (!(checkrooms(tab, line)))
+			if (!(checkrooms(tab, line, lemin)))
 				return (0);
 		}
 		else if (ft_strchr(line, '-') && line[0] != '#' && line[0] != '\t' \
 				&& line[0] != '#' && !ft_strchr(line, ' ') && line[0] != ' ')
 		{
 			lemin->nb_link++;
-			//printf("tubes\n");
 		}
 	return (1);
 }
@@ -65,16 +65,18 @@ static int readdata(t_lemin *lemin, char *line)
 static int check_error(t_lemin *lemin)
 {
 
-	if (lemin->a.nbants <= 0 || !lemin->instru || !lemin->start || !lemin->end \
-				|| !lemin->m.cases || lemin->nb_link == 0 || lemin->nb_rooms == 0)
+	if (lemin->a.nbants <= 0 || lemin->start != 1 || lemin->end != 1 || \
+			lemin->nb_link == 0)
 		return (0);
 	printf("ants = %d\n", lemin->a.nbants);
-	printf("lemin = %s\n", *lemin->m.cases);
+	printf("lemin = %s\n", lemin->m.cases[0]);
 	printf("nb_start = %d\n", lemin->a.nbstart);
 	printf("nb_end = %d\n", lemin->a.nbend);
-	printf("start = %s\n", lemin->start);
-	printf("end = %s\n", lemin->end);
+	printf("start = %d\n", lemin->start);
+	printf("end = %d\n", lemin->end);
 	printf("nb_link = %d\n", lemin->nb_link);
+	printf("nb_rooms = %d\n", lemin->nb_rooms);
+	//printf("matrice = %d\n", lemin->m.graph[0][0]);
 	return (1);
 }
 
@@ -94,10 +96,11 @@ int	parse(t_lemin *lemin)
 			return (0);
 		free(*line);
 	}
+
 	print_instru(lemin);
 	if(!(check_error(lemin)))
 		return (0);
-	if (!(create_map(lemin)))
-		return (0);
+	//init_graph(lemin);
+	//print_matrix(&lemin->m, lemin);
 	return (1);
 }
