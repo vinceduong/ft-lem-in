@@ -71,6 +71,7 @@ t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p)
 			{
 				p->ended = 1;
 				add_node(p->nodes, new_node);
+				p->nodes->length--;
 			}
 			else
 			{
