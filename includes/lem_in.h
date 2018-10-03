@@ -2,6 +2,7 @@
 # define LEM_IN_H
 
 # include "libft.h"
+# include "error.h"
 # include <stdio.h>
 
 typedef struct		s_node
