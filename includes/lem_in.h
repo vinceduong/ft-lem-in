@@ -4,7 +4,6 @@
 # include "libft.h"
 # include "error.h"
 # include <stdio.h>
-# include "paths.h"
 
 typedef struct		s_node
 {
@@ -66,6 +65,7 @@ typedef struct		s_lemin
 	int			nbpaths;
 }					t_lemin;
 
+# include "paths.h"
 /* forme du graph :
    0 1 2 3
 0[[0,0,0,0],

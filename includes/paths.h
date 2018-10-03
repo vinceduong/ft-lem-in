@@ -15,7 +15,7 @@ t_nodelist *cpy_nodelist(t_nodelist *src);
 t_path *init_path(void);
 t_pathlist *init_pathlist(void);
 t_nodelist *init_nodelist(void);
-int cpy_path(t_path *src, t_path *dest, t_node *node)
+int cpy_path(t_path *src, t_path *dest, t_node *node);
 int findpathlist(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths);
 t_pathlist	*add_new_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_path *p);
 int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p);
