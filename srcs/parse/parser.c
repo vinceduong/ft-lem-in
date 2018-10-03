@@ -21,11 +21,6 @@ int			save_instrus(char *instru, t_lemin *lemin)
 
 static int parse_instru(t_lemin *lemin, char *line)
 {
-	char **tab;
-
-	tab = NULL;
-	if (!(tab = (char**)malloc(sizeof(char*))))
-		return (0);
 		if (line[0] != '#' && ft_isdigit(line[0]) && !ft_strchr(line, ' ') \
 				&& !ft_strchr(line, '-') && ft_is_int(line) && line[0] != '\t')
 		{
@@ -49,6 +44,8 @@ static int parse_instru(t_lemin *lemin, char *line)
 	return (1);
 }
 
+/* readdata est accompli pour chaque ligne successive*/
+
 static int readdata(t_lemin *lemin, char *line)
 {
 	if (line[0] == 'L')
@@ -65,7 +62,7 @@ static int readdata(t_lemin *lemin, char *line)
 static int check_error(t_lemin *lemin)
 {
 
-	if (lemin->a.nbants <= 0 || lemin->start != 1 || lemin->end != 1 || \
+	if (lemin->a.nbants <= 0 || lemin->start != 1 || lemin->end != 1 ||
 			lemin->nb_link == 0)
 		return (0);
 	printf("ants = %d\n", lemin->a.nbants);
@@ -88,14 +85,15 @@ int	parse(t_lemin *lemin)
 	if (!(lemin = init_lem(lemin)))
     return (0);
 	init_ants(&lemin->a);
-	if (!(line = (char**)malloc(sizeof(char*))))
-		return (0);
-	while (get_next_line(0, line) > 0)
+	while (get_next_line(0, line) >= 0)
 	{
 		if (!ft_strcmp(*line, "") || !readdata(lemin, *line))
 			return (0);
 		free(*line);
 	}
+	tab = malloc
+
+
 	//print_instru(lemin);
 	if(!(check_error(lemin)))
 		return (0);
