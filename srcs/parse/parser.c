@@ -14,7 +14,7 @@ int			save_instrus(char *instru, t_lemin *lemin)
 	{
 		if (!(new = ft_lstnew(instru, ft_strlen(instru) + 1)))
 			return (0);
-		ft_lstadd(&(lemin->instru), new);
+		ft_lstaddendH(&(lemin->instru), new);
 	}
 	return (1);
 }
