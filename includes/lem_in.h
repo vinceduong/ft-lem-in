@@ -45,8 +45,8 @@ typedef struct		s_map
 typedef struct		s_ants
 {
 	int nbants;
-	int	nbstart;
-	int nbend;
+//	int	nbstart;
+//	int nbend;
 	int **rep;
 }					t_ants;
 
