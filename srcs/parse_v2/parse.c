@@ -30,16 +30,18 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error)
 			ft_read_start_and_end(lemin, tab, i, error);
 		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
 		ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
-			lemin->a.nbants = ft_atoi(tab[i]);
-		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
-			//lemin->m.cases;
+			error[2][0]++;
 		else if (ft_chrstr(tab[i], '-') == 1 && ft_chrstr(tab[i], ' ') == 0)
-			//ft_recup_tube(tab);
+			error[3][0]++;
+		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
+			error[4][0]++;
 		else if (tab[i][0] == '#')
 			;
 		else
 			ft_error();
 	}
+	ft_check_value(error) == 0 ? exit(0) : 0;
+	ft_create_matrice(tab, lemin, error);
 }
 
 char **ft_read(char *str, char *line, cahr **tab)
