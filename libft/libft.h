@@ -82,6 +82,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_int_strstr(const char *src, const char *find);
 int					ft_int_strchar(const char *src, const char find);
+int					ft_is_int(char *str);
 
 typedef struct		s_list
 {

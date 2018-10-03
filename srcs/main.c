@@ -11,7 +11,7 @@ int	main(void)
 		ft_printf("ERROR");
 		return (0);
 	}
-	if (!path(&lemin))
+	if (!paths(&lemin))
 	{
 		ft_printf("Pathing failed");
 		ft_printf("ERROR");
