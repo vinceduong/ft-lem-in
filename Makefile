@@ -32,7 +32,6 @@ SRC = 	srcs/main.c \
 			srcs/path/update_bl.c \
 			srcs/path/update_paths.c \
 			srcs/display.c\
-			srcs/error.c\
 			srcs/record.c\
 			srcs/split_ants.c\
 

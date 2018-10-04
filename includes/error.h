@@ -10,7 +10,7 @@ typedef	struct		s_error
 
 }					t_error;
 
-t_error tab_errors[] =
+struct s_error tab_errors[] =
 {
 	{(char *)"room_add", -1, (char *)"Error: room was already added."},
 	{(char *)"empty_line", -1, (char *)"Error: an empty line has been found."},

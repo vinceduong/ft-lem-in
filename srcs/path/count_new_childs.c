@@ -7,12 +7,20 @@ int	count_new_childs(t_lemin *l, t_nodelist *nl, t_path *p)
 
 	i = 0;
 	count = 0;
+	printf("nbcases  = %d\n", l->m.nbcases);
 	while (i < l->m.nbcases)
 	{
-		if (i && l->m.graph[p->curr][i] != 0 && check_nodelist(nl, i))
+		if (l->m.graph[p->curr][i])
+			printf ("%d can be ur fucking child\n", i);
+		if (l->m.graph[p->curr][i] && !check_nodelist(nl, i))
+		{
 			count++;
+			printf ("You have child %d!\n", i);
+		}
+		printf("i = %d\n", i);
 		i++;
 	}
+	printf("Node %d has %d new childs\n", p->curr, count);
 	p->childs = count;
-	return (1);
+	return (count ? 1 : 0);
 }
