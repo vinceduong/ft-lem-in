@@ -5,13 +5,12 @@ static int **ft_fill_zero(t_lemin *lemin)
 	int **tab;
 	int i;
 	int n;
-	int j;
 
 	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases);
 	i = 0;
 	n = 0;
-	j = 0;
-	while (j < lemin->m.nbcases)
+	printf("%d\n", lemin->m.nbcases);
+	while (n < lemin->m.nbcases)
 	{
 		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases);
 		while (i < lemin->m.nbcases)
@@ -21,7 +20,6 @@ static int **ft_fill_zero(t_lemin *lemin)
 		}
 		n++;
 		i = 0;
-		j++;
 	}
 	return (tab);
 }
@@ -34,15 +32,9 @@ static char *ft_strdup_c(char *tab)
 
 	i = 0;
 	n = 0;
-	while (tab[n] != '-' || tab[n])
+	while (tab[n] != '-')
 		n++;
-	tmp = (char*)malloc(sizeof(char*) * n + 1);
-	while (i < n)
-	{
-		tmp[i] = tab[i];
-		i++;
-	}
-	tmp[i] = tab[i];
+	tmp = ft_strndup(tab, n);
 	return (tmp);
 
 }
@@ -52,9 +44,13 @@ static int find_wich_char(t_lemin *lemin, char *str)
 	int i;
 
 	i = 0;
-	while (lemin->m.cases[i] != str)
+	while (lemin->m.cases[i])
+	{
+		if (ft_strcmp(lemin->m.cases[i], str) == 0)
+			return (i);
 		i++;
-	return (i);
+	}
+	return (-1);
 }
 
 static int ft_find_minus(char *tab)
@@ -82,15 +78,21 @@ void ft_patatruc(char **tab, t_lemin *lemin)
 	lemin->m.graph = ft_fill_zero(lemin);
 	while (ft_chrstr(tab[index2], '-') == 0)
 		index2++;
-	while (index < lemin->m.nbcases)
+	while (index < lemin->nb_link)
 	{
 		str = ft_strdup_c(tab[index2 + index]);
+		printf("%s\n", "yo");
 		n = find_wich_char(lemin, str);
+		printf("%s\n", "yo");
 		str = ft_strdup(tab[index + index2] + ft_find_minus(tab[index + index2]));
+		printf("%s\n", "yo");
 		i = find_wich_char(lemin, str);
+		printf("%s\n", "yo");
+		printf("%d\n", lemin->m.graph[n][i]);
 		lemin->m.graph[n][i] = 1;
 		lemin->m.graph[i][n] = 1;
 		free(str);
 		index++;
 	}
+	printf("%s\n", "yo");
 }

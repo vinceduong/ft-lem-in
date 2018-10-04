@@ -10,7 +10,8 @@ int	main(void)
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");
 		return (0);
-	}/*
+	}
+	printf("%s\n", "oui");/*
 	if (!paths(&lemin))
 	{
 		ft_printf("Pathing failed");
