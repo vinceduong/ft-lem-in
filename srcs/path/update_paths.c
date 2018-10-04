@@ -7,14 +7,21 @@ int compare_childs(t_path *p1, t_path *p2)
 
 int	update_paths(t_lemin *l, t_nodelist *nl, t_nodelist *bl, t_pathlist *paths)
 {
+	ft_putstr("In update_path\n");
 	t_path *tmp;
 	int		 ended;
 	t_node *check;
+
 	ended = 0;
 	tmp = paths->start;
 	while (tmp)
 	{
-		count_new_childs(l, nl, tmp);
+		if (!count_new_childs(l, nl, tmp))
+		{
+			tmp = delete_path(paths, tmp);
+			continue ;
+		}
+		ft_putstr("count_new_childs worked\n");
 		tmp = tmp->next;
 	}
 	sort_paths(paths, compare_childs);
