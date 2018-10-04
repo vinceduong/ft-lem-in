@@ -7,12 +7,17 @@ t_path *merge_paths(t_pathlist *paths, t_pathlist *news, t_path *old)
 
 	tmp_list = paths->start;
 	tmp_new = news->start;
-	while (tmp_list->next && tmp_list->next != old)
-		tmp_list = tmp_list->next;
-	tmp_list->next = tmp_new;
+	if (tmp_list == old)
+		paths->start = news->start;
+	else
+	{
+		while (tmp_list->next && tmp_list->next != old)
+			tmp_list = tmp_list->next;
+		tmp_list->next = tmp_new;
+	}
 	while (tmp_new->next)
 		tmp_new = tmp_new->next;
 	tmp_new->next = old->next;
-	tmp_new->previous = tmp_list;
+	tmp_new->previous = tmp_list == old ? NULL : tmp_list;
 	return (tmp_new->next);
 }

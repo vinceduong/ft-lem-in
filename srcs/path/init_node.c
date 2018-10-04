@@ -7,7 +7,8 @@ t_nodelist *init_nodelist(void)
 	if (!(nl = (t_nodelist*)malloc(sizeof(t_nodelist))))
 		return (NULL);
 	nl->length = 0;
-	return (0);
+	nl->start = NULL;
+	return (nl);
 }
 
 t_node		*new_node(int nb)

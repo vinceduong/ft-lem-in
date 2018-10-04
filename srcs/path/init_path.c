@@ -22,6 +22,7 @@ t_pathlist *init_pathlist()
 
 	if (!(pl = (t_pathlist *)malloc(sizeof(t_pathlist))))
 		return (NULL);
+	pl->start = NULL;
 	return (pl);
 }
 
@@ -31,15 +32,28 @@ t_path		*new_path(t_path *path, int nodenb)
 	t_node			*node;
 	t_nodelist 	*nl;
 
-	node = new_node(nodenb);
+	ft_putstr("In new_path\n");
+	if (!(node = new_node(nodenb)))
+	{
+		ft_putstr("new_node failed\n");
+		return (NULL);
+	}
 	if (!(new = init_path()))
+	{
+		ft_putstr("init_path failed\n");
 		return (NULL);
+	}
 	if (!(nl = init_nodelist()))
+	{
+		ft_putstr("init_path failed\n");
 		return (NULL);
+	}
 	if (!path)
 	{
+			ft_putstr("In if !path\n");
 			new->curr = nodenb;
 			add_node(nl, node);
+			ft_putstr("add_node worked\n");
 			new->nodes = nl;
 			new->ended = 0;
 	}
@@ -47,5 +61,6 @@ t_path		*new_path(t_path *path, int nodenb)
 		cpy_path(path, new, node);
 	new->next = NULL;
 	new->previous = NULL;
+	new->curr = nodenb;
 	return (new);
 }

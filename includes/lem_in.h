@@ -75,6 +75,7 @@ typedef struct		s_lemin
 2 [0,0,0,0],
 3 [0,0,0,0]]*/
 
+void print_matrix(t_lemin *l);
 //On initialise map ants, si la map est invalide => return 0
 int	parser(t_lemin *lemin);
 //On cherche les plus courts chemins, si on trouve aucun path => return 0;
