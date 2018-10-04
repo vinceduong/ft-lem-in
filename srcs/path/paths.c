@@ -16,6 +16,7 @@ int findpathlist(t_lemin *l, t_pathlist *paths)
 		add_path(paths, path);
 		l->m.graph[0][0] = 1;
 		ft_putstr("add_path worked\n");
+		print_path(path);
 	}
 	else
 	{

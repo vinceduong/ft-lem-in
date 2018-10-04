@@ -20,7 +20,6 @@ int new_path_list(t_lemin *l, t_pathlist *paths)
 		if (!tmp->ended)
 		{
 			new_paths = add_new_paths(l, tmp);
-			print_path(tmp);
 			if (tmp->ended)
 			{
 				ft_putstr("NEED TO DELETE\n");

@@ -36,6 +36,7 @@ t_pathlist	*add_new_paths(t_lemin *l, t_path *p)
 				add_path(new_paths, new_p);
 				l->m.graph[i][i] = 1;
 				print_matrix(l);
+				print_path(new_p);
 				new_childs++;
 			}
 		}
