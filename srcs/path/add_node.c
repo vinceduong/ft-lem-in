@@ -11,7 +11,7 @@ t_nodelist	*add_node(t_nodelist *nodelist, t_node *node)
 		ft_putstr("In !tmp\n");
 		nodelist->start = node;
 		nodelist->start->index = 0;
-		nodelist->length = 1;
+		nodelist->length++;
 		return (nodelist);
 	}
 	i = 0;

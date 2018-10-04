@@ -5,7 +5,7 @@ int compare_length(t_path *p1, t_path *p2)
 	return (p1->nodes->length > p2->nodes->length);
 }
 
-t_path *list_to_sorted_array(t_pathlist *paths)
+int fill_paths(t_lemin *l, t_pathlist *paths)
 {
 	t_path	*tmp;
 	t_path	*array;
@@ -20,7 +20,7 @@ t_path *list_to_sorted_array(t_pathlist *paths)
 		tmp = tmp->next;
 	}
 	if (!(array = (t_path *)malloc(sizeof(t_path) * size)))
-		return (NULL);
+		return (0);
 	sort_paths(paths, &compare_length);
 	tmp = paths->start;
 	i = 0;
@@ -30,5 +30,7 @@ t_path *list_to_sorted_array(t_pathlist *paths)
 		i++;
 		tmp = tmp->next;
 	}
-	return (array);
+	l->nbpaths = i;
+	l->p = array;
+	return (1);
 }

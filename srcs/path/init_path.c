@@ -52,7 +52,6 @@ t_path		*new_path(t_path *path, int nodenb)
 	{
 			ft_putstr("In if !path\n");
 			new->curr = nodenb;
-			ft_printf("node->nb = %d", node->nb);
 			add_node(nl, node);
 			ft_putstr("add_node worked\n");
 			new->nodes = nl;
@@ -62,5 +61,6 @@ t_path		*new_path(t_path *path, int nodenb)
 		cpy_path(path, new, node);
 	new->next = NULL;
 	new->previous = NULL;
+	new->curr = nodenb;
 	return (new);
 }

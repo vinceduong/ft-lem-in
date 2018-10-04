@@ -26,7 +26,15 @@ lemin.m.graph[2][0]=0;lemin.m.graph[2][1]=1;lemin.m.graph[2][2]=0;
 		ft_printf("Pathing failed\n");
 		ft_printf("ERROR\n");
 		return (0);
-	}/*
+	}
+	i = 0;
+	printf("-----THE FINALS PATHS-----\n");
+	while (i < lemin.nbpaths)
+	{
+		print_path(&lemin.p[i]);
+		i++;
+	}
+	/*
 	if (!split_ants(&lemin))
 	{
 		ft_printf("Splitting failed");
