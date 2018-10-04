@@ -10,7 +10,7 @@ int	main(void)
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");
 		return (0);
-	}
+	}/*
 	if (!paths(&lemin))
 	{
 		ft_printf("Pathing failed");
@@ -34,6 +34,6 @@ int	main(void)
 		ft_printf("Display failed");
 		ft_printf("ERROR");
 		return (0);
-	}
+	}*/
 	return (0);
 }

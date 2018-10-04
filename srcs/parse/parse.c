@@ -24,29 +24,30 @@ static int ft_se(char *tab, char *str)
 	return (0);
 }
 
-static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error)
+
+static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 {
 	while (tab[++i] != NULL)
 	{
 		if (ft_strcmp(tab[i], "##start") == 0)
-			error[0][0] += ft_se(tab[i], tab[i + 1]);
+			error_tab[0][0] += ft_se(tab[i], tab[i + 1]);
 		else if (ft_strcmp(tab[i], "##end") == 0)
-			error[1][0] += ft_se(tab[i], tab[i + 1]);
+			error_tab[1][0] += ft_se(tab[i], tab[i + 1]);
 		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
 		ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
-			error[2][0]++;
+			error_tab[2][0]++;
 		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
-			error[3][0]++;
+			error_tab[3][0]++;
 		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
-			error[4][0]++;
+			error_tab[4][0]++;
 		else if (tab[i][0] == '#')
 			;
 		else
-			/*ft_error()*/;
+			; //ft_error();
 	}
-	lemin->m.nbcases = error[4][0];
-	ft_check_value(error) == 0 ? exit(0) : 0;
-	ft_create_matrice(tab, lemin, error);
+	lemin->m.nbcases = error_tab[4][0];
+	ft_check_value(error_tab) == 0 ? exit(0) : 0;
+	ft_create_matrice(tab, lemin, error_tab);
 }
 
 static char **ft_read(char *str, char *line)
@@ -54,13 +55,13 @@ static char **ft_read(char *str, char *line)
 	while (get_next_line(0, &line) > 0)
 	{
 		str = ft_strjoin(str, line);
-		str[ft_strlen(str)] = '\n';
+		str = ft_strjoin(str, "\n");
 		ft_strdel(&line);
 	}
 	return (ft_strsplit(str, '\n'));
 }
 
-static int **ft_create_error_tab()
+static int **ft_create_error_tab(void)
 {
 	int i;
 	int **tab;
@@ -87,13 +88,15 @@ int parser(t_lemin *lemin)
 	char **tab;
 	char *str;
 	char *line;
-	int **error;
+	int **error_tab;
 
 	tab = NULL;
-	str = ft_memalloc(0);
+	lemin->r.nbturns = 3;
+	if (!(str = ft_memalloc(0)))
+		return (0);
 	line = NULL;
-	error = ft_create_error_tab();
+	error_tab = ft_create_error_tab();
 	tab = ft_read(str, line);
-	ft_read_data(tab, lemin, -1, error);
+	ft_read_data(tab, lemin, -1, error_tab);
 	return (1);
 }

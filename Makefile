@@ -4,7 +4,7 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-NAME = lem_in
+NAME = lem-in
 
 LIBFT = libft/libft.a
 
@@ -41,7 +41,7 @@ all : $(NAME)
 
 $(NAME) : $(SRC) $(LIBFT)
 		@$(CC) $(FLAGS) $(INCLUDES) $(SRC) -o $(NAME) $(LIBFT)
-			@printf "\n\033[032mFiller Compilation Successful\033[0m\n"
+			@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
 
 $(LIBFT) :
 		@make -C libft
