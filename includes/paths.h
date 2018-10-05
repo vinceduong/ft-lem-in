@@ -25,8 +25,8 @@ t_pathlist		*update_paths(t_lemin *l, t_pathlist *paths);
 int 		paths(t_lemin *l);
 t_path  *delete_used_paths(t_pathlist *paths, t_path *finished);
 void		print_path(t_path *path);
-void print_nodelist(t_nodelist *nl);
+void		print_nodelist(t_nodelist *nl);
 void 		print_path_list(t_pathlist *pl);
-int is_dead_node(t_lemin *l, int node);
+int			is_dead_node(t_lemin *l, int node);
 
 #endif

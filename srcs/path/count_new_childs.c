@@ -11,7 +11,7 @@ int	count_new_childs(t_lemin *l, t_path *p)
 	printf("Current node = %d\n", p->curr);
 	while (i < l->m.nbcases)
 	{
-		if (l->m.graph[p->curr][i] && !l->m.graph[i][i])
+		if (l->m.graph[p->curr][i] && l->m.graph[i][i] != 1 && l->m.graph[i][i] != -1)
 		{
 			count++;
 			printf ("\t%d is a new child!\n", i);

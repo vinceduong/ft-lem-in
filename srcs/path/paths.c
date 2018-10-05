@@ -52,6 +52,7 @@ t_pathlist *findpathlist(t_lemin *l, t_pathlist *paths)
 int 	paths(t_lemin *l)
 {
 		t_pathlist	*paths;
+		ft_putstr("In paths\n");
 
 		print_matrix(l);
 
@@ -65,6 +66,7 @@ int 	paths(t_lemin *l)
 			ft_putstr("start_node is dead");
 			return (0);
 		}
+		print_matrix(l);
 		if (!(paths = findpathlist(l, paths)))
 		{
 			ft_putstr("find_pathlist failed\n");
