@@ -21,18 +21,8 @@ static int find_s(char **tab, int i)
 {
 	while (tab[i][0] == '#' && ft_chrstr(tab[i], ' ') == 0)
 		i++;
-	/*if (tab[i][0] != '#' && ft_chrstr(tab[i], '-') == 1)
-		return (0);*/
 	return (i);
 }
-
-/*static int ft_se(char *str)
-{
-	if (ft_chrstr(str, ' ') == 1 && ft_chrstr(str, '-') == 0)
-		return (1);
-	return (0);
-}*/
-
 
 static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 {
@@ -43,7 +33,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 			ft_strcmp(tab[i], "##start") == 0 ? error_tab[0][0] = find_s(tab, i) : 0;
 			ft_strcmp(tab[i], "##end") == 0  ? error_tab[1][0] = find_s(tab, i) : 0;
 		}
-		else if (tab[i][0] == '#')
+		else if (tab[i][0] == '#' || tab[i][0] == 'L')
 			;
 		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
 		{
@@ -59,7 +49,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 				ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
 			error_tab[2][0]++;
 		else
-			;//break ;
+			break ;
 	}
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];

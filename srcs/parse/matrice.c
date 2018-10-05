@@ -18,9 +18,9 @@ int ft_check_value(int **error_tab)
 	int i;
 
 	i = 0;
-	while (i != 4)
+	while (i != 6)
 	{
-		if (error_tab[i][0] == 0)
+		if (error_tab[i][0] <= 0)
 			return (0);
 		i++;
 	}
@@ -30,11 +30,13 @@ int ft_check_value(int **error_tab)
 static char *ft_strdup_matrice(char *tab)
 {
 	int i;
+	char *str;
 
 	i = 0;
 	while (tab[i] != ' ')
 		i++;
-	return (ft_strndup(tab, i));
+	str = ft_strndup(tab, i);
+	return (str);
 }
 
 void ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
@@ -44,25 +46,20 @@ void ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 
 	i = 0;
 	n = 0;
-	lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases);
+	lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases + 1);
 	i = error_tab[5][0];
-	printf("%d\n", lemin->m.nbcases);
-	while (n < lemin->m.nbcases)
+	lemin->m.cases[0] = ft_strdup_matrice(tab[error_tab[0][0]]);
+	lemin->m.cases[lemin->m.nbcases] = ft_strdup_matrice(tab[error_tab[1][0]]);
+	while (i < error_tab[6][0])
 	{
 		if (tab[i][0] == '#')
 			i++;
 		else
 		{
-			if (n == 0)
-				lemin->m.cases[n] = ft_strdup_matrice(tab[error_tab[0][0]]);
-			else if (n == lemin->m.nbcases)
-				lemin->m.cases[n] = ft_strdup_matrice(tab[error_tab[1][0]]);
+			if (n == 0 || n == lemin->m.nbcases || lemin->m.cases[n])
+				;
 			else
-			{
-				if (n != error_tab[0][0] || n != error_tab[1][0])
-					lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
-			}
-			printf("%s\n", lemin->m.cases[n]);
+				lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
 			i++;
 			n++;
 		}
