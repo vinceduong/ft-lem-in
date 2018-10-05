@@ -9,14 +9,16 @@ static int **ft_fill_zero(t_lemin *lemin)
 	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 1);
 	i = 0;
 	n = 0;
-	while (n < lemin->m.nbcases)
+	while (n < lemin->m.nbcases + 1)
 	{
 		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 1);
-		while (i < lemin->m.nbcases)
+		while (i < lemin->m.nbcases + 1)
 		{
 			tab[n][i] = 0;
+			//printf("%d", tab[n][i]);
 			i++;
 		}
+		//printf(" = %d\n", n);
 		n++;
 		i = 0;
 	}
@@ -69,14 +71,17 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 	int i;
 	int index;
 	char *str;
+	int j;
 
 	n = 0;
 	i = 0;
+	j = 0;
 	index = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
 	index = error_tab[6][0];
-	while (index < lemin->nb_link + error_tab[6][0])
+	while (j < lemin->nb_link)
 	{
+		printf("%s\n", lemin->m.cases[1]);
 		if (tab[index][0] == '#')
 			index++;
 		else
@@ -85,10 +90,12 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 			n = find_wich_char(lemin, str);
 			str = ft_strdup(tab[index] + ft_find_minus(tab[index]));
 			i = find_wich_char(lemin, str);
+			printf("N = %d I = %d\n", n, i);
 			lemin->m.graph[n][i] = 1;
 			lemin->m.graph[i][n] = 1;
 			free(str);
 			index++;
+			j++;
 		}
 	}
 }
