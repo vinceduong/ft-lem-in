@@ -4,12 +4,14 @@ t_path *delete_path(t_pathlist *paths, t_path *del)
 {
 	t_path *tmp;
 
+	ft_putstr("In delete_path\n");
 	tmp = paths->start;
-	while (tmp && tmp != del)
+	if (tmp == del)
+		return (paths->start = tmp->next);
+	while (tmp->next && tmp->next != del)
 		tmp = tmp->next;
-	if (tmp->previous)
-		tmp->previous->next = tmp->next;
+	tmp->next = tmp->next->next;
 	if (tmp->next)
-		tmp->next->previous = tmp->previous;
+		tmp->next->previous = tmp;
 	return (tmp->next);
 }

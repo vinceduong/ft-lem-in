@@ -15,7 +15,7 @@ t_path *delete_used_paths(t_pathlist *paths, t_path *finished)
 			{
 				if (!node->nb && check_nodelist(finished->nodes, node->nb))
 				{
-					return (delete_path(paths, tmp));
+					delete_path(paths, tmp);
 					break ;
 				}
 				node = node->next;

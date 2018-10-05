@@ -14,6 +14,8 @@ int fill_paths(t_lemin *l, t_pathlist *paths)
 
 	size = 0;
 	tmp = paths->start;
+	if (!tmp)
+		return (0);
 	while (tmp)
 	{
 		size++;

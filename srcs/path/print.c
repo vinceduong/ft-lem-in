@@ -25,3 +25,21 @@ void print_nodelist(t_nodelist *nl)
 		tmp = tmp->next;
 	}
 }
+
+void print_path_list(t_pathlist *pl)
+{
+	t_path *tmp;
+	int i;
+
+	i  = 0;
+	tmp = pl->start;
+	printf("-------------PATHLIST------------\n");
+	while (tmp)
+	{
+		printf("Path %d :\n", i);
+		i++;
+		print_path(tmp);
+		tmp = tmp->next;
+	}
+	printf("-------------END PATHlIST------------\n");
+}

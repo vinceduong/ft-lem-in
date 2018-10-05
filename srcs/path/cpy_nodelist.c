@@ -5,7 +5,10 @@ t_nodelist *cpy_nodelist(t_nodelist *src)
 	t_nodelist	*dest;
 	t_node 			*tmp;
 
-	dest = (t_nodelist*)malloc(sizeof(t_nodelist));
+	ft_putstr("In cpy_nodelist\n");
+	if (!(dest = init_nodelist()))
+		return (NULL);
+	dest->length = 0;
 	tmp = src->start;
 	while (tmp)
 	{
