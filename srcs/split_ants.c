@@ -1,14 +1,15 @@
-#include "../includes/lem_in.h"
+#include "lem_in.h"
 
-int ft_clean(int **lpath, int i)
+static int ft_clean(int **lpath, int i)
 {
 	while (i)
 		free(lpath[i--]);
 	free(lpath);
-	exit(0);
+	//exit(0);
+	return (1);
 }
 
-int ft_check_lost(int **lpath, int ant)
+static int ft_check_lost(int **lpath, int ant)
 {
 	int value;
 	int i;
@@ -23,7 +24,7 @@ int ft_check_lost(int **lpath, int ant)
 	return (value == ant ? 0 : ant - value);
 }
 
-int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
+static int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
 {
 	int value;
 	int i2;
@@ -55,7 +56,7 @@ int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
 	return (lpath);
 }
 
-void ft_put_ant_in_tube(int **lpath, t_lemin *lemin, int i)
+static void ft_put_ant_in_tube(int **lpath, t_lemin *lemin, int i)
 {
 	int n;
 	int ant;
@@ -70,7 +71,7 @@ void ft_put_ant_in_tube(int **lpath, t_lemin *lemin, int i)
 		* (lpath[i][1] == 0 ? 1 : lpath[i][1] + 1))))
 		{
 			ft_clean(&lemin->a.rep[i], i);
-			exit(0);
+			//exit(0);
 		}
 		lpath[i][1] != 0 ? lemin->a.rep[i][lpath[i][1] + 1] = 0 :
 		(lemin->a.rep[i][0] = 0);
@@ -88,7 +89,7 @@ void ft_put_ant_in_tube(int **lpath, t_lemin *lemin, int i)
 	}
 }
 
-int **ft_length_of_each_path(int **lpath, t_lemin *lemin)
+static int **ft_length_of_each_walk(int **lpath, t_lemin *lemin)
 {
 	int i;
 
@@ -118,7 +119,7 @@ int split_ants(t_lemin *lemin)
 	int **lpath;
 
 	lpath = 0;
-	lpath = ft_length_of_each_path(lpath, lemin);
+	lpath = ft_length_of_each_walk(lpath, lemin);
 	if (lpath == 0)
 		return (0);
 	lpath = ft_assign_ant(lpath, lemin, 0, lemin->a.nbants);

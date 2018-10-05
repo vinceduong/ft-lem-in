@@ -3,7 +3,7 @@
 int	main(void)
 {
 	t_lemin lemin;
-	int i;
+/*	int i;
 	i = 0;
 	lemin.m.graph = (int **)malloc(sizeof (int *) * 4);
 	while (i < 4)
@@ -16,20 +16,19 @@ lemin.m.graph[1][0]=1;lemin.m.graph[1][1]=0;lemin.m.graph[1][2]=0;lemin.m.graph[
 lemin.m.graph[2][0]=1;lemin.m.graph[2][1]=0;lemin.m.graph[2][2]=0;lemin.m.graph[2][3] =1;
 lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[3][3] =0;
 	lemin.m.nbcases = 4;
-	/*if (!parser(&lemin))
+	*/if (!parser(&lemin))
 	{
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");
 		return (0);
-	}*/
-	lemin.nbpaths = 0;
+	}
 	if (!paths(&lemin))
 	{
 		ft_printf("Pathing failed\n");
 		ft_printf("ERROR\n");
 		return (0);
 	}
-	i = 0;
+	int i = 0;
 	printf("-----THE FINALS PATHS-----\n");
 	while (i < lemin.nbpaths)
 	{
