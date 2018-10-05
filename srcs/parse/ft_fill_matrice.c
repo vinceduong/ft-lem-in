@@ -63,31 +63,32 @@ static int ft_find_minus(char *tab)
 	return (i);
 }
 
-void ft_patatruc(char **tab, t_lemin *lemin)
+void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 {
 	int n;
 	int i;
 	int index;
-	int index2;
 	char *str;
 
 	n = 0;
 	i = 0;
 	index = 0;
-	index2 = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
-	while (ft_chrstr(tab[index2], '-') == 0)
-		index2++;
-	while (index < lemin->nb_link)
+	index = error_tab[6][0];
+	while (index < lemin->nb_link + error_tab[6][0])
 	{
-		str = ft_strdup_c(tab[index2 + index]);
-		n = find_wich_char(lemin, str);
-		str = ft_strdup(tab[index + index2] + ft_find_minus(tab[index + index2]));
-		i = find_wich_char(lemin, str);
-		lemin->m.graph[n][i] = 1;
-		lemin->m.graph[i][n] = 1;
-		print_matrix(lemin);
-		free(str);
-		index++;
+		if (tab[index][0] == '#')
+			index++;
+		else
+		{
+			str = ft_strdup_c(tab[index]);
+			n = find_wich_char(lemin, str);
+			str = ft_strdup(tab[index] + ft_find_minus(tab[index]));
+			i = find_wich_char(lemin, str);
+			lemin->m.graph[n][i] = 1;
+			lemin->m.graph[i][n] = 1;
+			free(str);
+			index++;
+		}
 	}
 }

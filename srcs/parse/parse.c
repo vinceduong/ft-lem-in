@@ -6,6 +6,8 @@ end = [1];
 ant = [2];
 tube = [3];
 room = [4];
+first_room = [5];
+first_tube = [6];
 */
 
 /*void ft_clear_1(char **tab, int i)
@@ -15,12 +17,21 @@ room = [4];
 	free(tab);
 }*/
 
-static int ft_se(char *str)
+static int find_s(char **tab, int i)
+{
+	while (tab[i][0] == '#' && ft_chrstr(tab[i], ' ') == 0)
+		i++;
+	/*if (tab[i][0] != '#' && ft_chrstr(tab[i], '-') == 1)
+		return (0);*/
+	return (i);
+}
+
+/*static int ft_se(char *str)
 {
 	if (ft_chrstr(str, ' ') == 1 && ft_chrstr(str, '-') == 0)
 		return (1);
 	return (0);
-}
+}*/
 
 
 static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
@@ -29,24 +40,26 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 	{
 		if (tab[i][0] == '#' && tab[i][1] == '#')
 		{
-			if (ft_strcmp(tab[i], "##start") == 0)
-				ft_se(tab[i + 1]) == 1 ? error_tab[0][0] = i + 1 : 0;
-			else if (ft_strcmp(tab[i], "##end") == 0)
-				ft_se(tab[i + 1]) == 1 ? error_tab[1][0] = i + 1 : 0;
+			ft_strcmp(tab[i], "##start") == 0 ? error_tab[0][0] = find_s(tab, i) : 0;
+			ft_strcmp(tab[i], "##end") == 0  ? error_tab[1][0] = find_s(tab, i) : 0;
 		}
-		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
-			error_tab[3][0]++;
-		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
-			error_tab[4][0]++;
 		else if (tab[i][0] == '#')
 			;
+		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
+		{
+			error_tab[6][0] == 0 ? error_tab[6][0] = i : 0;
+			error_tab[3][0]++;
+		}
+		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
+		{
+			error_tab[5][0] == 0 ? error_tab[5][0] = i : 0;
+			error_tab[4][0]++;
+		}
 		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
 				ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
-		{
 			error_tab[2][0]++;
-		}
 		else
-			; //ft_error();
+			;//break ;
 	}
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];
@@ -71,9 +84,9 @@ static int **ft_create_error_tab(void)
 	int **tab;
 
 	i = 0;
-	if (!(tab = (int**)malloc(sizeof(int*) * 6)))
+	if (!(tab = (int**)malloc(sizeof(int*) * 7)))
 		exit(0);
-	while (i != 6)
+	while (i < 7)
 	{
 		if (!(tab[i] = (int*)malloc(sizeof(int) * 1)))
 		{
@@ -102,5 +115,6 @@ int parser(t_lemin *lemin)
 	error_tab = ft_create_error_tab();
 	tab = ft_read(str, line);
 	ft_read_data(tab, lemin, -1, error_tab);
+	print_matrix(lemin);
 	return (1);
 }
