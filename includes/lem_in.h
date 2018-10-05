@@ -88,7 +88,7 @@ int	record(t_lemin *lemin);
 int	display(t_lemin *lemin);
 
 //foncitons de Cam
-void ft_patatruc(char **tab, t_lemin *lemin);
+void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab);
 void ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab);
 int		ft_chrstr(char *find, int c);
 int ft_check_value(int **error_tab);
