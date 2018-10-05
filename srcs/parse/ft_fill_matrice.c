@@ -6,13 +6,12 @@ static int **ft_fill_zero(t_lemin *lemin)
 	int i;
 	int n;
 
-	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases);
+	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 1);
 	i = 0;
 	n = 0;
-	printf("%d\n", lemin->m.nbcases);
 	while (n < lemin->m.nbcases)
 	{
-		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases);
+		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 1);
 		while (i < lemin->m.nbcases)
 		{
 			tab[n][i] = 0;
@@ -60,6 +59,7 @@ static int ft_find_minus(char *tab)
 	i = 0;
 	while (tab[i] != '-')
 		i++;
+	i++;
 	return (i);
 }
 
@@ -81,18 +81,13 @@ void ft_patatruc(char **tab, t_lemin *lemin)
 	while (index < lemin->nb_link)
 	{
 		str = ft_strdup_c(tab[index2 + index]);
-		printf("%s\n", "yo");
 		n = find_wich_char(lemin, str);
-		printf("%s\n", "yo");
 		str = ft_strdup(tab[index + index2] + ft_find_minus(tab[index + index2]));
-		printf("%s\n", "yo");
 		i = find_wich_char(lemin, str);
-		printf("%s\n", "yo");
-		printf("%d\n", lemin->m.graph[n][i]);
 		lemin->m.graph[n][i] = 1;
 		lemin->m.graph[i][n] = 1;
+		print_matrix(lemin);
 		free(str);
 		index++;
 	}
-	printf("%s\n", "yo");
 }

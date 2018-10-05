@@ -27,10 +27,13 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 {
 	while (tab[++i])
 	{
-		if (ft_strcmp(tab[i], "##start") == 0)
-			ft_se(tab[i + 1]) == 1 ? error_tab[0][0] = i + 1 : 0;
-		else if (ft_strcmp(tab[i], "##end") == 0)
-			ft_se(tab[i + 1]) == 1 ? error_tab[1][0] = i + 1 : 0;
+		if (tab[i][0] == '#' && tab[i][1] == '#')
+		{
+			if (ft_strcmp(tab[i], "##start") == 0)
+				ft_se(tab[i + 1]) == 1 ? error_tab[0][0] = i + 1 : 0;
+			else if (ft_strcmp(tab[i], "##end") == 0)
+				ft_se(tab[i + 1]) == 1 ? error_tab[1][0] = i + 1 : 0;
+		}
 		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
 			error_tab[3][0]++;
 		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0)
@@ -99,6 +102,5 @@ int parser(t_lemin *lemin)
 	error_tab = ft_create_error_tab();
 	tab = ft_read(str, line);
 	ft_read_data(tab, lemin, -1, error_tab);
-	printf("%s\n", "salut");
 	return (1);
 }
