@@ -10,7 +10,6 @@ t_path		*new_path(t_path *path, int nodenb);
 void		*add_path(t_pathlist *pathlist, t_path *path);
 t_path		*merge_paths(t_pathlist *paths, t_pathlist *news, t_path *old);
 t_path		*delete_path(t_pathlist *paths, t_path *del);
-void		update_bl(t_nodelist *bl, t_path *path);
 t_nodelist	*cpy_nodelist(t_nodelist *src);
 t_path		*init_path(void);
 t_pathlist	*init_pathlist(void);
@@ -28,5 +27,6 @@ t_path  *delete_used_paths(t_pathlist *paths, t_path *finished);
 void		print_path(t_path *path);
 void print_nodelist(t_nodelist *nl);
 void 		print_path_list(t_pathlist *pl);
+int is_dead_node(t_lemin *l, int node);
 
 #endif

@@ -35,6 +35,7 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		print_path(&lemin.p[i]);
 		i++;
 	}
+	print_matrix(&lemin);
 	/*
 	if (!split_ants(&lemin))
 	{

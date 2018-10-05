@@ -60,6 +60,11 @@ int 	paths(t_lemin *l)
 			ft_putstr("init_pathlist failed\n");
 			return (0);
 		}
+		if (is_dead_node(l, 0))
+		{
+			ft_putstr("start_node is dead");
+			return (0);
+		}
 		if (!(paths = findpathlist(l, paths)))
 		{
 			ft_putstr("find_pathlist failed\n");

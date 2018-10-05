@@ -29,9 +29,9 @@ SRC = 	srcs/main.c \
 			srcs/path/new_path_list.c \
 			srcs/path/paths.c \
 			srcs/path/sort_paths.c \
-			srcs/path/update_bl.c \
 			srcs/path/update_paths.c \
 			srcs/path/delete_used_paths.c \
+			srcs/path/is_dead_node.c \
 			srcs/path/print.c\
 			srcs/display.c\
 			srcs/record.c\
