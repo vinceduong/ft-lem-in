@@ -16,12 +16,15 @@ lemin.m.graph[1][0]=1;lemin.m.graph[1][1]=0;lemin.m.graph[1][2]=0;lemin.m.graph[
 lemin.m.graph[2][0]=1;lemin.m.graph[2][1]=0;lemin.m.graph[2][2]=0;lemin.m.graph[2][3] =1;
 lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[3][3] =0;
 	lemin.m.nbcases = 4;
-	*/if (!parser(&lemin))
+	*/
+	printf("Salut a tous\n");
+	if (!parser(&lemin))
 	{
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");
 		return (0);
 	}
+	printf("Salut a tous\n");
 	if (!paths(&lemin))
 	{
 		ft_printf("Pathing failed\n");
