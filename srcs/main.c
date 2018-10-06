@@ -27,6 +27,7 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 	printf("Salut a tous\n");
 	if (!paths(&lemin))
 	{
+		print_matrix(&lemin);
 		ft_printf("Pathing failed\n");
 		ft_printf("ERROR\n");
 		return (0);
@@ -38,7 +39,6 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		print_path(&lemin.p[i]);
 		i++;
 	}
-	print_matrix(&lemin);
 	/*
 	if (!split_ants(&lemin))
 	{
