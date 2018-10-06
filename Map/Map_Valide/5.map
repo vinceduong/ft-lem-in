@@ -5,10 +5,17 @@ room1 5 6
 room2 8 9
 room3 7 8
 room4 7 6
+room5 3 5
+room6 4 5
 ##end
 end 3 5
 start-room1
+start-room2
+start-room4
+start-room6
 room1-room2
 room2-room3
-room3-room4
+room1-end
+room6-end
+room3-end
 room4-end

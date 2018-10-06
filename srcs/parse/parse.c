@@ -53,7 +53,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 	}
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];
-	ft_check_value(error_tab) == 0 ? exit(0) : 0;
+	//ft_check_value(error_tab) == 0 ? 1 : 0;
 	ft_create_matrice(tab, lemin, error_tab);
 }
 

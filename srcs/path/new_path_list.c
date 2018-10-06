@@ -16,6 +16,8 @@ t_pathlist *new_path_list(t_lemin *l, t_pathlist *paths)
 	}
 	while (tmp)
 	{
+			printf("New path to add\n");
+			print_path(tmp);
 			add_new_paths(l, new_paths, tmp);
 			tmp = tmp->next;
 	}

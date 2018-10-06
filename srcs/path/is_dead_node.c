@@ -13,11 +13,14 @@ int is_dead_node(t_lemin *l, int node)
 	{
 		if (i == l->m.nbcases - 1)
 			return (0);
-		else if (!(l->m.graph[i][i] == -1 || l->m.graph[i][i] == 2)
-		&& l->m.graph[node][i] == 1 && !is_dead_node(l, i))
+		if (node != i && l->m.graph[node][node] != 2 && !is_dead_node(l, i))
+		{
+			printf("Is_valid\n");
 			nb_valid_nodes++;
+		}
 		i++;
 	}
+	printf("curr = %d, nb_valid_nodes = %d\n", node, nb_valid_nodes);
 	l->m.graph[node][node] = (nb_valid_nodes > 0 ? 2 : -1);
 	return (nb_valid_nodes == 0);
 }

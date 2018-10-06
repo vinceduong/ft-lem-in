@@ -4,7 +4,6 @@ void		*add_path(t_pathlist *pathlist, t_path *path)
 {
 	t_path	*tmp;
 
-	print_path_list(pathlist);
 	tmp = pathlist->start;
 	if (!tmp)
 	{
@@ -15,5 +14,6 @@ void		*add_path(t_pathlist *pathlist, t_path *path)
 		tmp = tmp->next;
 	tmp->next = path;
 	path->previous = tmp;
+	path->next = NULL;
 	return (pathlist);
 }

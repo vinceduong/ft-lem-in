@@ -11,7 +11,11 @@ t_pathlist	*add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 	i = 0;
 	new_childs = 0;
 	if (p->ended)
-		add_path(new_paths, p);
+	{
+		ft_putstr("Path already ended\n");
+		add_path(new_paths, new_path(p, -1));
+		ft_putstr("Path added\n");
+	}
 	while (i < l->m.nbcases && !p->ended)
 	{
 		if (l->m.graph[p->curr][i] && l->m.graph[i][i] != 1 && l->m.graph[i][i] != -1)
@@ -21,14 +25,11 @@ t_pathlist	*add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 				return (NULL);
 			ft_putstr("Node created\n");
 			new_p = new_path(p, i);
-			ft_putstr("HAHAHAH\n");
 			add_path(new_paths, new_p);
-			ft_putstr("HAHAHAH\n");
 			if (i == l->m.nbcases - 1)
 			{
 				ft_putstr("JSGDKJSHKDJWHS\n");
 				new_p->ended = 1;
-				new_p->nodes->length--;
 				ft_putstr("Path ended\n");
 			}
 			else

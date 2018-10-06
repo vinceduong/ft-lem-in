@@ -33,11 +33,16 @@ t_path		*new_path(t_path *path, int nodenb)
 	t_nodelist 	*nl;
 
 	ft_putstr("In new_path\n");
-	if (!(node = new_node(nodenb)))
+	if (nodenb != -1)
 	{
-		ft_putstr("new_node failed\n");
-		return (NULL);
+		if (!(node = new_node(nodenb)))
+		{
+			ft_putstr("new_node failed\n");
+			return (NULL);
+		}
 	}
+	else
+		node = NULL;
 	if (!(new = init_path()))
 	{
 		ft_putstr("init_path failed\n");
