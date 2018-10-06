@@ -13,9 +13,15 @@ start-room1
 start-room2
 start-room4
 start-room6
+<<<<<<< HEAD
 room1-room2
 room2-room3
 room1-end
 room6-end
 room3-end
 room4-end
+=======
+start-room7
+start-room8
+room8-end
+>>>>>>> 2a20af202a04489fc329ad58178d18d1eb61a4c7
