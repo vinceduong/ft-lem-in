@@ -65,6 +65,8 @@ static char **ft_read(char *str, char *line)
 		str = ft_strjoin(str, "\n\0");
 		ft_strdel(&line);
 	}
+	ft_putstr(str);
+	ft_putchar('\n');
 	return (ft_strsplit(str, '\n'));
 }
 

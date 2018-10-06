@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_pathlist	*add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
+void	add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 {
 	int					i;
 	int					new_childs;
@@ -22,13 +22,12 @@ t_pathlist	*add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 		{
 			printf("Curr = %d, Unused child = %d found\n", p->curr, i);
  			if (!(new_n = new_node(i)))
-				return (NULL);
+				return ;
 			ft_putstr("Node created\n");
 			new_p = new_path(p, i);
 			add_path(new_paths, new_p);
 			if (i == l->m.nbcases - 1)
 			{
-				ft_putstr("JSGDKJSHKDJWHS\n");
 				new_p->ended = 1;
 				ft_putstr("Path ended\n");
 			}
@@ -41,5 +40,4 @@ t_pathlist	*add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 		}
 		i++;
 	}
-	return (new_childs > 0 ? new_paths : NULL);
 }
