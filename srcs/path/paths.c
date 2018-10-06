@@ -63,7 +63,7 @@ int 	paths(t_lemin *l)
 		}
 		if (is_dead_node(l, 0))
 		{
-			ft_putstr("start_node is dead");
+			ft_putstr("start_node is dead\n");
 			return (0);
 		}
 		print_matrix(l);
