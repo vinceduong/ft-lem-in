@@ -1,33 +1,37 @@
 #include "lem_in.h"
 
-int is_dead_node(t_lemin *l, int node)
+void 			map_dead_nodes(t_lemin *l)
 {
-	int i;
-	int nb_valid_nodes;
+	int					i;
+	int					j;
+	int					count;
+	int					ended;
 
+	ended = 1;
 	i = 0;
-	ft_printf("In dead_node , node = %d\n", node);
-	nb_valid_nodes = 0;
-	l->m.graph[node][node] = 2;
 	while (i < l->m.nbcases)
 	{
-		if (l->m.graph[node][i])
+		printf("i = %d\n", i);
+		j = 0;
+		count = 0;
+		if (i && i != l->m.nbcases - 1 && l->m.graph[i][i] != -1)
 		{
-			printf("I = %d\n", i);
-			if (i == l->m.nbcases - 1)
+			while (j < l->m.nbcases)
 			{
-				printf("Is end\n");
-				return (0);
+				printf("j = %d\n", j);
+				count += l->m.graph[i][j] && (l->m.graph[j][j] != -1) ? 1 : 0;
+				j++;
 			}
-			if (!l->m.graph[i][i] && !is_dead_node(l, i))
+			if (count < 2)
 			{
-				printf("Is_valid\n");
-				nb_valid_nodes++;
+				l->m.graph[i][i] = -1;
+				ended = 0;
 			}
 		}
 		i++;
 	}
-	printf("curr = %d, nb_valid_nodes = %d\n", node, nb_valid_nodes);
-	l->m.graph[node][node] = (nb_valid_nodes > 0 ? 2 : -1);
-	return (nb_valid_nodes == 0);
+	if (!ended)
+		map_dead_nodes(l);
+	return ;
+
 }

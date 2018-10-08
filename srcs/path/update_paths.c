@@ -2,7 +2,9 @@
 
 int compare_childs(t_path *p1, t_path *p2)
 {
-	return (p1->childs > p2->childs);
+	if (!p1->ended && !p2->ended)
+		return (p1->childs > p2->childs);
+	return (0);
 }
 
 t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
@@ -21,6 +23,7 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 		{
 			ft_putstr("No childs\n");
 			tmp = delete_path(paths, tmp);
+			ft_putstr("Path deleted");
 		}
 		else if (!tmp->ended)
 		{
@@ -43,6 +46,13 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 		printf("faillist");
 		return (0);
 	}
+	/*tmp = newlist->start;
+	while (tmp)
+	{
+		if(tmp->ended)
+			delete_used_paths(newlist, tmp);
+		tmp = tmp->next;
+	}*/
 	paths = newlist;
 	return (newlist);
 }

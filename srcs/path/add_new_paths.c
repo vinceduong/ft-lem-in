@@ -29,6 +29,8 @@ void	add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 			if (i == l->m.nbcases - 1)
 			{
 				new_p->ended = 1;
+				delete_used_paths(new_paths, new_p, i);
+				print_path_list(new_paths);
 				ft_putstr("Path ended\n");
 			}
 			else

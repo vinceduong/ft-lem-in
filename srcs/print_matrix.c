@@ -24,3 +24,15 @@ void print_matrix(t_lemin *l)
 		printf("\n");
 	}
 }
+
+
+void print_ant_road(t_lemin *lemin)
+{
+	int n;
+
+	n = 0;
+	while (n++ < lemin->nbpaths)
+	{
+		printf("%d\n", lemin->a.rep[n][0]);
+	}
+}
