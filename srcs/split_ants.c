@@ -16,7 +16,7 @@ static int ft_check_lost(int **lpath, int ant)
 
 	value = 0;
 	i = 0;
-	while (lpath[i][0] != 0 || lpath[i][1] != 0)
+	while (lpath[i][1] != 0)
 	{
 		value += lpath[i][1];
 		i++;
@@ -33,26 +33,33 @@ static int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
 	i2 = 0;
 	while (ant)
 	{
-		if (i == lemin->nbpaths)
-			value = ant / lemin->nbpaths;
+		if (i == lemin->nbpaths - 1)
+		{
+			//printf("wesh\n");
+			value = ant / i;
+		}
 		else
+		{
 			value = lpath[i + 1][0] - lpath[i][0];
+		}
+		value == 0 ? value = lpath[i + 1][0] / lpath[i][0] : 0;
 		i2 = i;
 		if (ant - (value * i) < 0)
 		{
-			while (ant - (value * i) < 0)
-			{
-				i--;
-				i2--;
-			}
+			while (ant - (value * i2) < 0)
+				i2 == -1 ? 0 : i2--;
+			ant = ant - (value * i2);
 		}
 		else
+		{
+			i == 0 ? ant -= value : 0;
 			ant = ant - (value * i);
+		}
 		while (i2-- > 0)
 			lpath[i2][1] += value;
-		i++;
+		i != lemin->nbpaths ? i++ : 0;
 	}
-	ft_check_lost(lpath, lemin->a.nbants);
+	ft_check_lost(lpath, lemin->a.nbants) == 1 ? 0 : (ft_assign_ant(lpath, lemin, 0, ft_check_lost(lpath, lemin->a.nbants)));
 	return (lpath);
 }
 
@@ -65,7 +72,7 @@ static void ft_put_ant_in_tube(int **lpath, t_lemin *lemin, int i)
 	n = 0;
 	ant = 0;
 	er = 0;
-	while (i < lemin->nbpaths)
+	while (i < lemin->nbpaths + 1)
 	{
 		if (!(lemin->a.rep[i] = (int*)malloc(sizeof(int)
 		* (lpath[i][1] == 0 ? 1 : lpath[i][1] + 1))))
@@ -120,11 +127,7 @@ int split_ants(t_lemin *lemin)
 
 	lpath = 0;
 	lpath = ft_length_of_each_walk(lpath, lemin);
-	if (lpath == 0)
-		return (0);
 	lpath = ft_assign_ant(lpath, lemin, 0, lemin->a.nbants);
-	if (lpath == 0)
-		return (0);
 	ft_put_ant_in_tube(lpath, lemin, 0);
 	return (1);
 }
