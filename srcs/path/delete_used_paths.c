@@ -12,7 +12,7 @@ void delete_used_paths(t_pathlist *paths, t_path *finished, int end)
 	while (tmp)
 	{
 		deleted = 0;
-		if (tmp != finished && finished->nodes->length <= tmp->nodes->length)
+		if (tmp != finished && (finished->nodes->length <= tmp->nodes->length || !tmp->ended))
 		{
 			printf("In condition for delete\n");
 			print_path(tmp);
