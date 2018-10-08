@@ -28,6 +28,7 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	int antpos;
 	int wave;
 	t_node *room;
+	char *tmp;
 
 	antpos = 1;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
@@ -36,12 +37,15 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 		room = lemin->p[pathnumber].nodes->start->next;
 		while (room)
 		{
+			if (!(lemin->r.ops[wave]))
+			{
+				lemin->r.ops[wave] = "a";
+			}
 			lemin->r.ops[wave] = ft_strjoin(lemin->r.ops[wave],
 				step_writer(lemin, lemin->a.rep[pathnumber][antpos], room));
 			room = room->next;
 			wave++;
 		}
-		lemin->r.ops[wave] = NULL;
 		antpos++;
 	}
 	return (1);
@@ -49,13 +53,14 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 
 int	record(t_lemin *lemin)
 {
+	printf("tintin\n");
 	int	pathnumber;
 
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
 		return (0);
-	while (pathnumber < lemin->nbpaths)
+	while (pathnumber <= lemin->nbpaths)
 	{
 		launch_path(lemin, pathnumber);
 		pathnumber++;
