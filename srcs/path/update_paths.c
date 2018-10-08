@@ -39,7 +39,7 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 		return (NULL);
 	if (ended)
 		return (paths);
-	//sort_paths(paths, compare_childs);
+	sort_paths(paths, compare_childs);
 	ft_putstr("sort_paths worked\n");
 	if (!(newlist = new_path_list(l, paths)))
 	{
