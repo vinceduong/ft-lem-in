@@ -20,10 +20,7 @@ int is_dead_node(t_lemin *l, int node)
 				return (0);
 			}
 			if (!l->m.graph[i][i] && !is_dead_node(l, i))
-			{
-				printf("Is_valid\n");
 				nb_valid_nodes++;
-			}
 		}
 		i++;
 	}

@@ -7,17 +7,13 @@ room3 0 0
 room4 0 0
 room5 4 5
 room6 4 5
-room7 4 5
-room8 4 5
 
 ##end
 end 3 5
 start-room1
-start-room2
-start-room3
 start-room4
-start-room5
-start-room6
-start-room7
-start-room8
-room8-end
+room1-room2
+room1-room3
+room4-room5
+room4-room6
+room3-end
