@@ -33,6 +33,6 @@ void print_ant_road(t_lemin *lemin)
 	n = 0;
 	while (n++ < lemin->nbpaths)
 	{
-		printf("%d\n", lemin->a.rep[n][0]);
+		;//printf("%d\n", lemin->a.rep[n][0]);
 	}
 }
