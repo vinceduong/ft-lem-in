@@ -17,14 +17,13 @@ lemin.m.graph[2][0]=1;lemin.m.graph[2][1]=0;lemin.m.graph[2][2]=0;lemin.m.graph[
 lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[3][3] =0;
 	lemin.m.nbcases = 4;
 	*/
-	printf("Salut a tous\n");
+	//printf("Salut a tous\n");
 	if (!parser(&lemin))
 	{
 		ft_printf("Parsing failed");
 		ft_printf("ERROR");
 		return (0);
 	}
-	printf("Salut a tous\n");
 	if (!paths(&lemin))
 	{
 		print_matrix(&lemin);
@@ -39,7 +38,7 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		print_path(&lemin.p[i]);
 		i++;
 	}
-	print_matrix(&lemin);
+	//print_matrix(&lemin);
 	/*
 	if (!split_ants(&lemin))
 	{

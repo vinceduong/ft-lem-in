@@ -79,9 +79,9 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 	index = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
 	index = error_tab[6][0];
+	printf("yo\n");
 	while (j < lemin->nb_link)
 	{
-		printf("%s\n", lemin->m.cases[1]);
 		if (tab[index][0] == '#')
 			index++;
 		else
@@ -90,7 +90,7 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 			n = find_wich_char(lemin, str);
 			str = ft_strdup(tab[index] + ft_find_minus(tab[index]));
 			i = find_wich_char(lemin, str);
-			printf("N = %d I = %d\n", n, i);
+			printf("%d %d\n", n, i);
 			lemin->m.graph[n][i] = 1;
 			lemin->m.graph[i][n] = 1;
 			free(str);

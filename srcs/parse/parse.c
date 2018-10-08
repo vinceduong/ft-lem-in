@@ -108,6 +108,7 @@ int parser(t_lemin *lemin)
 	error_tab = ft_create_error_tab();
 	tab = ft_read(str, line);
 	ft_read_data(tab, lemin, -1, error_tab);
+	printf("yo\n");
 	print_matrix(lemin);
 	return (1);
 }
