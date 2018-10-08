@@ -4,6 +4,7 @@ int compare_childs(t_path *p1, t_path *p2)
 {
 	if (!p1->ended && !p2->ended)
 		return (p1->childs > p2->childs);
+	return (0);
 }
 
 t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
