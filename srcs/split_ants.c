@@ -28,20 +28,22 @@ static int **ft_assign_ant(int **lpath, t_lemin *lemin, int i, int ant)
 {
 	int value;
 	int i2;
+	int path;
 
+	path = lemin->nbpaths == 1 ? lemin->nbpaths : lemin->nbpaths - 1;
 	value = 0;
 	i2 = 0;
 	while (ant)
 	{
-		if (i == lemin->nbpaths - 1)
+		if (i == lemin->nbpaths - 1 && i != 0)
 		{
-			//printf("wesh\n");
 			value = ant / i;
 		}
 		else
 		{
 			value = lpath[i + 1][0] - lpath[i][0];
 		}
+		printf("wesh\n");
 		value == 0 ? value = lpath[i + 1][0] / lpath[i][0] : 0;
 		i2 = i;
 		if (ant - (value * i) < 0)
