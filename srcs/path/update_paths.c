@@ -43,6 +43,13 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 		printf("faillist");
 		return (0);
 	}
+	/*tmp = newlist->start;
+	while (tmp)
+	{
+		if(tmp->ended)
+			delete_used_paths(newlist, tmp);
+		tmp = tmp->next;
+	}*/
 	paths = newlist;
 	return (newlist);
 }
