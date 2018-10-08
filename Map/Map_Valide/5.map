@@ -14,6 +14,9 @@ start-room1
 start-room3
 start-room4
 room4-room5
+room2-room4
+room3-room4
+room2-room1
 room2-end
 room3-end
 room1-end
