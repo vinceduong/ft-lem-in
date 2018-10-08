@@ -44,7 +44,7 @@ OBJ = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(SRC) $(LIBFT)
-		@$(CC) $(FLAGS) $(INCLUDES) $(SRC) -o $(NAME) $(LIBFT)
+		@$(CC) $(INCLUDES) $(SRC) -o $(NAME) $(LIBFT)
 			@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
 
 $(LIBFT) :
