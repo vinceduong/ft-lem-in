@@ -8,6 +8,8 @@ void		*add_path(t_pathlist *pathlist, t_path *path)
 	if (!tmp)
 	{
 		pathlist->start = path;
+		path->next = NULL;
+		path->previous = NULL;
 		return (pathlist);
 	}
 	while (tmp->next)

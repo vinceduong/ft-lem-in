@@ -1,26 +1,41 @@
 #include "lem_in.h"
 
-void swap(t_pathlist *paths, t_path *a, t_path *b)
+void swap(t_pathlist **paths, t_path **a, t_path **b)
 {
 	t_path *next = NULL;
 	t_path *prev = NULL;
+	t_path *tmp;
 
-	if (!a->previous)
+	print_path(*a);
+	print_path(*b);
+	if (!(*a)->previous)
 	{
-		paths->start = b;
-		a->previous = b;
-		a->next = b->next;
-		b->next = a;
-		b->previous = NULL;
+		ft_putstr("Ici\n");
+		(*paths)->start = *b;
+		(*a)->previous = *b;
+		(*a)->next = (*b)->next;
+		(*b)->next = *a;
+		(*b)->previous = NULL;
 	}
 	else
 	{
-	next = a->next;
-	prev = a->previous;
-	a->next = b->next;
-	a->previous = b;
-	b->next = next;
-	b->previous = a;
+		ft_putstr("La\n");
+		next = (*a)->next;
+		ft_putstr("La1\n");
+		prev = (*a)->previous;
+		ft_putstr("La2\n");
+		printf("*a = %p\n", *a);
+		printf("*b = %p\n", *b);
+		tmp = (*b);
+		(*a)->next = (*b)->next;
+		ft_putstr("La3\n");
+		printf("*a = %p\n", *a);
+		printf("*b = %p\n", tmp);
+		tmp->next = *a;
+		ft_putstr("La4\n");
+		(*a)->previous = *b;
+		ft_putstr("La5\n");
+		tmp->previous = prev;
 	}
 
 	/*
@@ -49,11 +64,14 @@ void sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2))
 	{
 		if (comp(tmp, tmp->next))
 		{
-			swap(paths, tmp, tmp->next);
+
+			ft_putstr("in if comp\n");
+			swap(&paths, &tmp, &(tmp->next));
 			tmp = paths->start;
-			print_path(tmp);
-			print_path(tmp->next);
+			/*print_path(tmp);
+			print_path(tmp->next);*/
 		}
 		tmp = tmp->next;
 	}
+	ft_putstr("Sort finished\n");
 }

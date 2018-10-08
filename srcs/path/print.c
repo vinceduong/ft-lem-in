@@ -7,6 +7,9 @@ void		print_path(t_path *path)
 		printf("CURR = %d\n", path->curr);
 		printf("NCHILDS = %d\n", path->childs);
 		printf("LENGTH = %d\n", path->nodes->length);
+		printf("ADRESS    = %p\n", path);
+		printf("NEXT      = %p\n", path->next);
+		printf("PREVIOUS  = %p\n", path->previous);
 		print_nodelist(path->nodes);
 		printf("----------\n");
 }
