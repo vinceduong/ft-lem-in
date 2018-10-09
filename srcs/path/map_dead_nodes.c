@@ -11,14 +11,12 @@ void	map_dead_nodes(t_lemin *l)
 	i = 0;
 	while (i < l->m.nbcases)
 	{
-		printf("i = %d\n", i);
 		j = 0;
 		count = 0;
 		if (i && i != l->m.nbcases - 1 && l->m.graph[i][i] != -1)
 		{
 			while (j < l->m.nbcases)
 			{
-				printf("j = %d\n", j);
 				count += l->m.graph[i][j] && (l->m.graph[j][j] != -1) ? 1 : 0;
 				j++;
 			}
