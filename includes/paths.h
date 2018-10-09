@@ -28,5 +28,7 @@ void		print_path(t_path *path);
 void		print_nodelist(t_nodelist *nl);
 void 		print_path_list(t_pathlist *pl);
 void 			map_dead_nodes(t_lemin *l);
+void free_pathlist(t_pathlist *pathlist);
+
 
 #endif
