@@ -38,9 +38,9 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		print_path(&lemin.p[i]);
 		i++;
 	}
-	//print_matrix(&lemin);
-	/*
-	if (!split_ants(&lemin))
+	print_matrix(&lemin);
+	ft_printf("TINTIN \n");
+		if (!split_ants(&lemin))
 	{
 		ft_printf("Splitting failed");
 		ft_printf("ERROR");
@@ -57,6 +57,6 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		ft_printf("Display failed");
 		ft_printf("ERROR");
 		return (0);
-	}*/
+	}
 	return (0);
 }
