@@ -1,8 +1,8 @@
 #include "lem_in.h"
 
-t_pathlist *new_path_list(t_lemin *l, t_pathlist *paths)
+t_pathlist	*new_path_list(t_lemin *l, t_pathlist *paths)
 {
-	t_path			*tmp;
+	t_path		*tmp;
 	t_pathlist	*new_paths;
 
 	if (!paths->start)

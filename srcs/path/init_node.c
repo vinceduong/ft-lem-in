@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_nodelist *init_nodelist(void)
+t_nodelist	*init_nodelist(void)
 {
 	t_nodelist *nl;
 

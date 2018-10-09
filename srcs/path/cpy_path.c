@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int cpy_path(t_path *src, t_path *dest, t_node *node)
+int	cpy_path(t_path *src, t_path *dest, t_node *node)
 {
 	dest->nodes = cpy_nodelist(src->nodes);
 	dest->curr = src->curr;

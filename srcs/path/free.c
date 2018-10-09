@@ -1,11 +1,12 @@
 #include "lem_in.h"
-void free_node(t_node *node)
+
+void	free_node(t_node *node)
 {
 	if (node)
 		free(node);
 }
 
-void free_nodelist(t_nodelist *nodelist)
+void	free_nodelist(t_nodelist *nodelist)
 {
 	t_node *tmp;
 	t_node *tmp2;
@@ -23,7 +24,7 @@ void free_nodelist(t_nodelist *nodelist)
 	}
 }
 
-void free_path(t_path *path)
+void	free_path(t_path *path)
 {
 	if (path)
 	{
@@ -32,7 +33,7 @@ void free_path(t_path *path)
 	}
 }
 
-void free_pathlist(t_pathlist *pathlist)
+void	free_pathlist(t_pathlist *pathlist)
 {
 	t_path *tmp;
 	t_path *tmp2;

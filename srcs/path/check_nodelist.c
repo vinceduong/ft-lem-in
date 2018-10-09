@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int					check_nodelist(t_nodelist *nodelist, int nodenb)
+int	check_nodelist(t_nodelist *nodelist, int nodenb)
 {
 	t_node *tmp;
 
