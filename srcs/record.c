@@ -53,7 +53,6 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 
 int	record(t_lemin *lemin)
 {
-	printf("tintin\n");
 	int	pathnumber;
 
 	pathnumber = 0;

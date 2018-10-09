@@ -7,7 +7,8 @@ int	display(t_lemin *lemin)
 	i = 0;
 	while (lemin->r.ops[i])
 	{
-		ft_printf("%d\n", lemin->r.ops[i]);
+		lemin->r.ops[i] += 2;
+		ft_printf("%s \n", lemin->r.ops[i]);
 		i++;
 	}
 	return (1);
