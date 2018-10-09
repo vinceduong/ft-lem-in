@@ -27,24 +27,16 @@ void sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2))
 {
 	t_path 			*tmp;
 	t_path			*tmpsort;
-	//t_path			*tmpsort1;
-	//t_path 			*tmpsort2;
 
-	ft_putstr("In sort_path\n");
 	tmp = paths->start;
 	while (tmp->next)
 	{
 		if (comp(tmp, tmp->next))
 		{
-
-			ft_putstr("in if comp\n");
 			tmpsort = tmp->next;
 			swap(&paths, &tmp, &tmpsort);
 			tmp = paths->start;
-			/*print_path(tmp);
-			print_path(tmp->next);*/
 		}
 		tmp = tmp->next;
 	}
-	ft_putstr("Sort finished\n");
 }

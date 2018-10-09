@@ -1,24 +1,22 @@
 #include "lem_in.h"
 
-void 			map_dead_nodes(t_lemin *l)
+void	map_dead_nodes(t_lemin *l)
 {
-	int					i;
-	int					j;
-	int					count;
-	int					ended;
+	int		i;
+	int		j;
+	int		count;
+	int		ended;
 
 	ended = 1;
 	i = 0;
 	while (i < l->m.nbcases)
 	{
-		printf("i = %d\n", i);
 		j = 0;
 		count = 0;
 		if (i && i != l->m.nbcases - 1 && l->m.graph[i][i] != -1)
 		{
 			while (j < l->m.nbcases)
 			{
-				printf("j = %d\n", j);
 				count += l->m.graph[i][j] && (l->m.graph[j][j] != -1) ? 1 : 0;
 				j++;
 			}

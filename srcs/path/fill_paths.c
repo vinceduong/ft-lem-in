@@ -23,11 +23,7 @@ int fill_paths(t_lemin *l, t_pathlist *paths)
 	}
 	if (!(array = (t_path *)malloc(sizeof(t_path) * size)))
 		return (0);
-	print_path_list(paths);
-	printf("START OF SORTING\n");
 	sort_paths(paths, &compare_length);
-	printf("END OF SORTING\n");
-	print_path_list(paths);
 	tmp = paths->start;
 	i = 0;
 	while (tmp)
