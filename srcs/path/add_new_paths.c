@@ -18,7 +18,7 @@ void	add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 	}
 	while (i < l->m.nbcases && !p->ended)
 	{
-		if (l->m.graph[p->curr][i] && !l->m.graph[i][i])
+		if (l->m.graph[p->curr][i] && l->m.graph[i][i] != 1 && l->m.graph[i][i] != -1)
 		{
 			printf("Curr = %d, Unused child = %d found\n", p->curr, i);
  			if (!(new_n = new_node(i)))
