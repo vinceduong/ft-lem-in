@@ -56,12 +56,9 @@ void ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 			i++;
 		else
 		{
-			if (n == 0 || n == lemin->m.nbcases || lemin->m.cases[n])
-				n++;
-			else if (i == error_tab[5][0])
-				i++;
-			else
-				lemin->m.cases[n++] = ft_strdup_matrice(tab[i++]);
+			lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
+			n++;
+			i++;
 		}
 	}
 	ft_patatruc(tab, lemin, error_tab);
