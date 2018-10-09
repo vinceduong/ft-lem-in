@@ -39,13 +39,12 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		i++;
 	}
 	//print_matrix(&lemin);
-	/*
 	if (!split_ants(&lemin))
 	{
 		ft_printf("Splitting failed");
 		ft_printf("ERROR");
 		return (0);
-	}
+	}/*
 	if (!record(&lemin))
 	{
 		ft_printf("Recording failed");
