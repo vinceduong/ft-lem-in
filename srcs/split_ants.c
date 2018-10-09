@@ -29,7 +29,6 @@ static int ft_how_many(t_lemin *lemin, int ant, int length, int i)
 		return (ant);
 	else if (i == lemin->nbpaths - 1)
 	{
-		printf("ant = %d\n", ant);
 		value = ant / (i + 1);
 	}
 	else
