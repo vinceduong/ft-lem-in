@@ -1,16 +1,16 @@
 #include "lem_in.h"
 
-int compare_length(t_path *p1, t_path *p2)
+int	compare_length(t_path *p1, t_path *p2)
 {
 	return (p1->nodes->length > p2->nodes->length);
 }
 
-int fill_paths(t_lemin *l, t_pathlist *paths)
+int	fill_paths(t_lemin *l, t_pathlist *paths)
 {
 	t_path	*tmp;
 	t_path	*array;
-	int			size;
-	int			i;
+	int		size;
+	int		i;
 
 	size = 0;
 	tmp = paths->start;

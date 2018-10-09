@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int compare_childs(t_path *p1, t_path *p2)
+int			compare_childs(t_path *p1, t_path *p2)
 {
 	if (!p1->ended && !p2->ended)
 		return (p1->childs > p2->childs);
@@ -9,9 +9,10 @@ int compare_childs(t_path *p1, t_path *p2)
 
 t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 {
-	t_path *tmp;
-	int		 ended;
-	t_pathlist *newlist;
+	t_path		*tmp;
+	int			ended;
+	t_pathlist	*newlist;
+
 	ended = 1;
 	tmp = paths->start;
 	while (tmp)
@@ -36,7 +37,7 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 	tmp = newlist->start;
 	while (tmp)
 	{
-		if(tmp->ended)
+		if (tmp->ended)
 			delete_used_paths(newlist, tmp, l->m.nbcases - 1);
 		tmp = tmp->next;
 	}

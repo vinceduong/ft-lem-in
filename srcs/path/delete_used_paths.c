@@ -2,9 +2,9 @@
 
 void	delete_used_paths(t_pathlist *paths, t_path *finished, int end)
 {
-	t_path *tmp;
-	t_node *node;
-	int		 deleted;
+	t_path	*tmp;
+	t_node	*node;
+	int		deleted;
 
 	tmp = paths->start;
 	deleted = 0;

@@ -16,7 +16,7 @@ t_path		*init_path(void)
 	return (p);
 }
 
-t_pathlist	*init_pathlist()
+t_pathlist	*init_pathlist(void)
 {
 	t_pathlist *pl;
 
@@ -28,9 +28,9 @@ t_pathlist	*init_pathlist()
 
 t_path		*new_path(t_path *path, int nodenb)
 {
-	t_path			*new;
-	t_node			*node;
-	t_nodelist 	*nl;
+	t_path		*new;
+	t_node		*node;
+	t_nodelist	*nl;
 
 	if (nodenb != -1)
 	{
@@ -45,10 +45,10 @@ t_path		*new_path(t_path *path, int nodenb)
 		return (NULL);
 	if (!path)
 	{
-			new->curr = nodenb;
-			add_node(nl, node);
-			new->nodes = nl;
-			new->ended = 0;
+		new->curr = nodenb;
+		add_node(nl, node);
+		new->nodes = nl;
+		new->ended = 0;
 	}
 	else
 		cpy_path(path, new, node);
