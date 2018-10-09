@@ -33,6 +33,7 @@ SRC = 	srcs/main.c \
 			srcs/path/delete_used_paths.c \
 			srcs/path/is_dead_node.c \
 			srcs/path/print.c\
+			srcs/path/free.c\
 			srcs/display.c\
 			srcs/record.c\
 			srcs/split_ants.c\

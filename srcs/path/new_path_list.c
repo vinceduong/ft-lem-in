@@ -21,5 +21,6 @@ t_pathlist *new_path_list(t_lemin *l, t_pathlist *paths)
 			add_new_paths(l, new_paths, tmp);
 			tmp = tmp->next;
 	}
+	free_pathlist(paths);
 	return (new_paths);
 }
