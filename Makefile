@@ -25,7 +25,6 @@ SRC = 	srcs/main.c \
 			srcs/path/init_node.c \
 			srcs/path/init_path.c \
 			srcs/path/fill_paths.c \
-			srcs/path/merge_paths.c \
 			srcs/path/new_path_list.c \
 			srcs/path/paths.c \
 			srcs/path/sort_paths.c \

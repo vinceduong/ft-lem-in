@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_path *init_path(void)
+t_path		*init_path(void)
 {
 	t_path *p;
 
@@ -16,7 +16,7 @@ t_path *init_path(void)
 	return (p);
 }
 
-t_pathlist *init_pathlist()
+t_pathlist	*init_pathlist()
 {
 	t_pathlist *pl;
 
@@ -32,40 +32,26 @@ t_path		*new_path(t_path *path, int nodenb)
 	t_node			*node;
 	t_nodelist 	*nl;
 
-	ft_putstr("In new_path\n");
 	if (nodenb != -1)
 	{
 		if (!(node = new_node(nodenb)))
-		{
-			ft_putstr("new_node failed\n");
 			return (NULL);
-		}
 	}
 	else
 		node = NULL;
 	if (!(new = init_path()))
-	{
-		ft_putstr("init_path failed\n");
 		return (NULL);
-	}
 	if (!(nl = init_nodelist()))
-	{
-		ft_putstr("init_path failed\n");
 		return (NULL);
-	}
 	if (!path)
 	{
-			ft_putstr("In if !path\n");
 			new->curr = nodenb;
 			add_node(nl, node);
-			ft_putstr("add_node worked\n");
 			new->nodes = nl;
 			new->ended = 0;
 	}
 	else
 		cpy_path(path, new, node);
-	new->next = NULL;
-	new->previous = NULL;
 	new->curr = nodenb;
 	return (new);
 }
