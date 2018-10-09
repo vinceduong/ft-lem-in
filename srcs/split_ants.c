@@ -9,17 +9,6 @@ static int ft_clean(int **lpath, int i)
 	return (1);
 }
 
-void print_path_ant(t_lemin *lemin)
-{
-	int i;
-	int n;
-
-	i = -1;
-	n = 0;
-	while (i++ < lemin->nbpaths - 1)
-		printf("PATH %d == %d\n", i, lemin->a.rep[i][1]);
-}
-
 static int **ft_assign_tube(t_lemin *lemin, int i, int nbant)
 {
 	int j;
@@ -68,7 +57,6 @@ int **ft_last_assign(t_lemin *lemin, int i, int nbant)
 	int j;
 
 	j = -1;
-	printf("%d\n", nbant);
 	while (nbant > 0)
 	{
 		j == i ? j = 0 : j++;
@@ -122,9 +110,9 @@ static void ft_get_length(t_lemin *lemin)
 
 	n = 0;
 	i = 0;
-	if (!(lemin->a.rep = (int**)malloc(sizeof(int*) * lemin->nbpaths + 1)))
+	if (!(lemin->a.rep = (int**)malloc(sizeof(int*) * lemin->nbpaths + 2)))
 		exit (0);
-	while (i != lemin->nbpaths)
+	while (i < lemin->nbpaths)
 	{
 		lemin->a.rep[i] = (int*)malloc(sizeof(int) * 2);
 		lemin->a.rep[i][0] = lemin->p[i].nodes->length;
@@ -134,10 +122,67 @@ static void ft_get_length(t_lemin *lemin)
 	}
 }
 
+/*void print_path_ant(t_lemin *lemin)
+{
+	int i;
+	int n;
+	int j;
+
+	j = 1;
+	i = 0;
+	n = 0;
+	while (n < lemin->nbpaths)
+	{
+		while (lemin->a.rep[n][j] != 0)
+		{
+			printf("%d   ", lemin->a.rep[n][j]);
+			j++;
+		}
+		printf("\n");
+		j = 1;
+		n++;
+	}
+}*/
+
+void ft_attribute_ant(t_lemin *lemin)
+{
+	int n;
+	int i;
+	int j;
+	int l;
+
+	i = 0;
+	while (i < lemin->nbpaths)
+	{
+		l = lemin->a.rep[i][1];
+		j = lemin->a.rep[i][0];
+		free(lemin->a.rep[i]);
+		lemin->a.rep[i] = (int*)malloc(sizeof(int) * l + 2);
+		lemin->a.rep[i][l + 2] = 0;
+		lemin->a.rep[i][0] = l;
+		i++;
+	}
+	n = 1;
+	i = 0;
+	j = 1;
+	while (n - 1 < lemin->a.nbants)
+	{
+		if (i == lemin->nbpaths)
+		{
+			i = 0;
+			j++;
+		}
+		if (j <= lemin->a.rep[i][0])
+			lemin->a.rep[i][j] = n++;
+		i++;
+	}
+}
+
 int split_ants(t_lemin *lemin)
 {
 	ft_get_length(lemin);
 	ft_assign_ant(lemin);
+	ft_attribute_ant(lemin);
 	print_path_ant(lemin);
 	return (1);
 }
