@@ -39,7 +39,6 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		i++;
 	}
 	print_matrix(&lemin);
-	ft_printf("TINTIN \n");
 		if (!split_ants(&lemin))
 	{
 		ft_printf("Splitting failed");

@@ -1,7 +1,29 @@
 #include "lem_in.h"
+# define R lemin->a.rep
 
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
+
+void test_recu(t_lemin *lemin)
+{
+		int	i;
+		int j;
+
+		i = 1;
+		ft_printf("\n\n\n");
+		ft_printf("nbpaths is %d ", lemin->nbpaths);
+		while (i < lemin->nbpaths)
+		{
+			j = 0;
+			ft_printf("\n");
+			while (R[i][j] < 20)
+				{
+					ft_printf("%d, ", R[i][j]);
+					j++;
+				}
+				i++;
+		}
+}
 
 size_t		ops_size(t_lemin *lemin)
 {
@@ -53,6 +75,8 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 
 int	record(t_lemin *lemin)
 {
+	ft_printf("fds");
+	//test_recu(lemin);
 	int	pathnumber;
 
 	pathnumber = 0;
