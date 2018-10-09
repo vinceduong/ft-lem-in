@@ -21,5 +21,6 @@ t_path *delete_path(t_pathlist *paths, t_path *del)
 		if (tmp->next->next)
 			tmp->next->next->previous = tmp;
 	}
+	free_path(del);
 	return (tmp->next);
 }

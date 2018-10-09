@@ -7,7 +7,7 @@ int	count_new_childs(t_lemin *l, t_path *p)
 
 	i = 0;
 	count = 0;
-	print_matrix(l);
+	//print_matrix(l);
 	printf("Current node = %d\n", p->curr);
 	while (i < l->m.nbcases)
 	{

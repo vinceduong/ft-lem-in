@@ -31,7 +31,7 @@ SRC = 	srcs/main.c \
 			srcs/path/sort_paths.c \
 			srcs/path/update_paths.c \
 			srcs/path/delete_used_paths.c \
-			srcs/path/is_dead_node.c \
+			srcs/path/map_dead_nodes.c \
 			srcs/path/print.c\
 			srcs/path/free.c\
 			srcs/display.c\
