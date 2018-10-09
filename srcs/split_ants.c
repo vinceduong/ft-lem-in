@@ -14,7 +14,6 @@ static int **ft_assign_tube(t_lemin *lemin, int i, int nbant)
 	int j;
 
 	j = -1;
-	printf("nb ant = %d\n", nbant);
 	while (j++ != i)
 		lemin->a.rep[j][1] += nbant;
 	return (lemin->a.rep);
@@ -29,7 +28,6 @@ static int ft_how_many(t_lemin *lemin, int ant, int length, int i)
 		return (ant);
 	else if (i == lemin->nbpaths - 1)
 	{
-		printf("ant = %d\n", ant);
 		value = ant / (i + 1);
 	}
 	else
@@ -75,7 +73,6 @@ static void ft_assign_ant(t_lemin *lemin)
 	i = 0;
 	nbant = 0;
 	ant = lemin->a.nbants;
-	printf("HOW MANY PATH %d\n", lemin->nbpaths);
 	while (ant)
 	{
 		if (i == lemin->nbpaths - 1)
@@ -183,7 +180,7 @@ int split_ants(t_lemin *lemin)
 	ft_get_length(lemin);
 	ft_assign_ant(lemin);
 	ft_attribute_ant(lemin);
-	print_path_ant(lemin);
+	//print_path_ant(lemin);
 	return (1);
 }
 
