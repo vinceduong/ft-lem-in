@@ -1,11 +1,11 @@
 #include "lem_in.h"
 
-void 			map_dead_nodes(t_lemin *l)
+void	map_dead_nodes(t_lemin *l)
 {
-	int					i;
-	int					j;
-	int					count;
-	int					ended;
+	int		i;
+	int		j;
+	int		count;
+	int		ended;
 
 	ended = 1;
 	i = 0;
