@@ -182,7 +182,7 @@ int split_ants(t_lemin *lemin)
 	ft_get_length(lemin);
 	ft_assign_ant(lemin);
 	ft_attribute_ant(lemin);
-	print_path_ant(lemin);
+	//print_path_ant(lemin);
 	return (1);
 }
 
