@@ -32,7 +32,7 @@ size_t		ops_size(t_lemin *lemin)
 	i = 0;
 	while (lemin->a.rep[0][i])
 		i++;
-	return (i + (size_t)lemin->p[0].nodes->length);
+	return (i + (size_t)lemin->p[0].nodes->length + 1);
 }
 
 char	*step_writer(t_lemin *lemin, int antnum, t_node *room)
@@ -68,23 +68,22 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 			room = room->next;
 			wave++;
 		}
-		antpos++;
+		if (antpos + 1)
+			antpos++;
 	}
 	return (1);
 }
 
 int	record(t_lemin *lemin)
 {
-	ft_printf("fds");
-	test_recu(lemin);
-	ft_printf("TINTIN");
+	//test_recu(lemin);
 	int	pathnumber;
 
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
 		return (0);
-	while (pathnumber <= lemin->nbpaths)
+	while (pathnumber < lemin->nbpaths)
 	{
 		launch_path(lemin, pathnumber);
 		pathnumber++;
