@@ -41,8 +41,8 @@ static void		ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
 				ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
 			error_tab[2][0] = ft_atoi(tab[i]);
-		else
-			break ;
+		/*else
+			break ;*/
 	}
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];
