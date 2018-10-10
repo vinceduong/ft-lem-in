@@ -18,7 +18,7 @@ static int ft_check_value(char **tab, t_lemin *lemin, int **error_tab)
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];
 	lemin->a.nbants = error_tab[2][0];
-	if (lemin->m.nbcases < 2 || lemin->nb_link < 2 || lemin->a.nbants <= 0)
+	if (lemin->m.nbcases < 2 || lemin->nb_link < 1 || lemin->a.nbants <= 0)
 		return (0);
 	if (ft_chrstr(tab[error_tab[1][0]], ' ')  == 0 || ft_chrstr(tab[error_tab[0][0]], ' ') == 0)
 		return (0);
@@ -130,5 +130,6 @@ int				parser(t_lemin *lemin)
 		return (0);
 	if (!(ft_read_data(tab, lemin, -1, error_tab)))
 		return (0);
+	print_matrix(lemin);
 	return (1);
 }
