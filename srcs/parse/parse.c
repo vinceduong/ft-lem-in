@@ -10,6 +10,35 @@ first_room = [5];
 first_tube = [6];
 */
 
+static int ft_check_value(char **tab, t_lemin *lemin, int **error_tab)
+{
+	int i;
+	int j;
+
+	lemin->m.nbcases = error_tab[4][0];
+	lemin->nb_link = error_tab[3][0];
+	lemin->a.nbants = error_tab[2][0];
+	if (lemin->m.nbcases < 2 || lemin->nb_link < 2 || lemin->a.nbants <= 0)
+		return (0);
+	if (ft_chrstr(tab[error_tab[1][0]], ' ')  == 0 || ft_chrstr(tab[error_tab[0][0]], ' ') == 0)
+		return (0);
+	i = error_tab[0][0];
+	j = error_tab[1][0];
+	/*while (tab[i])
+	{
+		if (i == j)
+			break;
+		if (ft_chrstr(tab[i], ' ') == 1)
+		{
+			printf("%s\n", tab[i]);
+			//if (!ft_isdigit(tab[i][0]) || !ft_isdigit(tab[i][2]))
+			//	printf("la\n");
+		}
+		i++;
+	}*/
+	return (1);
+}
+
 static int		find_s(char **tab, int i)
 {
 	while (tab[i][0] == '#' && ft_chrstr(tab[i], ' ') == 0)
@@ -17,7 +46,7 @@ static int		find_s(char **tab, int i)
 	return (i);
 }
 
-static void		ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
+static int	ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 {
 	while (tab[++i])
 	{
@@ -38,27 +67,30 @@ static void		ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 			error_tab[5][0] == 0 ? error_tab[5][0] = i : 0;
 			error_tab[4][0]++;
 		}
-		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
-				ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
+		else if (ft_isdigit(tab[i][0]) == 1 && ft_chrstr(tab[i], ' ') == 0 && \
+				ft_chrstr(tab[i], '-') == 0)
 			error_tab[2][0] = ft_atoi(tab[i]);
-		/*else
-			break ;*/
+		else
+			return (0);
 	}
-	lemin->m.nbcases = error_tab[4][0];
-	lemin->nb_link = error_tab[3][0];
-	lemin->a.nbants = error_tab[2][0];
-	//ft_check_value(error_tab) == 0 ? 1 : 0;
+	if (!(ft_check_value(tab, lemin, error_tab)))
+		return (0);
 	ft_create_matrice(tab, lemin, error_tab);
+	return (1);
 }
 
 static char		**ft_read(char *str, char *line)
 {
 	while (get_next_line(0, &line) > 0)
 	{
+		if (!ft_strcmp(line, ""))
+			return (0);
 		str = ft_strjoin(str, line);
 		str = ft_strjoin(str, "\n\0");
 		ft_strdel(&line);
 	}
+	ft_putstr(str);
+	ft_putchar('\n');
 	return (ft_strsplit(str, '\n'));
 }
 
@@ -94,7 +126,9 @@ int				parser(t_lemin *lemin)
 		return (0);
 	line = NULL;
 	error_tab = ft_create_error_tab();
-	tab = ft_read(str, line);
-	ft_read_data(tab, lemin, -1, error_tab);
+	if (!(tab = ft_read(str, line)))
+		return (0);
+	if (!(ft_read_data(tab, lemin, -1, error_tab)))
+		return (0);
 	return (1);
 }

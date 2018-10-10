@@ -4,25 +4,25 @@
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
 
-void test_recu(t_lemin *lemin)
+void		test_recu(t_lemin *lemin)
 {
-		int	i;
-		int j;
+	int	i;
+	int j;
 
-		i = 0;
-		ft_printf("\n\n\n");
-		ft_printf("nbpaths is %d ", lemin->nbpaths);
-		while (i < lemin->nbpaths)
+	i = 0;
+	ft_printf("\n\n\n");
+	ft_printf("nbpaths is %d ", lemin->nbpaths);
+	while (i < lemin->nbpaths)
+	{
+		j = 0;
+		ft_printf("\n");
+		while (R[i][j])
 		{
-			j = 0;
-			ft_printf("\n");
-			while (R[i][j])
-				{
-					ft_printf("%d, ", R[i][j]);
-					j++;
-				}
-				i++;
+			ft_printf("%d, ", R[i][j]);
+			j++;
 		}
+		i++;
+	}
 }
 
 size_t		ops_size(t_lemin *lemin)
@@ -35,7 +35,7 @@ size_t		ops_size(t_lemin *lemin)
 	return (i + (size_t)lemin->p[0].nodes->length + 1);
 }
 
-char	*step_writer(t_lemin *lemin, int antnum, t_node *room)
+char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 {
 	char *tmp;
 
@@ -45,12 +45,12 @@ char	*step_writer(t_lemin *lemin, int antnum, t_node *room)
 	return (tmp);
 }
 
-int	launch_path(t_lemin *lemin, int pathnumber)
+int			launch_path(t_lemin *lemin, int pathnumber)
 {
-	int antpos;
-	int wave;
-	t_node *room;
-	char *tmp;
+	int			antpos;
+	int			wave;
+	t_node		*room;
+	char		*tmp;
 
 	antpos = 1;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
@@ -74,11 +74,11 @@ int	launch_path(t_lemin *lemin, int pathnumber)
 	return (1);
 }
 
-int	record(t_lemin *lemin)
+int			record(t_lemin *lemin)
 {
-	//test_recu(lemin);
 	int	pathnumber;
 
+	//test_recu(lemin);
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
