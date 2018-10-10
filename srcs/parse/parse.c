@@ -130,6 +130,5 @@ int				parser(t_lemin *lemin)
 		return (0);
 	if (!(ft_read_data(tab, lemin, -1, error_tab)))
 		return (0);
-	print_matrix(lemin);
 	return (1);
 }
