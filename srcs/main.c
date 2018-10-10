@@ -24,6 +24,7 @@ lemin.m.graph[3][0]=0;lemin.m.graph[3][1]=1;lemin.m.graph[3][2]=1;lemin.m.graph[
 		ft_printf("ERROR");
 		return (0);
 	}
+	print_matrix(&lemin);
 	if (!paths(&lemin))
 	{
 		print_matrix(&lemin);
