@@ -1,67 +1,18 @@
 #include "lem_in.h"
 
-static int		ft_clean(int **lpath, int i)
+static int		ft_get_lost(t_lemin *lemin)
 {
-	while (i)
-		free(lpath[i--]);
-	free(lpath);
-	//exit(0);
-	return (1);
-}
+	int		i;
+	int		value;
 
-static int		**ft_assign_tube(t_lemin *lemin, int i, int nbant)
-{
-	int j;
-
-	j = -1;
-	while (j++ != i)
-		lemin->a.rep[j][1] += nbant;
-	return (lemin->a.rep);
-}
-
-static int		ft_how_many(t_lemin *lemin, int ant, int length, int i)
-{
-	int value;
-
-	value = 0;
-	if (lemin->a.rep[0][0] == 0)
-		return (ant);
-	else if (i == lemin->nbpaths - 1)
-	{
-		value = ant / (i + 1);
-	}
-	else
-		value = lemin->a.rep[i + 1][0] - lemin->a.rep[i][0];
-	return (value);
-}
-
-int				ft_get_lost(t_lemin *lemin)
-{
-	int i;
-	int value;
-
-	value = 0;
 	i = 0;
-	while (i < lemin->nbpaths )
+	value = 0;
+	while (i < lemin->nbpaths)
 	{
 		value += lemin->a.rep[i][1];
 		i++;
 	}
 	return (value == lemin->a.nbants ? 0 : lemin->a.nbants - value);
-}
-
-int				**ft_last_assign(t_lemin *lemin, int i, int nbant)
-{
-	int j;
-
-	j = -1;
-	while (nbant > 0)
-	{
-		j == i ? j = 0 : j++;
-		lemin->a.rep[j][1]++;
-		nbant--;
-	}
-	return (lemin->a.rep);
 }
 
 static int		ft_last_ant(t_lemin *lemin, int nbant, int ant, int i)
@@ -81,9 +32,9 @@ static int		ft_last_ant(t_lemin *lemin, int nbant, int ant, int i)
 
 static void		ft_assign_ant(t_lemin *lemin)
 {
-	int i;
-	int ant;
-	int nbant;
+	int		i;
+	int		ant;
+	int		nbant;
 
 	i = 0;
 	nbant = 0;
@@ -102,47 +53,16 @@ static void		ft_assign_ant(t_lemin *lemin)
 	}
 }
 
-static void		ft_get_length(t_lemin *lemin)
-{
-	int n;
-	int i;
-
-	n = 0;
-	i = 0;
-	if (!(lemin->a.rep = (int**)malloc(sizeof(int*) * lemin->nbpaths + 2)))
-		exit (0);
-	while (i < lemin->nbpaths)
-	{
-		lemin->a.rep[i] = (int*)malloc(sizeof(int) * 2);
-		lemin->a.rep[i][0] = lemin->p[i].nodes->length;
-		lemin->a.rep[i][1] = 0;
-		lemin->a.rep[i][2] = 0;
-		i++;
-	}
-}
-
 static void		ft_attribute_ant(t_lemin *lemin)
 {
-	int n;
-	int i;
-	int j;
-	int l;
+	int		n;
+	int		i;
+	int		j;
 
-	i = 0;
-	while (i < lemin->nbpaths)
-	{
-		l = lemin->a.rep[i][1];
-		j = lemin->a.rep[i][0];
-		free(lemin->a.rep[i]);
-		if (!(lemin->a.rep[i] = (int*)malloc(sizeof(int) * l + 2)))
-			exit (0);
-		lemin->a.rep[i][l + 2] = 0;
-		lemin->a.rep[i][0] = l;
-		i++;
-	}
 	n = 1;
 	i = 0;
 	j = 1;
+	lemin->a.rep = ft_realloc_ant(lemin, i, 0, 0);
 	while (n - 1 < lemin->a.nbants)
 	{
 		if (i == lemin->nbpaths)
