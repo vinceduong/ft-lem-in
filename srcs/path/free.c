@@ -47,5 +47,6 @@ void	free_pathlist(t_pathlist *pathlist)
 			tmp = tmp->next;
 			free_path(tmp2);
 		}
+		free(pathlist);
 	}
 }
