@@ -9,6 +9,8 @@ int			check_ended(t_pathlist *pathlist)
 	{
 		if (!tmp->ended)
 			return (0);
+		if (tmp->ended && tmp->nodes->length == 1)
+			return (1);
 		tmp = tmp->next;
 	}
 	return (1);
