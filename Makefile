@@ -36,6 +36,7 @@ SRC = 	srcs/main.c \
 			srcs/record.c\
 			srcs/split_ants.c\
 			srcs/print_matrix.c\
+			srcs/split_ant_tool.c\
 
 
 OBJ = $(SRCS:.c=.o)

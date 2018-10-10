@@ -10,28 +10,21 @@ first_room = [5];
 first_tube = [6];
 */
 
-/*void ft_clear_1(char **tab, int i)
-{
-	while (i)
-		free(tab[i--]);
-	free(tab);
-}*/
-
-static int find_s(char **tab, int i)
+static int		find_s(char **tab, int i)
 {
 	while (tab[i][0] == '#' && ft_chrstr(tab[i], ' ') == 0)
 		i++;
 	return (i);
 }
 
-static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
+static void		ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 {
 	while (tab[++i])
 	{
 		if (tab[i][0] == '#' && tab[i][1] == '#')
 		{
 			ft_strcmp(tab[i], "##start") == 0 ? error_tab[0][0] = find_s(tab, i) : 0;
-			ft_strcmp(tab[i], "##end") == 0  ? error_tab[1][0] = find_s(tab, i) : 0;
+			ft_strcmp(tab[i], "##end") == 0 ? error_tab[1][0] = find_s(tab, i) : 0;
 		}
 		else if (tab[i][0] == '#' || tab[i][0] == 'L')
 			;
@@ -58,7 +51,7 @@ static void ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 	ft_create_matrice(tab, lemin, error_tab);
 }
 
-static char **ft_read(char *str, char *line)
+static char		**ft_read(char *str, char *line)
 {
 	while (get_next_line(0, &line) > 0)
 	{
@@ -66,12 +59,10 @@ static char **ft_read(char *str, char *line)
 		str = ft_strjoin(str, "\n\0");
 		ft_strdel(&line);
 	}
-	ft_putstr(str);
-	ft_putchar('\n');
 	return (ft_strsplit(str, '\n'));
 }
 
-static int **ft_create_error_tab(void)
+static int		**ft_create_error_tab(void)
 {
 	int i;
 	int **tab;
@@ -82,10 +73,7 @@ static int **ft_create_error_tab(void)
 	while (i < 7)
 	{
 		if (!(tab[i] = (int*)malloc(sizeof(int) * 1)))
-		{
-			//ft_clear_1(tab, i);
-			exit (0);
-		}
+			exit(0);
 		tab[i][0] = 0;
 		tab[i][1] = 0;
 		i++;
@@ -93,12 +81,12 @@ static int **ft_create_error_tab(void)
 	return (tab);
 }
 
-int parser(t_lemin *lemin)
+int				parser(t_lemin *lemin)
 {
-	char **tab;
-	char *str;
-	char *line;
-	int **error_tab;
+	char	**tab;
+	char	*str;
+	char	*line;
+	int		**error_tab;
 
 	tab = NULL;
 	lemin->r.nbturns = 3;
@@ -108,7 +96,5 @@ int parser(t_lemin *lemin)
 	error_tab = ft_create_error_tab();
 	tab = ft_read(str, line);
 	ft_read_data(tab, lemin, -1, error_tab);
-	printf("yo\n");
-	print_matrix(lemin);
 	return (1);
 }
