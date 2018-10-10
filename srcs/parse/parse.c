@@ -38,7 +38,7 @@ static void		ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 			error_tab[5][0] == 0 ? error_tab[5][0] = i : 0;
 			error_tab[4][0]++;
 		}
-		else if (ft_isdigit(tab[i][0]) == 1 && lemin->a.nbants == 0 &&
+		else if (ft_isdigit(tab[i][0]) == 1 &&
 				ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 0)
 			error_tab[2][0] = ft_atoi(tab[i]);
 		/*else
