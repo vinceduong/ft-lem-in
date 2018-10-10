@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int		ft_chrstr(char *find, int c)
+int				ft_chrstr(char *find, int c)
 {
 	int i;
 
@@ -13,7 +13,7 @@ int		ft_chrstr(char *find, int c)
 	return (find[i] == c ? 1 : 0);
 }
 
-int ft_check_value(int **error_tab)
+int				ft_check_value(int **error_tab)
 {
 	int i;
 
@@ -27,10 +27,10 @@ int ft_check_value(int **error_tab)
 	return (1);
 }
 
-static char *ft_strdup_matrice(char *tab)
+static char		*ft_strdup_matrice(char *tab)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
 	while (tab[i] != ' ')
@@ -39,7 +39,7 @@ static char *ft_strdup_matrice(char *tab)
 	return (str);
 }
 
-void ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
+void			ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 {
 	int i;
 	int n;

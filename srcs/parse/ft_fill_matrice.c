@@ -1,10 +1,10 @@
 #include "lem_in.h"
 
-static int **ft_fill_zero(t_lemin *lemin)
+static int		**ft_fill_zero(t_lemin *lemin)
 {
-	int **tab;
-	int i;
-	int n;
+	int		**tab;
+	int		i;
+	int		n;
 
 	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 1);
 	i = 0;
@@ -15,21 +15,19 @@ static int **ft_fill_zero(t_lemin *lemin)
 		while (i < lemin->m.nbcases + 1)
 		{
 			tab[n][i] = 0;
-			//printf("%d", tab[n][i]);
 			i++;
 		}
-		//printf(" = %d\n", n);
 		n++;
 		i = 0;
 	}
 	return (tab);
 }
 
-static char *ft_strdup_c(char *tab)
+static char		*ft_strdup_c(char *tab)
 {
-	int i;
-	int n;
-	char *tmp;
+	int		i;
+	int		n;
+	char	*tmp;
 
 	i = 0;
 	n = 0;
@@ -37,12 +35,11 @@ static char *ft_strdup_c(char *tab)
 		n++;
 	tmp = ft_strndup(tab, n);
 	return (tmp);
-
 }
 
-static int find_wich_char(t_lemin *lemin, char *str)
+static int		fill_one(t_lemin *lemin, char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (lemin->m.cases[i])
@@ -54,7 +51,7 @@ static int find_wich_char(t_lemin *lemin, char *str)
 	return (-1);
 }
 
-static int ft_find_minus(char *tab)
+static int		ft_minus(char *tab)
 {
 	int i;
 
@@ -65,13 +62,12 @@ static int ft_find_minus(char *tab)
 	return (i);
 }
 
-void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
+void			ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 {
-	int n;
-	int i;
-	int index;
-	char *str;
-	int j;
+	int		n;
+	int		i;
+	int		index;
+	int		j;
 
 	n = 0;
 	i = 0;
@@ -79,21 +75,16 @@ void ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 	index = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
 	index = error_tab[6][0];
-	printf("yo\n");
 	while (j < lemin->nb_link)
 	{
 		if (tab[index][0] == '#')
 			index++;
 		else
 		{
-			str = ft_strdup_c(tab[index]);
-			n = find_wich_char(lemin, str);
-			str = ft_strdup(tab[index] + ft_find_minus(tab[index]));
-			i = find_wich_char(lemin, str);
-			printf("%d %d\n", n, i);
+			n = fill_one(lemin, ft_strdup_c(tab[index]));
+			i = fill_one(lemin, ft_strdup(tab[index] + ft_minus(tab[index])));
 			lemin->m.graph[n][i] = 1;
 			lemin->m.graph[i][n] = 1;
-			free(str);
 			index++;
 			j++;
 		}
