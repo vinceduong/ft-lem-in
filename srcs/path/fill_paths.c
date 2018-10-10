@@ -34,5 +34,6 @@ int	fill_paths(t_lemin *l, t_pathlist *paths)
 	}
 	l->nbpaths = i;
 	l->p = array;
+	free(paths);
 	return (1);
 }

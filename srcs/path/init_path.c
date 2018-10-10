@@ -30,7 +30,6 @@ t_path		*new_path(t_path *path, int nodenb)
 {
 	t_path		*new;
 	t_node		*node;
-	t_nodelist	*nl;
 
 	if (nodenb != -1)
 	{
@@ -41,13 +40,10 @@ t_path		*new_path(t_path *path, int nodenb)
 		node = NULL;
 	if (!(new = init_path()))
 		return (NULL);
-	if (!(nl = init_nodelist()))
-		return (NULL);
 	if (!path)
 	{
 		new->curr = nodenb;
-		add_node(nl, node);
-		new->nodes = nl;
+		add_node(new->nodes, node);
 		new->ended = 0;
 	}
 	else
