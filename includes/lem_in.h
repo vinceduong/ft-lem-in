@@ -6,9 +6,9 @@
 
 typedef struct		s_node
 {
-	int		nb;
-	int		index;
-	struct s_node	*next;
+	int					nb;
+	int					index;
+	struct s_node		*next;
 }					t_node;
 
 typedef struct		s_nodelist
@@ -19,17 +19,17 @@ typedef struct		s_nodelist
 
 typedef struct		s_path
 {
-	int 				curr;
+	int					curr;
 	int					childs;
-	t_nodelist	*nodes;
+	t_nodelist			*nodes;
 	int					ended;
-	struct s_path			*next;
-	struct s_path			*previous;
+	struct s_path		*next;
+	struct s_path		*previous;
 }					t_path;
 
 typedef struct		s_pathlist
 {
-	t_path 	*start;
+	t_path		*start;
 }					t_pathlist;
 
 typedef struct		s_map
@@ -55,16 +55,16 @@ typedef struct		s_record
 
 typedef struct		s_lemin
 {
-	t_map		m;
-	t_ants		a;
-	t_record	r;
-	t_path	*p;
-	int			nbpaths;
-	t_list		*instru;
-	int 			start;
-	int 			end;
-	int 			nb_rooms;
-	int 			nb_link;
+	t_map			m;
+	t_ants			a;
+	t_record		r;
+	t_path			*p;
+	int				nbpaths;
+	t_list			*instru;
+	int				start;
+	int				end;
+	int				nb_rooms;
+	int				nb_link;
 }					t_lemin;
 
 # include "paths.h"
