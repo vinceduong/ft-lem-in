@@ -10,7 +10,7 @@ first_room = [5];
 first_tube = [6];
 */
 
-static int ft_check_value(char **tab, t_lemin *lemin, int **error_tab)
+static int ft_check_value(t_lemin *lemin, int **error_tab)
 {
 	lemin->m.nbcases = error_tab[4][0];
 	lemin->nb_link = error_tab[3][0];
@@ -57,7 +57,7 @@ static int	ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 		else
 			return (0);
 	}
-	if (!(ft_check_value(tab, lemin, error_tab)))
+	if (!(ft_check_value(lemin, error_tab)))
 		return (0);
 	ft_create_matrice(tab, lemin, error_tab);
 	return (1);
