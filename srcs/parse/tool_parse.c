@@ -24,7 +24,7 @@ int		ft_coord_is_digit(char *tab)
 			break;
 		i++;
 	}
-	i++;
+	/*i++;
 	if (ft_isdigit(tab[i]) == 1)
 	{
 		i += ft_intlen(ft_atoi(tab + i));
@@ -35,6 +35,6 @@ int		ft_coord_is_digit(char *tab)
 			if (tab[i] == '\0')
 				return (1);
 			}
-	}
-	return (0);
+	}*/
+	return (1);
 }

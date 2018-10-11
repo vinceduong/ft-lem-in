@@ -31,4 +31,5 @@ void	free_path(t_path *path);
 void	free_pathlist(t_pathlist *pathlist);
 void	free_nodelist(t_nodelist *nodelist);
 void	free_node(t_node *node);
+t_pathlist *find_pathlist(t_lemin *l, t_pathlist *paths);
 #endif

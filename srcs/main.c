@@ -12,17 +12,9 @@ int	main(void)
 	}
 	if (!paths(&lemin))
 	{
-		print_matrix(&lemin);
 		ft_printf("Pathing failed\n");
 		ft_printf("ERROR\n");
 		return (0);
-	}
-	int i = 0;
-	printf("-----THE FINALS PATHS-----\n");
-	while (i < lemin.nbpaths)
-	{
-		print_path(&lemin.p[i]);
-		i++;
 	}
 	if (!split_ants(&lemin))
 	{

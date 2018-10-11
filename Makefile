@@ -28,6 +28,7 @@ SRC = 	srcs/main.c \
 			srcs/path/fill_paths.c \
 			srcs/path/new_path_list.c \
 			srcs/path/paths.c \
+			srcs/path/find_pathlist.c\
 			srcs/path/sort_paths.c \
 			srcs/path/update_paths.c \
 			srcs/path/delete_used_paths.c \

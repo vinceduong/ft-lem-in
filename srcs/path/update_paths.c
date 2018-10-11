@@ -10,27 +10,20 @@ int			compare_childs(t_path *p1, t_path *p2)
 t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 {
 	t_path		*tmp;
-	int			ended;
 	t_pathlist	*newlist;
 
-	ended = 1;
 	tmp = paths->start;
 	while (tmp)
 	{
 		if (!tmp->ended && !count_new_childs(l, tmp))
 			tmp = delete_path(paths, tmp);
-		else if (!tmp->ended)
-		{
-			ended = 0;
-			tmp = tmp->next;
-		}
-		else
-			tmp = tmp->next;
+		tmp = tmp->next;
 	}
 	if (!paths->start)
+	{
+		free_pathlist(paths);
 		return (NULL);
-	if (ended)
-		return (paths);
+	}
 	sort_paths(paths, compare_childs);
 	if (!(newlist = new_path_list(l, paths)))
 		return (0);
