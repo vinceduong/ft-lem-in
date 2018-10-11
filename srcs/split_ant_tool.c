@@ -35,7 +35,7 @@ int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j)
 	return (lemin->a.rep);
 }
 
-int			ft_how_many(t_lemin *lemin, int ant, int length, int i)
+int			ft_how_many(t_lemin *lemin, int ant, int i)
 {
 	int value;
 

@@ -19,7 +19,7 @@ static int		ft_last_ant(t_lemin *lemin, int nbant, int ant, int i)
 {
 	while (ant)
 	{
-		nbant = ft_how_many(lemin, ant, lemin->a.rep[i][0], i);
+		nbant = ft_how_many(lemin, ant, i);
 		if (nbant == 0)
 			break ;
 		lemin->a.rep = ft_assign_tube(lemin, i, nbant);
@@ -45,7 +45,7 @@ static void		ft_assign_ant(t_lemin *lemin)
 			ant = ft_last_ant(lemin, nbant, ant, i);
 		else
 		{
-			nbant = ft_how_many(lemin, ant, lemin->a.rep[i][0], i);
+			nbant = ft_how_many(lemin, ant, i);
 			lemin->a.rep = ft_assign_tube(lemin, i, nbant);
 			i++;
 		}

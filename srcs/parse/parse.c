@@ -33,27 +33,24 @@ static int	ft_read_data(char **tab, t_lemin *lemin, int i, int **error_tab)
 	{
 		if (tab[i][0] == '#' && tab[i][1] == '#')
 		{
-			ft_strcmp(tab[i], "##start") == 0 ? error_tab[0][0] = find_s(tab, i)
-			: 0;
-			ft_strcmp(tab[i], "##end") == 0 ? error_tab[1][0] = find_s(tab, i)
-			: 0;
+			ft_strcmp(tab[i], "##start") == 0 ? error_tab[0][0] = find_s(tab, i) : 0;
+			ft_strcmp(tab[i], "##end") == 0 ? error_tab[1][0] = find_s(tab, i) : 0;
 		}
 		else if (tab[i][0] == '#' || tab[i][0] == 'L')
 			;
+		else if (ft_isdigit(tab[i][0]) == 1 && ft_chrstr(tab[i], ' ') == 0 && \
+				ft_chrstr(tab[i], '-') == 0)
+			error_tab[2][0] = ft_atoi(tab[i]);
 		else if (ft_chrstr(tab[i], ' ') == 0 && ft_chrstr(tab[i], '-') == 1)
 		{
 			error_tab[6][0] == 0 ? error_tab[6][0] = i : 0;
 			error_tab[3][0]++;
 		}
-		else if (ft_chrstr(tab[i], ' ') == 1 && ft_chrstr(tab[i], '-') == 0 &&
-		ft_coord_is_digit(tab[i]) == 1)
+		else if (ft_coord_is_digit(tab[i]) == 1)
 		{
 			error_tab[5][0] == 0 ? error_tab[5][0] = i : 0;
 			error_tab[4][0]++;
 		}
-		else if (ft_isdigit(tab[i][0]) == 1 && ft_chrstr(tab[i], ' ') == 0 && \
-				ft_chrstr(tab[i], '-') == 0)
-			error_tab[2][0] = ft_atoi(tab[i]);
 		else
 			return (0);
 	}

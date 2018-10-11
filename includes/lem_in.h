@@ -93,11 +93,11 @@ void		ft_patatruc(char **tab, t_lemin *lemin, int **error_tab);
 void		ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab);
 int			ft_chrstr(char *find, int c);
 int			ft_intlen(int nb);
-int			ft_coord_is_digit(char *tab);
+int			ft_coord_is_digit(char *str);
 //function spliting ant
 void		ft_get_length(t_lemin *lemin);
 int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j);
-int			ft_how_many(t_lemin *lemin, int ant, int length, int i);
+int			ft_how_many(t_lemin *lemin, int ant, int i);
 int			**ft_assign_tube(t_lemin *lemin, int i, int nbant);
 int			**ft_last_assign(t_lemin *lemin, int i, int nbant);
 
