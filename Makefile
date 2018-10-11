@@ -13,6 +13,7 @@ INCLUDES = -I./libft/ -I./includes/
 SRC = 	srcs/main.c \
 			srcs/parse/ft_fill_matrice.c\
 			srcs/parse/matrice.c\
+			srcs/parse/tool_parse.c \
 			srcs/parse/parse.c\
 			srcs/path/add_new_paths.c \
 			srcs/path/add_node.c \
