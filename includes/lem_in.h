@@ -92,6 +92,8 @@ int			display(t_lemin *lemin);
 void		ft_patatruc(char **tab, t_lemin *lemin, int **error_tab);
 void		ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab);
 int			ft_chrstr(char *find, int c);
+int			ft_intlen(int nb);
+int			ft_coord_is_digit(char *tab);
 //function spliting ant
 void		ft_get_length(t_lemin *lemin);
 int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j);
