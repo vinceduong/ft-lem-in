@@ -7,7 +7,7 @@ void		ft_get_length(t_lemin *lemin)
 
 	n = 0;
 	i = 0;
-	if (!(lemin->a.rep = (int**)malloc(sizeof(int*) * lemin->nbpaths + 2)))
+	if (!(lemin->a.rep = (int**)malloc(sizeof(int*) * lemin->nbpaths)))
 		exit(0);
 	while (i < lemin->nbpaths)
 	{
@@ -28,7 +28,7 @@ int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j)
 		free(lemin->a.rep[i]);
 		if (!(lemin->a.rep[i] = (int*)malloc(sizeof(int) * l + 2)))
 			exit(0);
-		lemin->a.rep[i][l + 2] = 0;
+		lemin->a.rep[i][l + 1] = 0;
 		lemin->a.rep[i][0] = l;
 		i++;
 	}
