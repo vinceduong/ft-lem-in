@@ -1,6 +1,6 @@
 .PHONY : all clean fclean re
 
-CC = gcc
+CC = gcc $(INCLUDES)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -42,12 +42,12 @@ SRC = 	srcs/main.c \
 			srcs/split_ant_tool.c\
 
 
-OBJ = $(SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(SRC) $(LIBFT)
-		@$(CC) $(INCLUDES) $(SRC) -o $(NAME) $(LIBFT)
+$(NAME) : $(OBJ) $(LIBFT)
+		@$(CC) $(OBJ) -o $(NAME) $(LIBFT)
 			@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
 
 $(LIBFT) :
