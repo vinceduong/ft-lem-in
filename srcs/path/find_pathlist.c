@@ -16,10 +16,10 @@ int			check_ended(t_pathlist *pathlist)
 	return (1);
 }
 
-t_pathlist *find_pathlist(t_lemin *l, t_pathlist *paths)
+t_pathlist	*find_pathlist(t_lemin *l, t_pathlist *paths)
 {
 	t_path *path;
-	
+
 	if (!paths->start)
 	{
 		if (!(path = new_path(NULL, 0)))
@@ -31,7 +31,7 @@ t_pathlist *find_pathlist(t_lemin *l, t_pathlist *paths)
 	{
 		if (!(paths = update_paths(l, paths)))
 			return (NULL);
-		if(check_ended(paths))
+		if (check_ended(paths))
 			return (paths);
 	}
 	return (find_pathlist(l, paths));

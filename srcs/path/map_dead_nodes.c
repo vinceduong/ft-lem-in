@@ -1,26 +1,32 @@
 #include "lem_in.h"
 
+int		count_living_childs(t_lemin *l, int i)
+{
+	int	count;
+	int	j;
+
+	count = 0;
+	j = 0;
+	while (j < l->m.nbcases)
+	{
+		count += l->m.graph[i][j] && (l->m.graph[j][j] != -1) ? 1 : 0;
+		j++;
+	}
+	return (count);
+}
+
 void	map_dead_nodes(t_lemin *l)
 {
 	int		i;
-	int		j;
-	int		count;
 	int		ended;
 
 	ended = 1;
 	i = 0;
 	while (i < l->m.nbcases)
 	{
-		j = 0;
-		count = 0;
 		if (i && i != l->m.nbcases - 1 && l->m.graph[i][i] != -1)
 		{
-			while (j < l->m.nbcases)
-			{
-				count += l->m.graph[i][j] && (l->m.graph[j][j] != -1) ? 1 : 0;
-				j++;
-			}
-			if (count < 2)
+			if (count_living_childs(l, i) < 2)
 			{
 				l->m.graph[i][i] = -1;
 				ended = 0;
@@ -31,5 +37,4 @@ void	map_dead_nodes(t_lemin *l)
 	if (!ended)
 		map_dead_nodes(l);
 	return ;
-
 }

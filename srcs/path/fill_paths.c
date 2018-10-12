@@ -10,12 +10,9 @@ int	fill_paths(t_lemin *l, t_pathlist *paths)
 	t_path	*tmp;
 	t_path	*array;
 	int		size;
-	int		i;
 
 	size = 0;
 	tmp = paths->start;
-	if (!tmp)
-		return (0);
 	while (tmp)
 	{
 		size++;
@@ -25,14 +22,13 @@ int	fill_paths(t_lemin *l, t_pathlist *paths)
 		return (0);
 	sort_paths(paths, &compare_length);
 	tmp = paths->start;
-	i = 0;
+	size = 0;
 	while (tmp)
 	{
-		array[i] = *tmp;
-		i++;
+		array[size++] = *tmp;
 		tmp = tmp->next;
 	}
-	l->nbpaths = i;
+	l->nbpaths = size;
 	l->p = array;
 	free(paths);
 	return (1);

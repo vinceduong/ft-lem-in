@@ -1,5 +1,7 @@
 #include "lem_in.h"
 
+#define N	node->nb
+
 void	delete_used_paths(t_pathlist *paths, t_path *finished, int end)
 {
 	t_path	*tmp;
@@ -15,7 +17,7 @@ void	delete_used_paths(t_pathlist *paths, t_path *finished, int end)
 			node = tmp->nodes->start;
 			while (node)
 			{
-				if (node->nb != 0 && node->nb != end && check_nodelist(finished->nodes, node->nb))
+				if (N != 0 && N != end && check_nodelist(finished->nodes, N))
 				{
 					tmp = delete_path(paths, tmp);
 					deleted = 1;
