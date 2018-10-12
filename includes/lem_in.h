@@ -89,8 +89,8 @@ int			record(t_lemin *lemin);
 int			display(t_lemin *lemin);
 
 //foncitons de Cam
-void		ft_patatruc(char **tab, t_lemin *lemin, int **error_tab);
-void		ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab);
+void		ft_patatruc(char **tab, t_lemin *lemin, int *error_tab);
+void		ft_create_matrice(char **tab, t_lemin *lemin, int *error_tab);
 int			ft_chrstr(char *find, int c);
 int			ft_intlen(int nb);
 int			ft_coord_is_digit(char *str);
@@ -100,5 +100,6 @@ int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j);
 int			ft_how_many(t_lemin *lemin, int ant, int i);
 int			**ft_assign_tube(t_lemin *lemin, int i, int nbant);
 int			**ft_last_assign(t_lemin *lemin, int i, int nbant);
+void		ft_clean(char **tab);
 
 #endif

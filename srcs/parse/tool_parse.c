@@ -1,5 +1,19 @@
 #include "lem_in.h"
 
+void	ft_clean(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_strdel(&tab[i]);
+		i++;
+	}
+	ft_strdel(&tab[i]);
+	ft_strdel(tab);
+}
+
 int		ft_intlen(int nb)
 {
 	int i;

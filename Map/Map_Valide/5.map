@@ -1,13 +1,13 @@
 100
 ##start
 start 1 3
+##end
+end 3 5
 room2 5 6
 room1 8 9
 room4 5 6
 room3 7 8
 room5 5 5
-##end
-end 3 5
 start-room2
 start-room1
 start-room3

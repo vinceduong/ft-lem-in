@@ -13,14 +13,14 @@ int				ft_chrstr(char *find, int c)
 	return (find[i] == c ? 1 : 0);
 }
 
-int				ft_check_value(int **error_tab)
+int				ft_check_value(int *error_tab)
 {
 	int i;
 
 	i = 0;
 	while (i != 6)
 	{
-		if (error_tab[i][0] <= 0)
+		if (error_tab[i] <= 0)
 			return (0);
 		i++;
 	}
@@ -39,22 +39,22 @@ static char		*ft_strdup_matrice(char *tab)
 	return (str);
 }
 
-void			ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
+void			ft_create_matrice(char **tab, t_lemin *lemin, int *error_tab)
 {
 	int i;
 	int n;
 
 	n = 1;
 	lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases);
-	i = error_tab[5][0];
-	lemin->m.cases[0] = ft_strdup_matrice(tab[error_tab[0][0]]);
-	while (i < error_tab[6][0])
+	i = error_tab[5];
+	lemin->m.cases[0] = ft_strdup_matrice(tab[error_tab[0]]);
+	while (i < error_tab[6])
 	{
 		if (tab[i][0] == '#')
 			i++;
 		else
 		{
-			if (i == error_tab[1][0] || i == error_tab[0][0])
+			if (i == error_tab[1] || i == error_tab[0])
 				i++;
 			else
 			{
@@ -64,7 +64,7 @@ void			ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 			}
 		}
 	}
-	lemin->m.cases[n] = ft_strdup_matrice(tab[error_tab[1][0]]);
+	lemin->m.cases[n] = ft_strdup_matrice(tab[error_tab[1]]);
 	lemin->m.cases[++n] = 0;
 	lemin->m.nbcases = n;
 	ft_patatruc(tab, lemin, error_tab);
