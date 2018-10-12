@@ -10,7 +10,7 @@ void	delete_used_paths(t_pathlist *paths, t_path *finished, int end)
 	while (tmp)
 	{
 		deleted = 0;
-		if (tmp != finished || (finished->nodes->length <= tmp->nodes->length && !tmp->ended))
+		if (tmp != finished && (finished->nodes->length <= tmp->nodes->length))
 		{
 			node = tmp->nodes->start;
 			while (node)

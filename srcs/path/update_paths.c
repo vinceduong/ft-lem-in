@@ -17,11 +17,12 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 	{
 		if (!tmp->ended && !count_new_childs(l, tmp))
 			tmp = delete_path(paths, tmp);
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
 	if (!paths->start)
 	{
-		free_pathlist(paths);
+		free(paths);
 		return (NULL);
 	}
 	sort_paths(paths, compare_childs);

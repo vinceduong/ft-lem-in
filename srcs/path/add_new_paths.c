@@ -13,7 +13,7 @@ void	add_new_paths(t_lemin *l, t_pathlist *new_paths, t_path *p)
 		add_path(new_paths, new_path(p, -1));
 	while (i < l->m.nbcases && !p->ended)
 	{
-		if (l->m.graph[p->curr][i] && l->m.graph[i][i] != 1 && l->m.graph[i][i] != -1)
+		if (l->m.graph[p->curr][i] && l->m.graph[i][i] == 0)
 		{
 			new_p = new_path(p, i);
 			add_path(new_paths, new_p);
