@@ -44,22 +44,28 @@ void			ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 	int i;
 	int n;
 
-	i = 0;
-	n = 0;
-	lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases + 1);
+	n = 1;
+	lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases);
 	i = error_tab[5][0];
 	lemin->m.cases[0] = ft_strdup_matrice(tab[error_tab[0][0]]);
-	lemin->m.cases[lemin->m.nbcases] = ft_strdup_matrice(tab[error_tab[1][0]]);
 	while (i < error_tab[6][0])
 	{
 		if (tab[i][0] == '#')
 			i++;
 		else
 		{
-			lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
-			n++;
-			i++;
+			if (i == error_tab[1][0] || i == error_tab[0][0])
+				i++;
+			else
+			{
+				lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
+				n++;
+				i++;
+			}
 		}
 	}
+	lemin->m.cases[n] = ft_strdup_matrice(tab[error_tab[1][0]]);
+	lemin->m.cases[++n] = 0;
+	lemin->m.nbcases = n;
 	ft_patatruc(tab, lemin, error_tab);
 }
