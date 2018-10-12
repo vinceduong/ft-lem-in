@@ -5,6 +5,8 @@ int		ft_intlen(int nb)
 	int i;
 
 	i = 1;
+	if (nb >= 0 && nb <= 9)
+		return (i + 1);
 	while (nb)
 	{
 		i++;
@@ -17,24 +19,31 @@ int		ft_coord_is_digit(char *tab)
 {
 	int i;
 
+	int countspaces = 0;
+	int countcoor = 0;
 	i = 0;
-	while (tab[i])
+	if (ft_chrstr(tab, ' ') == 1 && ft_chrstr(tab, '-') == 0
+		&& tab[0] != '#')
 	{
-		if (tab[i] == ' ')
-			break;
-		i++;
-	}
-	/*i++;
-	if (ft_isdigit(tab[i]) == 1)
-	{
-		i += ft_intlen(ft_atoi(tab + i));
-		if (ft_isdigit(tab[i]) == 1)
-		{
+		while (tab[i] != ' ')
 			i++;
-			printf("%s\n", tab + i);
-			if (tab[i] == '\0')
-				return (1);
+		while (tab[i])
+		{
+			if (!ft_isdigit(tab[i]) && tab[i] != ' ')
+				break;
+			if (ft_isdigit(tab[i]))
+			{
+				while (tab[i] && ft_isdigit(tab[i]))
+					i++;
+				countcoor++;
+				if (countcoor == 2 && tab[i])
+					countcoor--;
 			}
-	}*/
-	return (1);
+			if (tab[i] == ' ')
+				countspaces++;
+			i++;
+		}
+	}
+	printf("Countcoor = %d, countspaces = %d\n", countcoor, countspaces);
+	return (countcoor == 2 && countspaces == 2 ? 1 : 0);
 }

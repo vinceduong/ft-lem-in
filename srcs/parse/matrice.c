@@ -57,7 +57,6 @@ void			ft_create_matrice(char **tab, t_lemin *lemin, int **error_tab)
 		else
 		{
 			lemin->m.cases[n] = ft_strdup_matrice(tab[i]);
-			printf("%s\n", lemin->m.cases[n]);
 			n++;
 			i++;
 		}
