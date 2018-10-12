@@ -3,7 +3,7 @@
 t_nodelist	*cpy_nodelist(t_nodelist *src)
 {
 	t_nodelist	*dest;
-	t_node 		*tmp;
+	t_node		*tmp;
 
 	if (!(dest = init_nodelist()))
 		return (NULL);

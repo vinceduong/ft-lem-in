@@ -3,7 +3,7 @@
 t_path	*delete_path(t_pathlist *paths, t_path *del)
 {
 	t_path *tmp;
-
+	
 	tmp = paths->start;
 	if (tmp == del)
 	{
