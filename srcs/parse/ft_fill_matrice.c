@@ -62,7 +62,7 @@ static int		ft_minus(char *tab)
 	return (i);
 }
 
-void			ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
+void			ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
 {
 	int		n;
 	int		i;
@@ -74,8 +74,8 @@ void			ft_patatruc(char **tab, t_lemin *lemin, int **error_tab)
 	j = 0;
 	index = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
-	index = error_tab[6][0];
-	while (j < lemin->nb_link)
+	index = error_tab[6];
+	while (tab[index])
 	{
 		if (tab[index][0] == '#')
 			index++;
