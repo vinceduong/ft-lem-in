@@ -7,21 +7,29 @@ int			compare_childs(t_path *p1, t_path *p2)
 	return (0);
 }
 
-t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
+void		fill_childs(t_lemin *l, t_pathlist *paths)
 {
 	t_path		*tmp;
-	t_pathlist	*newlist;
 
 	tmp = paths->start;
 	while (tmp)
 	{
 		if (!tmp->ended && !count_new_childs(l, tmp))
 			tmp = delete_path(paths, tmp);
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
+}
+
+t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
+{
+	t_pathlist	*newlist;
+	t_path		*tmp;
+
+	fill_childs(l, paths);
 	if (!paths->start)
 	{
-		free_pathlist(paths);
+		free(paths);
 		return (NULL);
 	}
 	sort_paths(paths, compare_childs);
