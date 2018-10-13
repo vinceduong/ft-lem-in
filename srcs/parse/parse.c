@@ -56,7 +56,7 @@ static int	ft_read_data(char **tab, t_lemin *lemin, int i, int *error_tab)
 	}
 	if (!(ft_check_value(lemin, error_tab)))
 		return (0);
-	lemin->m.nbcases += 2;
+	ft_putstr("start creation matrice\n");
 	ft_create_matrice(tab, lemin, error_tab);
 	return (1);
 }

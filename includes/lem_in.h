@@ -101,5 +101,6 @@ int			ft_how_many(t_lemin *lemin, int ant, int i);
 int			**ft_assign_tube(t_lemin *lemin, int i, int nbant);
 int			**ft_last_assign(t_lemin *lemin, int i, int nbant);
 void		ft_clean(char **tab);
+void 		ft_clean_int(int **tab, int size);
 
 #endif

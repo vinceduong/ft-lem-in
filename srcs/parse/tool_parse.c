@@ -58,6 +58,6 @@ int		ft_coord_is_digit(char *tab)
 			i++;
 		}
 	}
-	printf("Countcoor = %d, countspaces = %d\n", countcoor, countspaces);
+	//printf("Countcoor = %d, countspaces = %d\n", countcoor, countspaces);
 	return (countcoor == 2 && countspaces == 2 ? 1 : 0);
 }
