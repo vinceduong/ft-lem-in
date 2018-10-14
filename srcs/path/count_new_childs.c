@@ -9,7 +9,7 @@ int	count_new_childs(t_lemin *l, t_path *p)
 	count = 0;
 	while (i < l->m.nbcases)
 	{
-		if (l->m.graph[p->curr][i] && !l->m.graph[i][i])
+		if (l->m.graph[p->curr][i] && l->m.graph[i][i] == 0)
 			count++;
 		i++;
 	}
