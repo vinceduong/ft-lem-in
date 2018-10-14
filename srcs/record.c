@@ -93,6 +93,6 @@ int			record(t_lemin *lemin)
 		pathnumber++;
 	}
 	ft_clean_int(lemin->a.rep, lemin->nbpaths);
-	ft_clean(lemin->m.cases);
+	//ft_clean(lemin->m.cases);
 	return (1);
 }

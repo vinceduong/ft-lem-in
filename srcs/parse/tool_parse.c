@@ -43,11 +43,11 @@ int		ft_coord_is_digit(char *tab)
 			i++;
 		while (tab[i])
 		{
-			if (!ft_isdigit(tab[i]) && tab[i] != ' ')
+			if (ft_isdigit(tab[i]) == 0 && tab[i] != ' ')
 				break;
-			if (ft_isdigit(tab[i]))
+			if (ft_isdigit(tab[i]) == 1)
 			{
-				while (tab[i] && ft_isdigit(tab[i]))
+				while (tab[i] && ft_isdigit(tab[i]) == 1)
 					i++;
 				countcoor++;
 				if (countcoor == 2 && tab[i])
@@ -58,6 +58,6 @@ int		ft_coord_is_digit(char *tab)
 			i++;
 		}
 	}
-	//printf("Countcoor = %d, countspaces = %d\n", countcoor, countspaces);
+	printf("[%s]\nCountcoor = %d, countspaces = %d\n", tab, countcoor, countspaces);
 	return (countcoor == 2 && countspaces == 2 ? 1 : 0);
 }
