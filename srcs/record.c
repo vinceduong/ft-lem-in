@@ -4,7 +4,7 @@
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
 
-
+/*
 void		test_recu(t_lemin *lemin)
 {
 	int	i;
@@ -25,7 +25,7 @@ void		test_recu(t_lemin *lemin)
 		i++;
 	}
 }
-
+*/
 
 size_t		ops_size(t_lemin *lemin)
 {
@@ -55,7 +55,7 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 	int			antpos;
 	int			wave;
 	t_node		*room;
-	char		*tmp;
+	char		*step;
 
 	antpos = 1;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
@@ -68,11 +68,12 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 			{
 				lemin->r.ops[wave] = ft_strdup("a");
 			}
-			tmp = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);
-			lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave], tmp);
-			free(tmp);
+			step = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);
+			lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave],
+				step);
 			room = room->next;
 			wave++;
+			free(step);
 		}
 		if (antpos + 1)
 			antpos++;
@@ -84,7 +85,7 @@ int			record(t_lemin *lemin)
 {
 	int	pathnumber;
 
-	test_recu(lemin);
+	//test_recu(lemin);
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
