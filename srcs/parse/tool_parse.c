@@ -10,8 +10,6 @@ void	ft_clean(char **tab)
 		ft_strdel(&tab[i]);
 		i++;
 	}
-	ft_strdel(&tab[i]);
-	ft_strdel(tab);
 	free(tab);
 }
 
@@ -36,7 +34,7 @@ int		ft_coord_is_digit(char *tab)
 
 	int countspaces = 0;
 	int countcoor = 0;
-	i = 0;
+	i = 0;;
 	if (ft_chrstr(tab, ' ') == 1 && ft_chrstr(tab, '-') == 0
 		&& tab[0] != '#')
 	{
@@ -64,6 +62,6 @@ int		ft_coord_is_digit(char *tab)
 			i++;
 		}
 	}
-	printf("[%s]\nCountcoor = %d, countspaces = %d\n", tab, countcoor, countspaces);
+	//printf("[%s]\nCountcoor = %d, countspaces = %d\n", tab, countcoor, countspaces);
 	return (countcoor == 2 && countspaces == 2 ? 1 : 0);
 }

@@ -73,8 +73,8 @@ static char		**ft_read(char *str, char *line)
 		str = ft_strjoinfree(str, "\n\0");
 		free(line);
 	}
-	ft_putstr(str);
-	ft_putchar('\n');
+	//ft_putstr(str);
+	//ft_putchar('\n');
 	split = ft_strsplit(str, '\n');
 	free(str);
 	return (split);
@@ -114,7 +114,7 @@ int				parser(t_lemin *lemin)
 	if (!(ft_read_data(tab, lemin, -1, error_tab)))
 		return (0);
 	//free(error_tab);
-	//ft_clean(tab);
+	ft_clean(tab);
 	//free(str);
 	return (1);
 }
