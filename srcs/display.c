@@ -25,6 +25,6 @@ int	display(t_lemin *lemin)
 		i++;
 	}
 	free(lemin->r.ops);
-	ft_free_int(lemin->m.graph, lemin->m.nbcases);
+	ft_free_int(lemin->m.graph, lemin->m.nbcases + 1);
 	return (1);
 }

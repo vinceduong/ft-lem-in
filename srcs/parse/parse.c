@@ -113,7 +113,7 @@ int				parser(t_lemin *lemin)
 		return (0);
 	if (!(ft_read_data(tab, lemin, -1, error_tab)))
 		return (0);
-	//free(error_tab);
+	free(error_tab);
 	ft_clean(tab);
 	//free(str);
 	return (1);
