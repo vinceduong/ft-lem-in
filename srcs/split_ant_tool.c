@@ -19,7 +19,7 @@ void		ft_get_length(t_lemin *lemin)
 	}
 }
 
-int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j)
+int			**ft_realloc_ant(t_lemin *lemin, int i, int l)
 {
 	while (i < lemin->nbpaths)
 	{

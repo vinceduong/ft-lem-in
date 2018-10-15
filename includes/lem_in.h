@@ -81,7 +81,7 @@ int					ft_chrstr(char *find, int c);
 int					ft_intlen(int nb);
 int					ft_coord_is_digit(char *str);
 void				ft_get_length(t_lemin *lemin);
-int					**ft_realloc_ant(t_lemin *lemin, int i, int l, int j);
+int					**ft_realloc_ant(t_lemin *lemin, int i, int l);
 int					ft_how_many(t_lemin *lemin, int ant, int i);
 int					**ft_assign_tube(t_lemin *lemin, int i, int nbant);
 int					**ft_last_assign(t_lemin *lemin, int i, int nbant);
@@ -115,5 +115,6 @@ void				free_pathlist(t_pathlist *pathlist);
 void				free_nodelist(t_nodelist *nodelist);
 void				free_node(t_node *node);
 t_pathlist			*find_pathlist(t_lemin *l, t_pathlist *paths);
+void 				ft_free_int(int **tab, int size);
 
 #endif
