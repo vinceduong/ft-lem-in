@@ -18,6 +18,12 @@ int	main(void)
 		return (0);
 	}
 	printf("Pathing worked\n");
+	int i = 0;
+	while (i < lemin.nbpaths)
+	{
+		print_path(&lemin.p[i]);
+		i++;
+	}
 	if (!split_ants(&lemin))
 	{
 		ft_printf("Splitting failed\n");
