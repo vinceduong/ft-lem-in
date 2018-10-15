@@ -12,6 +12,7 @@ void	ft_clean(char **tab)
 	}
 	ft_strdel(&tab[i]);
 	ft_strdel(tab);
+	free(tab);
 }
 
 int		ft_intlen(int nb)
