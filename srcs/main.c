@@ -45,5 +45,6 @@ int	main(void)
 		return (0);
 	}
 	printf("Display worked\n");
+	//while(1);
 	return (0);
 }
