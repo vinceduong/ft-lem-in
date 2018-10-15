@@ -47,13 +47,8 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(LIBFT)
-<<<<<<< HEAD
-	@$(CC) $(OBJ) -o $(NAME) $(LIBFT)
-	@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
-=======
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 			@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
->>>>>>> 2d13fcec75c259f80c7f29cfb4d2d2baac7b532d
 
 $(LIBFT) :
 	@make -C libft
