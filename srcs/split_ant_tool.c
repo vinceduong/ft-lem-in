@@ -55,7 +55,7 @@ int			**ft_assign_tube(t_lemin *lemin, int i, int nbant)
 	int j;
 
 	j = -1;
-	while (j++ != i)
+	while (j++ < i + 1)
 		lemin->a.rep[j][1] += nbant;
 	return (lemin->a.rep);
 }
