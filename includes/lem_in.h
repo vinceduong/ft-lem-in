@@ -68,6 +68,7 @@ typedef struct		s_lemin
 	int				nb_link;
 }					t_lemin;
 
+<<<<<<< HEAD
 void				print_matrix(t_lemin *l);
 void				print_ant_road(t_lemin *lemin);
 int					parser(t_lemin *lemin);
@@ -115,5 +116,42 @@ void				free_pathlist(t_pathlist *pathlist);
 void				free_nodelist(t_nodelist *nodelist);
 void				free_node(t_node *node);
 t_pathlist			*find_pathlist(t_lemin *l, t_pathlist *paths);
+=======
+# include "paths.h"
+/* forme du graph :
+   0 1 2 3
+0[[0,0,0,0],
+1 [0,0,0,0],
+2 [0,0,0,0],
+3 [0,0,0,0]]*/
+
+void		print_matrix(t_lemin *l);
+void		print_ant_road(t_lemin *lemin);
+//On initialise map ants, si la map est invalide => return 0
+int			parser(t_lemin *lemin);
+//On cherche les plus courts chemins, si on trouve aucun path => return 0;
+int			paths(t_lemin *lemin);
+//On reparti les chemins pour les fourmis, on rempli ants->rep;
+int			split_ants(t_lemin *lemin);
+//On record les tours en faisant avancer les fourmis sur chaque path;
+int			record(t_lemin *lemin);
+//On affiche les tours sur l'entrée standard
+int			display(t_lemin *lemin);
+
+//foncitons de Cam
+void		ft_patatruc(char **tab, t_lemin *lemin, int *error_tab);
+void		ft_create_matrice(char **tab, t_lemin *lemin, int *error_tab);
+int			ft_chrstr(char *find, int c);
+int			ft_intlen(int nb);
+int			ft_coord_is_digit(char *str);
+//function spliting ant
+void		ft_get_length(t_lemin *lemin);
+int			**ft_realloc_ant(t_lemin *lemin, int i, int l, int j);
+int			ft_how_many(t_lemin *lemin, int ant, int i);
+int			**ft_assign_tube(t_lemin *lemin, int i, int nbant);
+int			**ft_last_assign(t_lemin *lemin, int i, int nbant);
+void		ft_clean(char **tab);
+void 		ft_clean_int(int **tab, int size);
+>>>>>>> theo
 
 #endif

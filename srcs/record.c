@@ -40,6 +40,7 @@ size_t		ops_size(t_lemin *lemin)
 char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 {
 	char *tmp;
+<<<<<<< HEAD
 	char *tmp2;
 
 	tmp2 = ft_itoa(antnum);
@@ -47,6 +48,15 @@ char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 	tmp2 = ft_strjoin(tmp2, "-");
 	tmp = ft_strjoin(tmp2, lemin->m.cases[room->nb]);
 	free(tmp2);
+=======
+	char *itoa;
+
+	itoa = ft_itoa(antnum);
+	tmp = ft_strjoin(" L", ft_itoa(antnum));
+	free(itoa);
+	tmp = ft_strjoinfree(tmp, "-");
+	tmp = ft_strjoinfree(tmp, lemin->m.cases[room->nb]);
+>>>>>>> theo
 	return (tmp);
 }
 
@@ -55,6 +65,7 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 	int			antpos;
 	int			wave;
 	t_node		*room;
+	char		*tmp;
 
 	antpos = 1;
 	while (lemin->a.rep[pathnumber][antpos] != 0)
@@ -65,10 +76,11 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 		{
 			if (!(lemin->r.ops[wave]))
 			{
-				lemin->r.ops[wave] = "a";
+				lemin->r.ops[wave] = ft_strdup("a");
 			}
-			lemin->r.ops[wave] = ft_strjoin(lemin->r.ops[wave],
-				step_writer(lemin, lemin->a.rep[pathnumber][antpos], room));
+			tmp = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);
+			lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave], tmp);
+			free(tmp);
 			room = room->next;
 			wave++;
 		}
@@ -92,5 +104,7 @@ int			record(t_lemin *lemin)
 		launch_path(lemin, pathnumber);
 		pathnumber++;
 	}
+	ft_clean_int(lemin->a.rep, lemin->nbpaths);
+	//ft_clean(lemin->m.cases);
 	return (1);
 }
