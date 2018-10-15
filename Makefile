@@ -41,7 +41,6 @@ SRC = 	srcs/main.c \
 			srcs/print_matrix.c\
 			srcs/split_ant_tool.c\
 
-
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
