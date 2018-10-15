@@ -4,6 +4,7 @@
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
 
+/*
 void		test_recu(t_lemin *lemin)
 {
 	int	i;
@@ -24,6 +25,7 @@ void		test_recu(t_lemin *lemin)
 		i++;
 	}
 }
+*/
 
 size_t		ops_size(t_lemin *lemin)
 {
