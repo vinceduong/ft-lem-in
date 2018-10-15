@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void	swap(t_pathlist **paths, t_path **a, t_path **b)
+void	swap(t_path **a, t_path **b)
 {
 	int			tmpcurr;
 	int			tmpchilds;
@@ -32,7 +32,7 @@ void	sort_paths(t_pathlist *paths, int (*comp)(t_path *p1, t_path *p2))
 		if (comp(tmp, tmp->next))
 		{
 			tmpsort = tmp->next;
-			swap(&paths, &tmp, &tmpsort);
+			swap(&tmp, &tmpsort);
 			tmp = paths->start;
 		}
 		tmp = tmp->next;

@@ -95,7 +95,8 @@ int			record(t_lemin *lemin)
 		launch_path(lemin, pathnumber);
 		pathnumber++;
 	}
+	ft_free_int(lemin->a.rep, lemin->nbpaths);
 	//ft_clean_int(lemin->a.rep, lemin->nbpaths);
-	//ft_clean(lemin->m.cases);
+	ft_clean(lemin->m.cases);
 	return (1);
 }
