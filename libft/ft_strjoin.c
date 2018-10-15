@@ -6,7 +6,7 @@
 /*   By: carmenia <carmenia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 15:46:17 by carmenia          #+#    #+#             */
-/*   Updated: 2018/10/12 16:29:39 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/10/15 12:04:28 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	str[size] = '\0';
-	free(s1);
 	return (&str[0]);
 }
