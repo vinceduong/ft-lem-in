@@ -4,7 +4,7 @@
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
 
-/*
+
 void		test_recu(t_lemin *lemin)
 {
 	int	i;
@@ -25,7 +25,7 @@ void		test_recu(t_lemin *lemin)
 		i++;
 	}
 }
-*/
+
 
 size_t		ops_size(t_lemin *lemin)
 {
@@ -82,7 +82,7 @@ int			record(t_lemin *lemin)
 {
 	int	pathnumber;
 
-	//test_recu(lemin);
+	test_recu(lemin);
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
