@@ -43,7 +43,7 @@ char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 	char *itoa;
 
 	itoa = ft_itoa(antnum);
-	tmp = ft_strjoin(" L", ft_itoa(antnum));
+	tmp = ft_strjoin(" L", itoa);
 	free(itoa);
 	tmp = ft_strjoinfree(tmp, "-");
 	tmp = ft_strjoinfree(tmp, lemin->m.cases[room->nb]);
