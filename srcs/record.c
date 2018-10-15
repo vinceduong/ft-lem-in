@@ -40,15 +40,6 @@ size_t		ops_size(t_lemin *lemin)
 char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 {
 	char *tmp;
-<<<<<<< HEAD
-	char *tmp2;
-
-	tmp2 = ft_itoa(antnum);
-	tmp2 = ft_strjoin(" L", tmp2);
-	tmp2 = ft_strjoin(tmp2, "-");
-	tmp = ft_strjoin(tmp2, lemin->m.cases[room->nb]);
-	free(tmp2);
-=======
 	char *itoa;
 
 	itoa = ft_itoa(antnum);
@@ -56,7 +47,6 @@ char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 	free(itoa);
 	tmp = ft_strjoinfree(tmp, "-");
 	tmp = ft_strjoinfree(tmp, lemin->m.cases[room->nb]);
->>>>>>> theo
 	return (tmp);
 }
 
@@ -104,7 +94,7 @@ int			record(t_lemin *lemin)
 		launch_path(lemin, pathnumber);
 		pathnumber++;
 	}
-	ft_clean_int(lemin->a.rep, lemin->nbpaths);
+	//ft_clean_int(lemin->a.rep, lemin->nbpaths);
 	//ft_clean(lemin->m.cases);
 	return (1);
 }

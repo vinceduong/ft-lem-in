@@ -45,9 +45,6 @@ int	main(void)
 		return (0);
 	}
 	printf("Display worked\n");
-<<<<<<< HEAD
-=======
 	//while(1);
->>>>>>> theo
 	return (0);
 }
