@@ -45,9 +45,13 @@ static int		fill_one(t_lemin *lemin, char *str)
 	while (lemin->m.cases[i])
 	{
 		if (ft_strcmp(lemin->m.cases[i], str) == 0)
+		{
+			free(str);
 			return (i);
+		}
 		i++;
 	}
+	free(str);
 	return (-1);
 }
 

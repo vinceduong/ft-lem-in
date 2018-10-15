@@ -62,7 +62,7 @@ static void		ft_attribute_ant(t_lemin *lemin)
 	n = 1;
 	i = 0;
 	j = 1;
-	lemin->a.rep = ft_realloc_ant(lemin, i, 0, 0);
+	lemin->a.rep = ft_realloc_ant(lemin, i, 0);
 	while (n - 1 < lemin->a.nbants)
 	{
 		if (i == lemin->nbpaths)
