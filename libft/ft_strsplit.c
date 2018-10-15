@@ -50,7 +50,7 @@ static const char	*ft_word_fill(char const *s, char c, int word_index,
 		word_table[word_index][i] = s[i];
 		i++;
 	}
-	word_table[word_index][i] = 0;
+	word_table[word_index][i] = '\0';
 	return (s + i);
 }
 

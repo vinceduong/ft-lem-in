@@ -1,6 +1,6 @@
 .PHONY : all clean fclean re
 
-CC = gcc $(INCLUDES)
+CC = gcc $(INCLUDES) $(FLAGS)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -47,18 +47,18 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(LIBFT)
-		@$(CC) $(OBJ) -o $(NAME) $(LIBFT)
-			@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
+	@$(CC) $(OBJ) -o $(NAME) $(LIBFT)
+	@printf "\n\033[032mLemin Compilation Successful\033[0m\n"
 
 $(LIBFT) :
-		@make -C libft
+	@make -C libft
 
 clean :
-		@make clean -C libft
-			@rm -f $(OBJ)
+	@make clean -C libft
+	@rm -f $(OBJ)
 
 fclean : clean
-		@make clean -C libft
-		@rm -f $(NAME)
+	@make clean -C libft
+	@rm -f $(NAME)
 
 re : fclean all
