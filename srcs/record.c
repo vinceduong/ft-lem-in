@@ -4,7 +4,7 @@
 /*il te manque peut etre un voup, si ca pas hesite pas a incrementer ton
  return de 1 */
 
-/*
+
 void		test_recu(t_lemin *lemin)
 {
 	int	i;
@@ -25,7 +25,7 @@ void		test_recu(t_lemin *lemin)
 		i++;
 	}
 }
-*/
+
 
 size_t		ops_size(t_lemin *lemin)
 {
@@ -40,10 +40,13 @@ size_t		ops_size(t_lemin *lemin)
 char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 {
 	char *tmp;
+	char *tmp2;
 
-	tmp = ft_strjoin(" L", ft_itoa(antnum));
-	tmp = ft_strjoin(tmp, "-");
-	tmp = ft_strjoin(tmp, lemin->m.cases[room->nb]);
+	tmp2 = ft_itoa(antnum);
+	tmp2 = ft_strjoin(" L", tmp2);
+	tmp2 = ft_strjoin(tmp2, "-");
+	tmp = ft_strjoin(tmp2, lemin->m.cases[room->nb]);
+	free(tmp2);
 	return (tmp);
 }
 
@@ -79,7 +82,7 @@ int			record(t_lemin *lemin)
 {
 	int	pathnumber;
 
-	//test_recu(lemin);
+	test_recu(lemin);
 	pathnumber = 0;
 	if (!(lemin->r.ops =
 				(char **)malloc(ops_size(lemin) * sizeof(char *))))
