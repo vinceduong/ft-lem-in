@@ -1,18 +1,5 @@
 #include "lem_in.h"
 
-void free_ops(char **ops)
-{
-	int i;
-
-	i = 0;	
-	while (ops[i])
-	{
-		free(ops[i]);
-		i++;
-	}
-	free(ops);
-}
-
 int	display(t_lemin *lemin)
 {
 	int	i;
@@ -20,10 +7,10 @@ int	display(t_lemin *lemin)
 	i = 0;
 	while (lemin->r.ops[i])
 	{
-		lemin->r.ops[i] += 2;
-		ft_printf("%s \n", lemin->r.ops[i]);
+		ft_printf("%s \n", lemin->r.ops[i] + 2);
+		free(lemin->r.ops[i]);
 		i++;
 	}
-//	free_ops(lemin->r.ops);
+	free(lemin->r.ops);
 	return (1);
 }
