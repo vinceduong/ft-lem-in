@@ -47,7 +47,7 @@ int			ft_create_matrice(char **tab, t_lemin *lemin, int *error_tab)
 	int n;
 
 	n = 1;
-	if (!(lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases + 1)))
+	if (!(lemin->m.cases = (char**)malloc(sizeof(char*) * lemin->m.nbcases + 15)))
 		return (0);
 	if (!lemin->m.cases)
 		exit(0);

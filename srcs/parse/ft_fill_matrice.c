@@ -6,12 +6,12 @@ static int		**ft_fill_zero(t_lemin *lemin)
 	int		i;
 	int		n;
 
-	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 1);
+	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 10);
 	i = 0;
 	n = 0;
 	while (n < lemin->m.nbcases + 1)
 	{
-		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 1);
+		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 10);
 		while (i < lemin->m.nbcases + 1)
 		{
 			tab[n][i] = 0;
