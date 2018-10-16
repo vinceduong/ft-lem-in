@@ -35,11 +35,10 @@ SRC = 	srcs/main.c \
 			srcs/path/map_dead_nodes.c \
 			srcs/path/print.c\
 			srcs/path/free.c\
+			srcs/ants/split_ants.c\
 			srcs/display.c\
 			srcs/record.c\
-			srcs/split_ants.c\
 			srcs/print_matrix.c\
-			srcs/split_ant_tool.c\
 			srcs/tool_record.c
 
 OBJ = $(SRC:.c=.o)
