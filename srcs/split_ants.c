@@ -96,10 +96,10 @@ int				split_ants(t_lemin *lemin)
 		n = 0;
 		while (lemin->a.rep[i][n] != 0)
 		{
-			printf("%d |", lemin->a.rep[i][n]);
+			printf(" %d |", lemin->a.rep[i][n]);
 			n++;
 		}
-		printf("%d |", lemin->a.rep[i][n]);
+		printf(" %d |", lemin->a.rep[i][n]);
 		printf("\n");
 		i++;
 	}
