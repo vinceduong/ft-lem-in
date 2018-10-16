@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void ft_free_int(int **tab, int size)
+void	ft_free_int(int **tab, int size)
 {
 	int i;
 
@@ -13,7 +13,7 @@ void ft_free_int(int **tab, int size)
 	free(tab);
 }
 
-int	display(t_lemin *lemin)
+int		display(t_lemin *lemin)
 {
 	int	i;
 
