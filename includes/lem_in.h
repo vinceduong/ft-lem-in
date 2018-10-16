@@ -68,6 +68,7 @@ typedef struct		s_lemin
 	int				nb_link;
 }					t_lemin;
 
+int 				ft_check_room(char **tab, int i);
 void				print_matrix(t_lemin *l);
 void				print_ant_road(t_lemin *lemin);
 int					parser(t_lemin *lemin);
@@ -75,8 +76,8 @@ int					paths(t_lemin *lemin);
 int					split_ants(t_lemin *lemin);
 int					record(t_lemin *lemin);
 int					display(t_lemin *lemin);
-void				ft_patatruc(char **tab, t_lemin *lemin, int *error_tab);
-void				ft_create_matrice(char **tab, t_lemin *l, int *t);
+int				ft_patatruc(char **tab, t_lemin *lemin, int *error_tab);
+int				ft_create_matrice(char **tab, t_lemin *l, int *t);
 int					ft_chrstr(char *find, int c);
 int					ft_intlen(int nb);
 int					ft_coord_is_digit(char *str);

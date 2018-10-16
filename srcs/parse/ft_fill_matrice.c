@@ -66,17 +66,14 @@ static int		ft_minus(char *tab)
 	return (i);
 }
 
-void			ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
+int			ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
 {
 	int		n;
 	int		i;
 	int		index;
 	int		j;
 
-	n = 0;
-	i = 0;
 	j = 0;
-	index = 0;
 	lemin->m.graph = ft_fill_zero(lemin);
 	index = error_tab[6];
 	while (tab[index])
@@ -87,10 +84,13 @@ void			ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
 		{
 			n = fill_one(lemin, ft_strdup_c(tab[index]));
 			i = fill_one(lemin, ft_strdup(tab[index] + ft_minus(tab[index])));
+			if (n == -1 || i == -1)
+				return (0);
 			lemin->m.graph[n][i] = 1;
 			lemin->m.graph[i][n] = 1;
 			index++;
 			j++;
 		}
 	}
+	return (1);
 }
