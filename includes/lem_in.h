@@ -92,7 +92,7 @@ int					check_nodelist(t_nodelist *nodelist, int nodenb);
 t_path				*new_path(t_path *path, int nodenb);
 void				*add_path(t_pathlist *pathlist, t_path *path);
 t_path				*delete_path(t_pathlist *paths, t_path *del);
-t_nodelist			*cpy_nodelist(t_nodelist *src);
+t_nodelist			*cpy_nodelist(t_nodelist *src, t_nodelist *dest);
 t_path				*init_path(void);
 t_pathlist			*init_pathlist(void);
 t_nodelist			*init_nodelist(void);

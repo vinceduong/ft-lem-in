@@ -17,8 +17,8 @@ void	free_nodelist(t_nodelist *nodelist)
 		while (tmp)
 		{
 			tmp2 = tmp;
-			tmp = tmp->next;
-			free_node(tmp2);
+			free_node(tmp);
+			tmp = tmp2->next;
 		}
 		free(nodelist);
 	}

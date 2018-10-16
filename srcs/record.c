@@ -65,9 +65,7 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 		while (room)
 		{
 			if (!(lemin->r.ops[wave]))
-			{
 				lemin->r.ops[wave] = ft_strdup("i");
-			}
 			step = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);
 			lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave],
 				step);

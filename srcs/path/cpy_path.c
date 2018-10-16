@@ -2,7 +2,7 @@
 
 int	cpy_path(t_path *src, t_path *dest, t_node *node)
 {
-	dest->nodes = cpy_nodelist(src->nodes);
+	dest->nodes = cpy_nodelist(src->nodes, dest->nodes);
 	dest->curr = src->curr;
 	dest->ended = src->ended;
 	if (node)

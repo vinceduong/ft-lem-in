@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void ft_clean_int(int **tab, int size)
+void		ft_clean_int(int **tab, int size)
 {
 	int i;
 
