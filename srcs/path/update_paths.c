@@ -27,11 +27,6 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 	t_path		*tmp;
 
 	fill_childs(l, paths);
-	if (!paths->start)
-	{
-		free(paths);
-		return (NULL);
-	}
 	sort_paths(paths, compare_childs);
 	if (!(newlist = new_path_list(l, paths)))
 		return (0);
