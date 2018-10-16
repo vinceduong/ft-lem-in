@@ -78,25 +78,8 @@ static void		ft_attribute_ant(t_lemin *lemin)
 
 int				split_ants(t_lemin *lemin)
 {
-<<<<<<< HEAD
-	//int i;
-	//int j;
-	//int k;
 	ft_get_length(lemin);
 	ft_assign_ant(lemin);
 	ft_attribute_ant(lemin);
-	/*for (i = 0; i < lemin->nbpaths; i++)
-    {
-        printf("Chemin [%d] == ", i);
-		k = lemin->a.rep[i][0] + 2;
-        for (j = 0; j < k; j++)
-            printf("%d | ", lemin->a.rep[i][j]);
-        printf("\n");
-    }*/
-=======
-	ft_get_length(lemin);
-	ft_assign_ant(lemin);
-	ft_attribute_ant(lemin);
->>>>>>> 2d449dccefd7d84a3aae5b20502d32cfe06db5a4
 	return (1);
 }
