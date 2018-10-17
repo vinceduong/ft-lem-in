@@ -2,18 +2,20 @@
 
 int			check_ended(t_pathlist *pathlist)
 {
-	t_path *tmp;
+	t_path	*tmp;
+	int		ended;
 
+	ended = 1;
 	tmp = pathlist->start;
 	while (tmp)
 	{
 		if (!tmp->ended)
-			return (0);
+			ended = 0;
 		if (tmp->ended && tmp->nodes->length == 2)
 			return (1);
 		tmp = tmp->next;
 	}
-	return (1);
+	return (ended);
 }
 
 t_pathlist	*find_pathlist(t_lemin *l, t_pathlist *paths)

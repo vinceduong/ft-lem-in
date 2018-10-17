@@ -20,6 +20,5 @@ int	main(void)
 		return (0);
 	if (!display(&lemin))
 		return (0);
-	while (1);	
 	return (0);
 }

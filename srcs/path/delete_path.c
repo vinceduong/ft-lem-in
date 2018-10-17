@@ -23,8 +23,7 @@ t_path	*delete_path(t_pathlist *paths, t_path *del)
 	if (tmp->next)
 	{
 		tmp->next->previous = tmp;
-		if (tmp->next->next)
-			tmp->next->next->previous = tmp;
+		tmp->next->next ? tmp->next->next->previous = tmp : 0;
 	}
 	free_path(del);
 	return (tmp->next);

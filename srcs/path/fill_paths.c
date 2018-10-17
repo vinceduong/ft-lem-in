@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int	compare_length(t_path *p1, t_path *p2)
+int		compare_length(t_path *p1, t_path *p2)
 {
 	return (p1->nodes->length > p2->nodes->length);
 }
@@ -25,7 +25,24 @@ void	sort_paths_array(t_path *array, int size)
 	}
 }
 
-int	fill_paths(t_lemin *l, t_pathlist *paths)
+void	fill_array(t_lemin *l, t_pathlist *paths, t_path *array)
+{
+	int		size;
+	t_path	*tmp;
+
+	tmp = paths->start;
+	size = 0;
+	while (tmp)
+	{
+		if (tmp->ended)
+			array[size++] = *tmp;
+		tmp = tmp->next;
+	}
+	l->nbpaths = size;
+	sort_paths_array(array, size);
+}
+
+int		fill_paths(t_lemin *l, t_pathlist *paths)
 {
 	t_path	*tmp;
 	t_path	*array;
@@ -35,20 +52,14 @@ int	fill_paths(t_lemin *l, t_pathlist *paths)
 	tmp = paths->start;
 	while (tmp)
 	{
-		size++;
+		if (tmp->ended)
+			size++;
 		tmp = tmp->next;
 	}
 	if (!(array = (t_path *)malloc(sizeof(t_path) * size)))
 		return (0);
 	tmp = paths->start;
-	size = 0;
-	while (tmp)
-	{
-		array[size++] = *tmp;
-		tmp = tmp->next;
-	}
-	l->nbpaths = size;
-	sort_paths_array(array, size);
+	fill_array(l, paths, array);
 	l->p = array;
 	free(paths);
 	return (1);

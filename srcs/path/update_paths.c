@@ -18,7 +18,7 @@ void		fill_childs(t_lemin *l, t_pathlist *paths)
 		{
 			if (!(tmp = delete_path(paths, tmp)))
 				return ;
-		}	
+		}
 		else
 			tmp = tmp->next;
 	}
