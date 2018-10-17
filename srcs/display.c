@@ -20,7 +20,15 @@ int		display(t_lemin *lemin)
 	i = 0;
 	while (lemin->r.ops[i])
 	{
-		ft_printf("%s\n", lemin->r.ops[i] + 1);
+		if (lemin->p[0].nodes->length == 2)
+		{
+			if (lemin->r.ops[i + 1])
+				ft_printf("%s ", lemin->r.ops[i] + 1);
+			else
+				ft_printf("%s\n", lemin->r.ops[i] + 1);
+		}
+		else
+			ft_printf("%s\n", lemin->r.ops[i] + 1);
 		free(lemin->r.ops[i]);
 		i++;
 	}

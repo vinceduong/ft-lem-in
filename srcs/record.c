@@ -17,7 +17,7 @@ size_t		ops_size(t_lemin *lemin)
 		if (n > max)
 		{
 			max = n;
-			printf("%d\n", max);
+			//printf("%d\n", max);
 		}
 		i++;
 	}
