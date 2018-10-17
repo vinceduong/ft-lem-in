@@ -59,7 +59,7 @@ typedef struct		s_lemin
 	t_map			m;
 	t_ants			a;
 	t_record		r;
-	t_path			*p;
+	t_path			**p;
 	int				nbpaths;
 	t_list			*instru;
 	int				start;
@@ -68,6 +68,7 @@ typedef struct		s_lemin
 	int				nb_link;
 }					t_lemin;
 
+void				free_paths_array(t_path **paths, int size);
 int					ft_check_room(char **tab, int i);
 void				print_ant_road(t_lemin *lemin);
 int					parser(t_lemin *lemin);

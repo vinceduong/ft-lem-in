@@ -5,15 +5,15 @@ int		compare_length(t_path *p1, t_path *p2)
 	return (p1->nodes->length > p2->nodes->length);
 }
 
-void	sort_paths_array(t_path *array, int size)
+void	sort_paths_array(t_path **array, int size)
 {
 	int		i;
-	t_path	tmp;
+	t_path	*tmp;
 
 	i = 0;
 	while (i < size - 1)
 	{
-		if (compare_length(&array[i], &array[i + 1]))
+		if (compare_length(array[i], array[i + 1]))
 		{
 			tmp = array[i];
 			array[i] = array[i + 1];
@@ -25,27 +25,30 @@ void	sort_paths_array(t_path *array, int size)
 	}
 }
 
-void	fill_array(t_lemin *l, t_pathlist *paths, t_path *array)
+void	fill_array(t_lemin *l, t_pathlist *paths, t_path **array)
 {
-	int		size;
+	int		i;
 	t_path	*tmp;
 
 	tmp = paths->start;
-	size = 0;
+	i = 0;
 	while (tmp)
 	{
 		if (tmp->ended)
-			array[size++] = *tmp;
+		{
+			array[i] = new_path(tmp, -1);
+			i++;
+		}
 		tmp = tmp->next;
 	}
-	l->nbpaths = size;
-	sort_paths_array(array, size);
+	l->nbpaths = i;
+	sort_paths_array(array, i);
 }
 
 int		fill_paths(t_lemin *l, t_pathlist *paths)
 {
 	t_path	*tmp;
-	t_path	*array;
+	t_path	**array;
 	int		size;
 
 	size = 0;
@@ -56,11 +59,10 @@ int		fill_paths(t_lemin *l, t_pathlist *paths)
 			size++;
 		tmp = tmp->next;
 	}
-	if (!(array = (t_path *)malloc(sizeof(t_path) * size)))
+	if (!(array = (t_path **)malloc(sizeof(t_path *) * size)))
 		return (0);
-	tmp = paths->start;
 	fill_array(l, paths, array);
 	l->p = array;
-	free(paths);
+	free_pathlist(paths);
 	return (1);
 }

@@ -33,6 +33,19 @@ void	free_path(t_path *path)
 	}
 }
 
+void	free_paths_array(t_path **paths, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		free_path(paths[i]);
+		i++;
+	}
+	free(paths);
+}
+
 void	free_pathlist(t_pathlist *pathlist)
 {
 	t_path *tmp;

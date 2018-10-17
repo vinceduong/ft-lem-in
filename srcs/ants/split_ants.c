@@ -38,7 +38,7 @@ int		**size_ants(t_lemin *l)
 	{
 		if (!(size_ants[i] = (int *)malloc(sizeof(int *) * 2)))
 			return (NULL);
-		size_ants[i][0] = (i > 0 ? l->p[i].NL - l->p[0].NL : 0);
+		size_ants[i][0] = (i > 0 ? l->p[i]->NL - l->p[0]->NL : 0);
 		size_ants[i][1] = 0;
 		i++;
 	}
