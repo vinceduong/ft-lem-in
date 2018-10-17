@@ -7,8 +7,15 @@ t_path	*delete_path(t_pathlist *paths, t_path *del)
 	tmp = paths->start;
 	if (tmp == del)
 	{
-		tmp->previous = NULL;
-		return (paths->start = tmp->next);
+		if (tmp->next)
+		{
+			tmp->next->previous = NULL;
+			paths->start = tmp->next;
+		}
+		else
+			paths->start = NULL;
+		free_path(del);
+		return (paths->start);
 	}
 	while (tmp->next && tmp->next != del)
 		tmp = tmp->next;

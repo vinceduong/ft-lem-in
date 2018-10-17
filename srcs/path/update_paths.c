@@ -15,7 +15,10 @@ void		fill_childs(t_lemin *l, t_pathlist *paths)
 	while (tmp)
 	{
 		if (!tmp->ended && !count_new_childs(l, tmp))
-			tmp = delete_path(paths, tmp);
+		{
+			if (!(tmp = delete_path(paths, tmp)))
+				return ;
+		}	
 		else
 			tmp = tmp->next;
 	}
@@ -27,9 +30,11 @@ t_pathlist	*update_paths(t_lemin *l, t_pathlist *paths)
 	t_path		*tmp;
 
 	fill_childs(l, paths);
+	if (!paths->start)
+		return (NULL);
 	sort_paths(paths, compare_childs);
 	if (!(newlist = new_path_list(l, paths)))
-		return (0);
+		return (NULL);
 	tmp = newlist->start;
 	while (tmp)
 	{

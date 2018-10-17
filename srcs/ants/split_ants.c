@@ -1,26 +1,14 @@
 #include "lem_in.h"
 
-int **size_ants(t_lemin *l)
-{
-	int **size_ants;
-	int nbants;
-	int i;
-	int turn;
+#define NL nodes->length
 
-	if (!(size_ants = (int **)malloc(sizeof(int *) * l->nbpaths)))
-		return (NULL);
+void	fill_size(t_lemin *l, int **size_ants)
+{
+	int turn;
+	int i;
+	int nbants;
+
 	nbants = l->a.nbants;
-	i = 0;
-	while (i < l->nbpaths)
-	{
-		if (!(size_ants[i] = (int *)malloc(sizeof(int *) * 2)))
-			return (NULL);
-		size_ants[i][0] = (i > 0 ? l->p[i].nodes->length - l->p[0].nodes->length : 0);
-		size_ants[i][1] = 0;
-//		printf("size_ants[%d][0] = %d, size_ants[%d][1] = %d\n", i, size_ants[i][0], i, size_ants[i][1]);
-		i++;
-	}
-	ft_putstr("ok1\n");
 	turn = 0;
 	while (nbants)
 	{
@@ -36,10 +24,29 @@ int **size_ants(t_lemin *l)
 		}
 		turn++;
 	}
+}
+
+int		**size_ants(t_lemin *l)
+{
+	int **size_ants;
+	int i;
+
+	if (!(size_ants = (int **)malloc(sizeof(int *) * l->nbpaths)))
+		return (NULL);
+	i = 0;
+	while (i < l->nbpaths)
+	{
+		if (!(size_ants[i] = (int *)malloc(sizeof(int *) * 2)))
+			return (NULL);
+		size_ants[i][0] = (i > 0 ? l->p[i].NL - l->p[0].NL : 0);
+		size_ants[i][1] = 0;
+		i++;
+	}
+	fill_size(l, size_ants);
 	return (size_ants);
 }
 
-void fill_ants(t_lemin *l, int **ants, int **size)
+void	fill_ants(t_lemin *l, int **ants, int **size)
 {
 	int count_ant;
 	int turn;
@@ -52,20 +59,19 @@ void fill_ants(t_lemin *l, int **ants, int **size)
 		i = 0;
 		while (i < l->nbpaths)
 		{
-			if (count_ant <= l->a.nbants && size[i][1] && ants[i][0] < size[i][1])
+			if (count_ant <= l->a.nbants
+			&& size[i][1] && ants[i][0] < size[i][1])
 			{
 				ants[i][ants[i][0] + 1] = count_ant;
-//				printf("i = %d, count_ant = %d\n", i, count_ant);
 				ants[i][0]++;
 				count_ant++;
 			}
 			i++;
 		}
-		
 	}
 }
 
-int split_ants(t_lemin *l)
+int		split_ants(t_lemin *l)
 {
 	int **ants;
 	int **size;
@@ -73,13 +79,7 @@ int split_ants(t_lemin *l)
 
 	if (!(size = size_ants(l)))
 		return (0);
-	//printf("size_ants worked\n");
 	i = 0;
-	while (i < l->nbpaths)
-	{
-//		print_path(&l->p[i]);
-		i++;
-	}
 	if (!(ants = (int **)malloc(sizeof(int *) * l->nbpaths)))
 		return (0);
 	i = 0;
@@ -87,26 +87,12 @@ int split_ants(t_lemin *l)
 	{
 		if (!(ants[i] = (int *)malloc(sizeof(int *) * (size[i][1] + 2))))
 			return (0);
-		ants[i][0] = 0;;
+		ants[i][0] = 0;
 		ants[i][size[i][1] + 1] = 0;
-		i++; 
+		i++;
 	}
 	fill_ants(l, ants, size);
-	i = 0;
-	int j;
-	while (i < l->nbpaths)
-	{
-		j = 0;
-		printf("ants[%d] = ", i);
-		while (ants[i][j])
-		{
-			printf("|%d|", ants[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-		
-	}
 	l->a.rep = ants;
+	ft_free_int(size, l->nbpaths);
 	return (1);
 }
