@@ -1,5 +1,4 @@
 #include "lem_in.h"
-# define R lemin->a.rep
 
 size_t		ops_size(t_lemin *lemin)
 {
