@@ -75,7 +75,7 @@ static char		**ft_read(char *str, char *line)
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_strcmp(line, "") || line[0] == 'L')
-			return (0);
+			break ;
 		str = ft_strjoinfree(str, line);
 		str = ft_strjoinfree(str, "\n\0");
 		free(line);
