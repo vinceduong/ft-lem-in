@@ -15,19 +15,10 @@ int	main(void)
 		return (0);
 	}
 	if (!split_ants(&lemin))
-	{
-		ft_printf("ERROR\n");
 		return (0);
-	}
 	if (!record(&lemin))
-	{
-		ft_printf("ERROR\n");
 		return (0);
-	}
 	if (!display(&lemin))
-	{
-		ft_printf("ERROR\n");
 		return (0);
-	}
 	return (0);
 }
