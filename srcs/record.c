@@ -15,10 +15,7 @@ size_t		ops_size(t_lemin *lemin)
 		n += lemin->a.rep[i][0];
 		n += lemin->p[i].nodes->length;
 		if (n > max)
-		{
 			max = n;
-			printf("%d\n", max);
-		}
 		i++;
 	}
 	return (max + 1);
