@@ -69,7 +69,6 @@ typedef struct		s_lemin
 }					t_lemin;
 
 int					ft_check_room(char **tab, int i);
-void				print_matrix(t_lemin *l);
 void				print_ant_road(t_lemin *lemin);
 int					parser(t_lemin *lemin);
 int					paths(t_lemin *lemin);
