@@ -3,12 +3,25 @@
 
 size_t		ops_size(t_lemin *lemin)
 {
-	size_t i;
+	int i;
+	int n;
+	int max;
 
 	i = 0;
-	while (lemin->a.rep[0][i])
+	max = -1;
+	while (i < lemin->nbpaths)
+	{
+		n = 0;
+		n += lemin->a.rep[i][0];
+		n += lemin->p[i].nodes->length;
+		if (n > max)
+		{
+			max = n;
+			printf("%d\n", max);
+		}
 		i++;
-	return (i + (size_t)lemin->p[0].nodes->length + 1);
+	}
+	return (max + 1);
 }
 
 char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
@@ -17,7 +30,7 @@ char		*step_writer(t_lemin *lemin, int antnum, t_node *room)
 	char *itoa;
 
 	itoa = ft_itoa(antnum);
-	tmp = ft_strjoin(" L", itoa);
+	tmp = ft_strjoinfree(ft_strdup(" L"), itoa);
 	free(itoa);
 	tmp = ft_strjoinfree(tmp, "-");
 	tmp = ft_strjoinfree(tmp, lemin->m.cases[room->nb]);
@@ -38,10 +51,11 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 		room = lemin->p[pathnumber].nodes->start->next;
 		while (room)
 		{
-			if (!(lemin->r.ops[wave]))
-				lemin->r.ops[wave] = ft_strdup("i");
 			step = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);
-			lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave], step);
+			if (!lemin->r.ops[wave])
+				lemin->r.ops[wave] = ft_strdup(step);
+			else
+				lemin->r.ops[wave] = ft_strjoinfree(lemin->r.ops[wave], step);
 			room = room->next;
 			wave++;
 			free(step);
@@ -54,16 +68,25 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 
 int			record(t_lemin *lemin)
 {
-	int	pathnumber;
+	int	i;
+	int ops_s;
 
-	pathnumber = 0;
+	ops_s = ops_size(lemin);
 	if (!(lemin->r.ops =
-				(char **)malloc(ops_size(lemin) * sizeof(char *))))
+				(char **)malloc(ops_s * sizeof(char *))))
 		return (0);
-	while (pathnumber < lemin->nbpaths)
+	i = 0;
+	while (i < ops_s)
 	{
-		launch_path(lemin, pathnumber);
-		pathnumber++;
+		lemin->r.ops[i] = NULL;
+		i++;
+	}
+	i = 0;
+	while (i < lemin->nbpaths)
+	{
+		if (!(launch_path(lemin, i)))
+			return (0);
+		i++;
 	}
 	ft_free_int(lemin->a.rep, lemin->nbpaths);
 	ft_clean(lemin->m.cases);
