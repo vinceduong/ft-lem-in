@@ -66,7 +66,7 @@ static int		ft_minus(char *tab)
 	return (i);
 }
 
-int			ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
+int				ft_patatruc(char **tab, t_lemin *lemin, int *error_tab)
 {
 	int		n;
 	int		i;

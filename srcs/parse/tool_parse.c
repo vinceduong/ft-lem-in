@@ -28,40 +28,33 @@ int		ft_intlen(int nb)
 	return (i);
 }
 
-int		ft_coord_is_digit(char *tab)
+int		ft_check_value_2(t_lemin *lemin, int *error_tab)
+{
+	lemin->m.nbcases = error_tab[4];
+	lemin->nb_link = error_tab[3];
+	lemin->a.nbants = error_tab[2];
+	if (error_tab[1] == error_tab[0])
+		return (0);
+	if (lemin->m.nbcases < 2 || lemin->nb_link < 1 || lemin->a.nbants <= 0 || \
+			error_tab[1] == 0 || error_tab[0] == 0)
+		return (0);
+	return (1);
+}
+
+int		*ft_create_error_tab(void)
 {
 	int i;
-	int countspaces;
-	int countcoor;
+	int *tab;
 
 	i = 0;
-	countspaces = 0;
-	countcoor = 0;
-	if (ft_chrstr(tab, ' ') == 1 && ft_chrstr(tab, '-') == 0
-			&& tab[0] != '#')
+	if (!(tab = (int*)malloc(sizeof(int) * 7)))
+		exit(0);
+	while (i != 7)
 	{
-		while (tab[i] != ' ')
-			i++;
-		while (tab[i])
-		{
-			if (ft_isdigit(tab[i]) == 0 && tab[i] != ' ')
-				break ;
-			if (ft_isdigit(tab[i]) == 1)
-			{
-				while (tab[i] && ft_isdigit(tab[i]) == 1)
-					i++;
-				countcoor++;
-				if (countcoor >= 2 && tab[i])
-					countcoor--;
-				if (!tab)
-					break ;
-			}
-			if (tab[i] == ' ')
-				countspaces++;
-			i++;
-		}
+		tab[i] = 0;
+		i++;
 	}
-	return (countcoor == 2 && countspaces == 2 ? 1 : 0);
+	return (tab);
 }
 
 int		ft_check_room(char **tab, int i)

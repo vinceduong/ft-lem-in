@@ -76,7 +76,7 @@ int					split_ants(t_lemin *lemin);
 int					record(t_lemin *lemin);
 int					display(t_lemin *lemin);
 int					ft_patatruc(char **tab, t_lemin *lemin, int *error_tab);
-int					ft_create_matrice(char **tab, t_lemin *l, int *t);
+int					ft_matrice(char **tab, t_lemin *l, int *t, int i);
 int					ft_chrstr(char *find, int c);
 int					ft_intlen(int nb);
 int					ft_coord_is_digit(char *str);
@@ -112,5 +112,7 @@ void				free_nodelist(t_nodelist *nodelist);
 void				free_node(t_node *node);
 t_pathlist			*find_pathlist(t_lemin *l, t_pathlist *paths);
 void				ft_free_int(int **tab, int size);
+int					*ft_create_error_tab(void);
+int					ft_check_value_2(t_lemin *lemin, int *error_tab);
 
 #endif
