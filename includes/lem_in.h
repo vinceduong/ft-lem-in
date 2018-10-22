@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 14:00:25 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 14:00:30 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
@@ -59,7 +71,7 @@ typedef struct		s_lemin
 	t_map			m;
 	t_ants			a;
 	t_record		r;
-	t_path			*p;
+	t_path			**p;
 	int				nbpaths;
 	t_list			*instru;
 	int				start;
@@ -68,6 +80,7 @@ typedef struct		s_lemin
 	int				nb_link;
 }					t_lemin;
 
+void				free_paths_array(t_path **paths, int size);
 int					ft_check_room(char **tab, int i);
 void				print_ant_road(t_lemin *lemin);
 int					parser(t_lemin *lemin);

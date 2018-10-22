@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:56:57 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:57:13 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	ft_free_int(int **tab, int size)
@@ -20,7 +32,7 @@ int		display(t_lemin *lemin)
 	i = 0;
 	while (lemin->r.ops[i])
 	{
-		if (lemin->p[0].nodes->length == 2)
+		if (lemin->p[0]->nodes->length == 2)
 		{
 			if (lemin->r.ops[i + 1])
 				ft_printf("%s ", lemin->r.ops[i] + 1);
@@ -34,5 +46,6 @@ int		display(t_lemin *lemin)
 	}
 	free(lemin->r.ops);
 	ft_free_int(lemin->m.graph, lemin->m.nbcases + 1);
+	free_paths_array(lemin->p, lemin->nbpaths);
 	return (1);
 }

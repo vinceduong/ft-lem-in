@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_ants.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:57:23 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:57:25 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 #define NL nodes->length
@@ -38,7 +50,7 @@ int		**size_ants(t_lemin *l)
 	{
 		if (!(size_ants[i] = (int *)malloc(sizeof(int *) * 2)))
 			return (NULL);
-		size_ants[i][0] = (i > 0 ? l->p[i].NL - l->p[0].NL : 0);
+		size_ants[i][0] = (i > 0 ? l->p[i]->NL - l->p[0]->NL : 0);
 		size_ants[i][1] = 0;
 		i++;
 	}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fill_matrice.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:57:30 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:57:31 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static int		**ft_fill_zero(t_lemin *lemin)
@@ -6,12 +18,14 @@ static int		**ft_fill_zero(t_lemin *lemin)
 	int		i;
 	int		n;
 
-	tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 10);
+	if (!(tab = (int**)malloc(sizeof(int*) * lemin->m.nbcases + 10)))
+		return (NULL);
 	i = 0;
 	n = 0;
 	while (n < lemin->m.nbcases + 1)
 	{
-		tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 10);
+		if (!(tab[n] = (int*)malloc(sizeof(int) * lemin->m.nbcases + 10)))
+			return (NULL);
 		while (i < lemin->m.nbcases + 1)
 		{
 			tab[n][i] = 0;

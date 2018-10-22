@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:58:41 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:58:42 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	free_node(t_node *node)
@@ -31,6 +43,19 @@ void	free_path(t_path *path)
 		free_nodelist(path->nodes);
 		free(path);
 	}
+}
+
+void	free_paths_array(t_path **paths, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		free_path(paths[i]);
+		i++;
+	}
+	free(paths);
 }
 
 void	free_pathlist(t_pathlist *pathlist)

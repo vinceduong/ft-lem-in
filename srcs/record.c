@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   record.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:57:00 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:57:14 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 size_t		ops_size(t_lemin *lemin)
@@ -12,7 +24,7 @@ size_t		ops_size(t_lemin *lemin)
 	{
 		n = 0;
 		n += lemin->a.rep[i][0];
-		n += lemin->p[i].nodes->length;
+		n += lemin->p[i]->nodes->length;
 		if (n > max)
 			max = n;
 		i++;
@@ -44,7 +56,7 @@ int			launch_path(t_lemin *lemin, int pathnumber)
 	while (antpos <= lemin->a.rep[pathnumber][0])
 	{
 		wave = antpos - 1;
-		room = lemin->p[pathnumber].nodes->start->next;
+		room = lemin->p[pathnumber]->nodes->start->next;
 		while (room)
 		{
 			step = step_writer(lemin, lemin->a.rep[pathnumber][antpos], room);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/18 13:57:41 by carmenia          #+#    #+#             */
+/*   Updated: 2018/10/18 13:57:42 by carmenia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static int		find_s(char **tab, int i)
@@ -61,7 +73,10 @@ static char		**ft_read(char *str, char *line)
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_strcmp(line, "") || line[0] == 'L')
+		{
+			free(line);
 			break ;
+		}
 		str = ft_strjoinfree(str, line);
 		str = ft_strjoinfree(str, "\n\0");
 		free(line);
