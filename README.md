@@ -23,7 +23,8 @@ make
 start-other
 other-end
 ```
-Note : Any comments are accepted
+Notes : *Any comments are accepted
+        *An unvalid map will lead to a "ERROR" message
 #### Example : 
 ```
 10
