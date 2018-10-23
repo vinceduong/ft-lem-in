@@ -53,3 +53,12 @@ Each line represent a step
 ```
 L(ant number)-(assigned room)
 ```
+### Output example with the previous map :
+```
+L1-room1 L2-room2
+L1-end L3-room1 L2-end L4-room2
+L3-end L5-room1 L4-end L6-room2
+L5-end L7-room1 L6-end L8-room2
+L7-end L9-room1 L8-end L10-room2
+L9-end L10-end
+```
