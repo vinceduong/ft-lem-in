@@ -1,7 +1,6 @@
 ### Lem-in
 42 Project - Find the shortest multipath in a graph !
-```c
-int main()
-{
-}
+#### How to use it
 ```
+make
+./lem-in < test_maps/Map_Valide/42
