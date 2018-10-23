@@ -25,7 +25,10 @@ other-end
 ```
 Notes : 
 * Any comments are accepted
-* An unvalid map will lead to a "ERROR" message
+* An unvalid map leads to a "ERROR" message
+* A map with missing start or missing end is unvalid
+* A map with no valid path is unvalid
+* Two rooms with the same coordinates is unvalid
 #### Example : 
 ```
 10
