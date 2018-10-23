@@ -48,3 +48,8 @@ start-room2
 room1-end
 room2-end
 ```
+### Output format :
+Each line represent a step
+```
+L(ant number)-(assigned room)
+```
