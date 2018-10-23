@@ -1,5 +1,5 @@
 ### Lem-in
-42 Project - Find the shortest multipath in a graph !
+42 Project - Find the shortests paths in a graph !
 #### Compile the project :
 ```
 make
